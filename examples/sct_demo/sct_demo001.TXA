@@ -1,0 +1,1142 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[EMBED]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+[PROCEDURE]
+NAME Main
+[COMMON]
+FROM ABC Frame
+MODIFIED '2009/01/29' '19:39:35'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('6206224d-3d5a-494a-bd77-3c7887b08497'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+SCT_wResult              USHORT
+!!> GUID('39b8755b-77f9-46ff-adc7-8a5505a0438e')
+SCT_szFileName           CSTRING(256)
+!!> GUID('ad425c2d-3e0d-4c84-a5bc-fbce41b286a7')
+[SCREENCONTROLS]
+! TEXT,USE(szPrinterName)
+[REPORTCONTROLS]
+! TEXT,USE(szPrinterName)
+szPrinterName            CSTRING(1024)
+!!> GUID('cf3567aa-7eca-4185-a761-ef1337d3ba8e'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(sav:szPrinterName)
+[REPORTCONTROLS]
+! TEXT,USE(sav:szPrinterName)
+sav:szPrinterName        CSTRING(1024)
+!!> GUID('9dc56899-7c1d-4282-8012-105bda091dd2'),PICTURE(@s255)
+[PROMPTS]
+%INISaveWindow LONG  (1)
+%ButtonAction DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('No Special Action')
+WHEN  ('?Exit') ('No Special Action')
+WHEN  ('?FilePrint') ('No Special Action')
+WHEN  ('?FilePrintApplication') ('No Special Action')
+WHEN  ('?FilePrintClientArea') ('No Special Action')
+WHEN  ('?FilePrintClipboard') ('No Special Action')
+WHEN  ('?FilePrintDesktop') ('No Special Action')
+WHEN  ('?FilePrintSelectArea') ('No Special Action')
+WHEN  ('?FilePrintSetup') ('No Special Action')
+WHEN  ('?FilePrintWindow') ('No Special Action')
+WHEN  ('?FileSave') ('No Special Action')
+WHEN  ('?FileSaveApplication') ('No Special Action')
+WHEN  ('?FileSaveCilpboard') ('No Special Action')
+WHEN  ('?FileSaveClientArea') ('No Special Action')
+WHEN  ('?FileSaveDesktop') ('No Special Action')
+WHEN  ('?FileSaveSelectArea') ('No Special Action')
+WHEN  ('?FileSaveWindow') ('No Special Action')
+
+%MenuAction DEPEND %Control STRING TIMES 1
+WHEN  ('?Exit') ('No Special Action')
+
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%SplashProcedure PROCEDURE  ()
+%ButtonRunName DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 14
+WHEN  ('?Exit') ()
+WHEN  ('?FilePrintApplication') ()
+WHEN  ('?FilePrintClientArea') ()
+WHEN  ('?FilePrintClipboard') ()
+WHEN  ('?FilePrintDesktop') ()
+WHEN  ('?FilePrintSelectArea') ()
+WHEN  ('?FilePrintSetup') ()
+WHEN  ('?FilePrintWindow') ()
+WHEN  ('?FileSaveApplication') ()
+WHEN  ('?FileSaveCilpboard') ()
+WHEN  ('?FileSaveClientArea') ()
+WHEN  ('?FileSaveDesktop') ()
+WHEN  ('?FileSaveSelectArea') ()
+WHEN  ('?FileSaveWindow') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 14
+WHEN  ('?Exit') (0)
+WHEN  ('?FilePrintApplication') (0)
+WHEN  ('?FilePrintClientArea') (0)
+WHEN  ('?FilePrintClipboard') (0)
+WHEN  ('?FilePrintDesktop') (0)
+WHEN  ('?FilePrintSelectArea') (0)
+WHEN  ('?FilePrintSetup') (0)
+WHEN  ('?FilePrintWindow') (0)
+WHEN  ('?FileSaveApplication') (0)
+WHEN  ('?FileSaveCilpboard') (0)
+WHEN  ('?FileSaveClientArea') (0)
+WHEN  ('?FileSaveDesktop') (0)
+WHEN  ('?FileSaveSelectArea') (0)
+WHEN  ('?FileSaveWindow') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('25000')
+WHEN  ('?Exit') ('25000')
+WHEN  ('?FilePrint') ('25000')
+WHEN  ('?FilePrintApplication') ('25000')
+WHEN  ('?FilePrintClientArea') ('25000')
+WHEN  ('?FilePrintClipboard') ('25000')
+WHEN  ('?FilePrintDesktop') ('25000')
+WHEN  ('?FilePrintSelectArea') ('25000')
+WHEN  ('?FilePrintSetup') ('25000')
+WHEN  ('?FilePrintWindow') ('25000')
+WHEN  ('?FileSave') ('25000')
+WHEN  ('?FileSaveApplication') ('25000')
+WHEN  ('?FileSaveCilpboard') ('25000')
+WHEN  ('?FileSaveClientArea') ('25000')
+WHEN  ('?FileSaveDesktop') ('25000')
+WHEN  ('?FileSaveSelectArea') ('25000')
+WHEN  ('?FileSaveWindow') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 14
+WHEN  ('?Exit') ()
+WHEN  ('?FilePrintApplication') ()
+WHEN  ('?FilePrintClientArea') ()
+WHEN  ('?FilePrintClipboard') ()
+WHEN  ('?FilePrintDesktop') ()
+WHEN  ('?FilePrintSelectArea') ()
+WHEN  ('?FilePrintSetup') ()
+WHEN  ('?FilePrintWindow') ()
+WHEN  ('?FileSaveApplication') ()
+WHEN  ('?FileSaveCilpboard') ()
+WHEN  ('?FileSaveClientArea') ()
+WHEN  ('?FileSaveDesktop') ()
+WHEN  ('?FileSaveSelectArea') ()
+WHEN  ('?FileSaveWindow') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 14
+WHEN  ('?Exit') (0)
+WHEN  ('?FilePrintApplication') (0)
+WHEN  ('?FilePrintClientArea') (0)
+WHEN  ('?FilePrintClipboard') (0)
+WHEN  ('?FilePrintDesktop') (0)
+WHEN  ('?FilePrintSelectArea') (0)
+WHEN  ('?FilePrintSetup') (0)
+WHEN  ('?FilePrintWindow') (0)
+WHEN  ('?FileSaveApplication') (0)
+WHEN  ('?FileSaveCilpboard') (0)
+WHEN  ('?FileSaveClientArea') (0)
+WHEN  ('?FileSaveDesktop') (0)
+WHEN  ('?FileSaveSelectArea') (0)
+WHEN  ('?FileSaveWindow') (0)
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('None')
+WHEN  ('?Exit') ('None')
+WHEN  ('?FilePrint') ('None')
+WHEN  ('?FilePrintApplication') ('None')
+WHEN  ('?FilePrintClientArea') ('None')
+WHEN  ('?FilePrintClipboard') ('None')
+WHEN  ('?FilePrintDesktop') ('None')
+WHEN  ('?FilePrintSelectArea') ('None')
+WHEN  ('?FilePrintSetup') ('None')
+WHEN  ('?FilePrintWindow') ('None')
+WHEN  ('?FileSave') ('None')
+WHEN  ('?FileSaveApplication') ('None')
+WHEN  ('?FileSaveCilpboard') ('None')
+WHEN  ('?FileSaveClientArea') ('None')
+WHEN  ('?FileSaveDesktop') ('None')
+WHEN  ('?FileSaveSelectArea') ('None')
+WHEN  ('?FileSaveWindow') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 14
+WHEN  ('?Exit') ()
+WHEN  ('?FilePrintApplication') ()
+WHEN  ('?FilePrintClientArea') ()
+WHEN  ('?FilePrintClipboard') ()
+WHEN  ('?FilePrintDesktop') ()
+WHEN  ('?FilePrintSelectArea') ()
+WHEN  ('?FilePrintSetup') ()
+WHEN  ('?FilePrintWindow') ()
+WHEN  ('?FileSaveApplication') ()
+WHEN  ('?FileSaveCilpboard') ()
+WHEN  ('?FileSaveClientArea') ()
+WHEN  ('?FileSaveDesktop') ()
+WHEN  ('?FileSaveSelectArea') ()
+WHEN  ('?FileSaveWindow') ()
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 17
+WHEN  ('') (1)
+WHEN  ('?Exit') (1)
+WHEN  ('?FilePrint') (1)
+WHEN  ('?FilePrintApplication') (1)
+WHEN  ('?FilePrintClientArea') (1)
+WHEN  ('?FilePrintClipboard') (1)
+WHEN  ('?FilePrintDesktop') (1)
+WHEN  ('?FilePrintSelectArea') (1)
+WHEN  ('?FilePrintSetup') (1)
+WHEN  ('?FilePrintWindow') (1)
+WHEN  ('?FileSave') (1)
+WHEN  ('?FileSaveApplication') (1)
+WHEN  ('?FileSaveCilpboard') (1)
+WHEN  ('?FileSaveClientArea') (1)
+WHEN  ('?FileSaveDesktop') (1)
+WHEN  ('?FileSaveSelectArea') (1)
+WHEN  ('?FileSaveWindow') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabDisableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?MENUBAR1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 50
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?FilePrintDesktop'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 2
+[END]
+[END]
+WHEN '?FilePrintApplication'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 4
+[END]
+[END]
+WHEN '?FilePrintWindow'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 5
+[END]
+[END]
+WHEN '?FilePrintClientArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 3
+[END]
+[END]
+WHEN '?FilePrintSelectArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 6
+[END]
+[END]
+WHEN '?FileSaveDesktop'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 9
+[END]
+[END]
+WHEN '?FileSaveApplication'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 7
+[END]
+[END]
+WHEN '?FileSaveClientArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 8
+[END]
+[END]
+WHEN '?FileSaveWindow'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 11
+[END]
+[END]
+WHEN '?FileSaveSelectArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 10
+[END]
+[END]
+WHEN '?FileSaveCilpboard'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 14
+[END]
+[END]
+WHEN '?FilePrintClipboard'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 13
+[END]
+[END]
+WHEN '?FilePrintSetup'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+IF sav:szPrinterName = ''
+  sav:szPrinterName = GETINI('windows','device')
+END
+IF PRINTERDIALOG()
+  szPrinterName = PRINTER{PROPPRINT:Device} & ',' & |
+                  GETINI('PrinterPorts',PRINTER{PROPPRINT:Device})
+  PUTINI('windows','device', szPrinterName)
+END
+
+[END]
+[END]
+[END]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'TakeEvent'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 6300
+PROPERTY:END
+  CASE EVENT()
+  OF EVENT:StartAbout
+     START(About,25000)
+  OF EVENT:StartClipboardDemo
+     START(ClipboardDemo,25000)
+  END
+[END]
+[END]
+WHEN 'Kill'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 8500
+PROPERTY:END
+IF sav:szPrinterName <> ''
+  PUTINI('windows','device', sav:szPrinterName)
+END
+[END]
+[END]
+[END]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'OpenWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5001
+PROPERTY:END
+START(About,25000)
+!START(ClipboardDemo,25000)
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABCSCTool SCT_SaveClipboard
+[INSTANCE]
+INSTANCE 14
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Clipboard')
+%TplDescription DEFAULT  ('Code template to add Save Clipboard.')
+%SCTFileDialog LONG  (1)
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTError LONG  (1)
+%SCTCompress LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+[ADDITION]
+NAME ABCSCTool SCT_PrintClipboard
+[INSTANCE]
+INSTANCE 13
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Clipboard')
+%TplDescription DEFAULT  ('Code template to add Print Clipboard.')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[ADDITION]
+NAME ABCSCTool SCT_PrintScreen
+[INSTANCE]
+INSTANCE 12
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools')
+%TplDescription DEFAULT  ('Print Screen Extension')
+%SCTWindow DEFAULT  ('TopWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTUsePopupMenu LONG  (1)
+%SCTCompress LONG  (0)
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[ADDITION]
+NAME ABC DateTimeDisplay
+[INSTANCE]
+INSTANCE 1
+PROCPROP
+[PROMPTS]
+%DisplayDate LONG  (0)
+%DatePicture DEFAULT  ('October 31, 1959')
+%OtherDatePicture DEFAULT  ('')
+%ShowDayOfWeek LONG  (1)
+%DateDisplayLocation DEFAULT  ('Status Bar')
+%DateStatusSection DEFAULT  ('3')
+%DateControl DEFAULT  ('')
+%DisplayTime LONG  (0)
+%TimePicture DEFAULT  ('5:30PM')
+%OtherTimePicture DEFAULT  ('')
+%TimeDisplayLocation DEFAULT  ('Status Bar')
+%TimeStatusSection DEFAULT  ('4')
+%TimeControl DEFAULT  ('')
+[ADDITION]
+NAME ABCSCTool SCT_PrintWindow
+[INSTANCE]
+INSTANCE 2
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('DeskTop')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTError LONG  (1)
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[INSTANCE]
+INSTANCE 3
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTArea DEFAULT  ('Client Area')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[INSTANCE]
+INSTANCE 4
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[INSTANCE]
+INSTANCE 5
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('TopWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('250')
+%SCToriginY DEFAULT  ('250')
+[ADDITION]
+NAME ABCSCTool SCT_PrintSelectedArea
+[INSTANCE]
+INSTANCE 6
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Selected Area')
+%TplDescription DEFAULT  ('Code template to add Print Selected Area.')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+[ADDITION]
+NAME ABCSCTool SCT_SaveWindow
+[INSTANCE]
+INSTANCE 7
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTArea DEFAULT  ('Window')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (0)
+[INSTANCE]
+INSTANCE 8
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTArea DEFAULT  ('Client Area')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (0)
+[INSTANCE]
+INSTANCE 9
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('DeskTop')
+%SCTArea DEFAULT  ('Window')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (1)
+[INSTANCE]
+INSTANCE 11
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('TopWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (0)
+[ADDITION]
+NAME ABCSCTool SCT_SaveSelectedArea
+[INSTANCE]
+INSTANCE 10
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Selected Area')
+%TplDescription DEFAULT  ('Code template to add Save Selected Area.')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTDestination DEFAULT  ('File')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTCompress LONG  (1)
+[CALLS]
+About
+ClipboardDemo
+[WINDOW]
+AppFrame APPLICATION('Devuna Screen Capture Tools'),AT(,,310,192),RESIZE,MAXIMIZE,CENTERED, |
+          ICON('sctools.ico'),MAX,STATUS,SYSTEM
+          MENUBAR,USE(?MENUBAR1),#ORDINAL(1)
+            ITEM('E&xit'),USE(?Exit),MSG('Exit this application'),STD(STD:Close),#ORDINAL(2)
+            MENU('&Print Window'),USE(?FilePrint),MSG('Demonstrates the various Print W' & |
+              'indow Functions'),#ORDINAL(3)
+              ITEM('&Desktop'),USE(?FilePrintDesktop),MSG('Print Desktop'),#ORDINAL(4)
+              ITEM('&Application'),USE(?FilePrintApplication),MSG('Print Application'),#ORDINAL(5)
+              ITEM('&Client Area'),USE(?FilePrintClientArea),MSG('Print Application Client Area'), |
+                #ORDINAL(6)
+              ITEM('&Window'),USE(?FilePrintWindow),MSG('Print Top Client Window'),#ORDINAL(7)
+              ITEM('&Select Area'),USE(?FilePrintSelectArea),MSG('Print Selected Screen Area'), |
+                #ORDINAL(8)
+              ITEM('Clip&board'),USE(?FilePrintClipboard),#ORDINAL(9)
+              ITEM,USE(?SEPARATOR1),SEPARATOR,#ORDINAL(10)
+              ITEM('S&etup...'),USE(?FilePrintSetup),MSG('Setup Printer'),#ORDINAL(11)
+            END
+            MENU('&Save Window'),USE(?FileSave),MSG('Demonstrates the various Save Wind' & |
+              'ow Functions'),#ORDINAL(12)
+              ITEM('&Desktop'),USE(?FileSaveDesktop),MSG('Save Desktop to BMP'),#ORDINAL(13)
+              ITEM('&Application'),USE(?FileSaveApplication),MSG('Save Application to BMP'), |
+                #ORDINAL(14)
+              ITEM('&Client Area'),USE(?FileSaveClientArea),MSG('Save Application Clien' & |
+                't Area to BMP'),#ORDINAL(15)
+              ITEM('&Window'),USE(?FileSaveWindow),MSG('Save Top Client Window to BMP'),#ORDINAL(16)
+              ITEM('&Select Area'),USE(?FileSaveSelectArea),MSG('Print Selected Screen ' & |
+                'Area to BMP'),#ORDINAL(17)
+              ITEM('Clip&board'),USE(?FileSaveCilpboard),#ORDINAL(18)
+            END
+          END
+        END
+
+[END]
+[END]

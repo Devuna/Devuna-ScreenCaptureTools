@@ -1,0 +1,57 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_SaveSelectedArea Procedure</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="bannerBase">SCT_SaveSelectedArea Procedure <span style="font-size:.75em;">(save selected area to bitmap file)</span></h1>
+
+<p><b>SCT_SaveSelectedArea( </b>*CSTRING <I>param_szFilename </I>[<I>, </I>BYTE<I> param_Compress</I>=0] <b>)</b></p>
+
+<p><b>SCT_SaveSelectedArea</b>&nbsp;&nbsp;Allows the user to select an area on the screen then saves the selected area to the clipboard or specified filename in DIB format.  The convention for naming DIB files is to use a .BMP extension, the entire file name must be specified.</p>
+
+<dl class="indent2">
+    <dt>param_szFilename</dt>
+    <dd>A string variable that specifies the complete path name of the DOS filename under which this bitmap (DIB) is to be saved.  If the <I>param_szFilename</I> value is <I>"clipboard"</I> the bitmap is saved to the windows clipboard.</dd>
+    <dt>param_Compress</dt>
+    <dd>A byte variable that determines the saved file format.  0 = DIB and 1 = JPEG.</dd>
+</dl>
+
+<p><b>Return Value</b>&nbsp;&nbsp;&nbsp;0 if successful<br />
+<span style="margin-left:108px;">&nbsp;or, one of these symbolic constants, defined in sctools.inc, if not successful.</span></p>
+<ul style="margin-left:8em;">
+    <li>ERR_NOTINITIALIZED</li>
+    <li>ERR_INVALIDHANDLE</li>
+    <li>ERR_OPEN</li>
+    <li>ERR_LOCK</li>
+</ul>
+
+<p><b>See Also:&nbsp;&nbsp;&nbsp;</b><a href="sct_saveselectedarea_template.htm">SCT_SaveSelectedArea Template</a>, <a href="sct_error_procedure.htm">SCT_Error Procedure</a></p>
+
+</body>
+</html>

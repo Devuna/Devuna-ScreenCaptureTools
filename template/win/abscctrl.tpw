@@ -1,0 +1,219 @@
+#! ================================================================================================
+#!                             DEVUNA - Screen Capture Tools Templates
+#! ================================================================================================
+#! Author:  Randy Rogers (KCR) <rrogers@devuna.com>
+#! Notice:  Copyright (C) 2017, Devuna
+#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+#! ================================================================================================
+#!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+#!
+#!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+#!    it under the terms of the GNU General Public License as published by
+#!    the Free Software Foundation, either version 3 of the License, or
+#!    (at your option) any later version.
+#!
+#!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+#!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#!    GNU General Public License for more details.
+#!
+#!    You should have received a copy of the GNU General Public License
+#!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+#! ================================================================================================
+#!
+#!===============================================================================================
+#CONTROL(SCT_PrintWindowButton,'Print Window Button'),PROCEDURE,REQ(SCT_Initialization),HLP('~SCT_PrintWindowButton_Template')
+#!
+  CONTROLS
+    BUTTON('&Print Window'),USE(?PrintWindowButton)
+  END
+#!
+#LOCALDATA
+SCT_wResult         USHORT
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Print Window Button','Control template to add Print Window Button.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('')
+  #DISPLAY('This template will add a button which will allow')
+  #DISPLAY('the screen on which it is populated to be printed.')
+  #DISPLAY('')
+  #BUTTON('Screen Capture Tools Options...'),AT(20,,160)
+    #PROMPT('&Window to Print:',DROP('ThisWindow|TopWindow|Application|DeskTop')),%SCTWindow,DEFAULT('ThisWindow')
+    #PROMPT('Print &Area:',DROP('Window|Client Area')),%SCTArea,DEFAULT('Window')
+    #PROMPT('Print &Option:',DROP('Default|Best Fit|Stretch to Page|Scale')),%SCTOption,DEFAULT('Best Fit')
+    #ENABLE(%SCTOption = 'Scale')
+      #BOXED('Scaling')
+        #PROMPT('&X Scale',SPIN(@n3,1,100)),%SCTscaleX,DEFAULT(1)
+        #PROMPT('&Y Scale',SPIN(@n3,1,100)),%SCTscaleY,DEFAULT(1)
+      #ENDBOXED
+    #ENDENABLE
+    #BOXED('Origin')
+      #PROMPT('&X Position',SPIN(@n6,0,15000)),%SCToriginX,DEFAULT(0)
+      #PROMPT('&Y Position',SPIN(@n6,0,15000)),%SCToriginY,DEFAULT(0)
+    #ENDBOXED
+    #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+    #ENABLE(%SCTError)
+      #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+    #ENDENABLE
+  #ENDBUTTON
+#ENDBOXED
+#!
+#!
+#AT(%ControlEventHandling,'?PrintWindowButton','Accepted'),PRIORITY(7500),DESCRIPTION('Print Screen Code')
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#DECLARE(%param5)
+#DECLARE(%param6)
+#DECLARE(%param7)
+#!
+#! Setup Parameters
+#CASE(%SCTWindow)
+#OF('ThisWindow')
+  #SET(%param1,%Window & '{PROP:Handle}')
+#OF('TopWindow')
+  #SET(%param1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+#OF('Application')
+  #SET(%param1,'SCT_GetAppWindow()')
+#OF('DeskTop')
+  #SET(%param1,'SCT_GetDesktopWindow()')
+#ENDCASE
+#!
+#CASE(%SCTArea)
+#OF('Window')
+  #SET(%param2,',PW_WINDOW')
+#OF('Client Area')
+  #SET(%param2,',PW_CLIENT')
+#ENDCASE
+#!
+#CASE(%SCTOption)
+#OF('Default')
+  #SET(%param3,',PW_DEFAULT')
+  #SET(%param4,',')
+  #SET(%param5,',')
+#OF('Best Fit')
+  #SET(%param3,',')
+  #SET(%param4,',')
+  #SET(%param5,',')
+#OF('Stretch to Page')
+  #SET(%param3,',PW_STRETCHTOPAGE')
+  #SET(%param4,',')
+  #SET(%param5,',')
+#OF('Scale')
+  #SET(%param3,',PW_SCALE')
+  #SET(%param4,',' & %SCTscaleX)
+  #SET(%param5,',' & %SCTscaleY)
+#ENDCASE
+#SET(%param6,',' & %SCToriginX)
+#SET(%param7,',' & %SCToriginY)
+#!
+#SET(%ValueConstruct,'SCT_PrintWindow(' & %param1 & %param2 & %param3 & %param4 & %param5 & %param6 & %param7 & ')')
+#IF(%SCTError)
+%SCTResult = %ValueConstruct #<!print desired window
+IF %SCTResult                #<! if an error is returned
+   SCT_Error(%SCTResult)     #<!  display error message
+END                          #<! endif
+#ELSE
+%ValueConstruct              #<!print desired window
+#ENDIF
+#ENDAT
+#!
+#!
+#!===============================================================================================
+#CONTROL(SCT_SaveWindowButton,'Save Window Button'),PROCEDURE,REQ(SCT_Initialization),HLP('~SCT_SaveWindowButton_Template')
+#!
+  CONTROLS
+    BUTTON('&Save Window'),USE(?SaveWindowButton)
+  END
+#!
+#LOCALDATA
+SCT_wResult         USHORT
+SCT_szFileName      CSTRING(256)
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Save Window Button','Control template to add Save Window Button.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('')
+  #DISPLAY('This template will add a button which will allow')
+  #DISPLAY('the screen on which it is populated to be saved.')
+  #DISPLAY('')
+  #BUTTON('Screen Capture Tools Options...'),AT(20,,160)
+    #PROMPT('&Window to Save:',DROP('ThisWindow|TopWindow|Application|DeskTop')),%SCTWindow,DEFAULT('ThisWindow')
+    #PROMPT('&Save Area:',DROP('Window|Client Area')),%SCTArea,DEFAULT('Window')
+    #PROMPT('&Destination:',DROP('Clipboard|File')),%SCTDestination,DEFAULT('File')
+    #ENABLE(%SCTDestination = 'File')
+      #PROMPT('&Prompt for Filename',CHECK),%SCTFileDialog,DEFAULT(%TRUE),AT(10)
+      #PROMPT('&Filename Field:',FROM(%LocalData)),%SCTFilename,DEFAULT('SCT_szFileName')
+      #PROMPT('&Compress Image',CHECK),%SCTCompress,DEFAULT(%FALSE),AT(10)
+    #ENDENABLE
+    #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+    #ENABLE(%SCTError)
+      #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+    #ENDENABLE
+  #ENDBUTTON
+#ENDBOXED
+#!
+#!
+#AT(%ControlEventHandling,'?SaveWindowButton','Accepted'),PRIORITY(7500),DESCRIPTION('Save Screen Code')
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#!
+#! Setup Parameters
+#CASE(%SCTWindow)
+#OF('ThisWindow')
+  #SET(%param1,%Window & '{PROP:Handle}')
+#OF('TopWindow')
+  #SET(%param1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+#OF('Application')
+  #SET(%param1,'SCT_GetAppWindow()')
+#OF('DeskTop')
+  #SET(%param1,'SCT_GetDesktopWindow()')
+#ENDCASE
+#!
+#SET(%param2,',' & %SCTFilename)
+#!
+#CASE(%SCTArea)
+#OF('Window')
+  #SET(%param3,',PW_WINDOW')
+#OF('Client Area')
+  #SET(%param3,',PW_CLIENT')
+#ENDCASE
+#!
+#SET(%param4,',' & %SCTCompress)
+#!
+#IF(%SCTDestination = 'Clipboard')
+%SCTFilename = 'CLIPBOARD'
+#ELSE
+  #IF(%SCTFileDialog)
+#INSERT(%FileDialog,%SCTFilename,%SCTCompress)
+  #ENDIF
+#ENDIF
+#!
+#SET(%ValueConstruct,'SCT_SaveWindow(' & %param1 & %param2 & %param3  & %param4 & ')')
+IF %SCTFilename
+#IF(%SCTError)
+   %SCTResult = %ValueConstruct #<!save desired window
+   IF %SCTResult                #<! if an error is returned
+      SCT_Error(%SCTResult)     #<!  display error message
+   END                          #<! endif
+#ELSE
+   %ValueConstruct              #<!save desired window
+#ENDIF
+END
+#ENDAT
+#!
+#!

@@ -1,0 +1,179 @@
+[PROGRAM]
+[COMMON]
+FROM ABC ABC
+MODIFIED '2017/02/02' '16:48:38'
+[DATA]
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(SCT_wclass)
+[REPORTCONTROLS]
+! STRING(@s20),USE(SCT_wclass)
+SCT_wclass               LIKE(WNDCLASS)
+!!> GUID('fa48d281-be82-4a42-aec4-96d63aeed1f6'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s15),USE(SCT_szClassName)
+[REPORTCONTROLS]
+! STRING(@s15),USE(SCT_szClassName)
+SCT_szClassName          CSTRING(16)
+!!> GUID('f8409f3f-3c87-4902-9a16-7b000600a2ba'),INITIAL('RubberBandClass'),PICTURE(@s15)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(SCT_hWndApplication)
+[REPORTCONTROLS]
+! STRING(@s20),USE(SCT_hWndApplication)
+SCT_hWndApplication      HWND
+!!> GUID('a976b74d-00cc-43ca-b62c-666bd1875fff'),PICTURE(@s20)
+[SCREENCONTROLS]
+! PROMPT('SCT h Wnd Client:'),USE(?SCT_hWndClient:Prompt)
+! ENTRY(@s20),USE(SCT_hWndClient)
+[REPORTCONTROLS]
+! STRING(@s20),USE(SCT_hWndClient)
+SCT_hWndClient           HWND
+!!> GUID('e651f5c5-cfbb-40f3-869c-c35c0a4c187e'),PROMPT('SCT h Wnd Client:'),HEADER('SCT h Wnd Client'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(SCT_hInstance)
+[REPORTCONTROLS]
+! STRING(@s20),USE(SCT_hInstance)
+SCT_hInstance            HANDLE
+!!> GUID('493a2a89-6671-4099-aead-5c4c29fd388c'),PICTURE(@s20)
+[SCREENCONTROLS]
+! PROMPT('SCT b Initialized:'),USE(?SCT_bInitialized:Prompt)
+! ENTRY(@n3),USE(SCT_bInitialized),MSG('True if SCT_Init has been called'),TIP('True if SCT_Init has been called')
+[REPORTCONTROLS]
+! STRING(@n3),USE(SCT_bInitialized)
+SCT_bInitialized         BYTE !True if SCT_Init has been called
+!!> GUID('9fa57983-2ea0-4dae-8cbc-fd8ad9f26d1a'),INITIAL('0'),PROMPT('SCT b Initialized:'),HEADER('SCT b Initialized'),MESSAGE('True if SCT_Init has been called'),TOOLTIP('True if SCT_Init has been called'),PICTURE(@n3)
+[EMBED]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+EMBED %GlobalMap
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+MODULE('DIBAPI.DLL')
+  BitmapToDIB(HBITMAP hBitmap, HPALETTE hPal),HDIB,C,NAME('BitmapToDIB')
+  ChangeBitmapFormat(HBITMAP hBitmap, WORD wBitCount, DWORD dwCompression, HPALETTE hPal),HDIB,C,NAME('ChangeBitmapFormat')
+  ChangeDIBFormat(HDIB hDIB, WORD wBitCount, DWORD dwCompression),HDIB,C,NAME('ChangeDIBFormat')
+  CopyScreenToBitmap(*RECT),HBITMAP,RAW,C,NAME('CopyScreenToBitmap')
+  CopyScreenToDIB(*RECT),HDIB,RAW,C,NAME('CopyScreenToDIB')
+  CopyWindowToBitmap(HWND, WORD),HBITMAP,C,NAME('CopyWindowToBitmap')
+  CopyWindowToDIB(HWND, WORD),HDIB,C,NAME('CopyWindowToDIB')
+  CreateDIBPalette(HDIB hDIB),HPALETTE,C,NAME('CreateDIBPalette')
+  CreateDIB(DWORD, DWORD, WORD),HDIB,C,NAME('CreateDIB')
+  DestroyDIB(HDIB),WORD,C,NAME('DestroyDIB')
+  DIBError(UINT ErrNo),CSTRING,C,NAME('DIBError')
+  DIBHeight(ULONG lpDIB),DWORD,C,NAME('DIBHeight')
+  DIBNumColors(ULONG lpDIB),WORD,C,NAME('DIBNumColors')
+  DIBToBitmap(HDIB hDIB, HPALETTE hPal),HBITMAP,C,NAME('DIBToBitmap')
+  DIBWidth(ULONG lpDIB),DWORD,C,NAME('DIBWidth')
+  FindDIBBits(ULONG lpDIB),ULONG,C,NAME('FindDIBBits')
+  GetSystemPalette(),HPALETTE,C,NAME('GetSystemPalette')
+  LoadDIB(ULONG),HDIB,C,NAME('LoadDIB')
+  PaintBitmap(HDC, *RECT, HBITMAP, *RECT, HPALETTE),BOOL,RAW,C,NAME('PaintBitmap')
+  PaintDIB(HDC, *RECT, HDIB, *RECT, HPALETTE),BOOL,RAW,C,NAME('PaintDIB')
+  PalEntriesOnDevice(HDC hDC),UINT,C,NAME('PalEntriesOnDevice')
+  PaletteSize(ULONG lpDIB),WORD,C,NAME('PaletteSize')
+  PrintDIB(HDIB, WORD, WORD, WORD, *CSTRING),WORD,RAW,C,C,NAME('PrintDIB'),PROC
+  PrintDIB2(HDIB, WORD, WORD, WORD, *CSTRING, *POINT),WORD,RAW,C,C,NAME('PrintDIB'),PROC
+  PrintScreen(*RECT, WORD, WORD, WORD, ULONG),WORD,RAW,C,NAME('PrintScreen'),PROC
+  PrintScreen2(*RECT, WORD, WORD, WORD, ULONG, *POINT),WORD,RAW,C,NAME('PrintScreen2'),PROC
+  PrintScreen(*RECT, WORD, WORD, WORD, *CSTRING),WORD,RAW,C,NAME('PrintScreen'),PROC
+  PrintScreen2(*RECT, WORD, WORD, WORD, *CSTRING, *POINT),WORD,RAW,C,NAME('PrintScreen2'),PROC
+  !PrintWindow(HWND, WORD, WORD, WORD, WORD, ULONG),WORD,C,NAME('PrintWindow'),PROC
+  PrintWindow2(HWND, WORD, WORD, WORD, WORD, ULONG, *POINT),WORD,C,NAME('PrintWindow2'),PROC
+  !PrintWindow(HWND, WORD, WORD, WORD, WORD, *CSTRING),WORD,RAW,C,NAME('PrintWindow'),PROC
+  PrintWindow2(HWND, WORD, WORD, WORD, WORD, *CSTRING, *POINT),WORD,RAW,C,NAME('PrintWindow2'),PROC
+  SaveDIB(HDIB, *CSTRING),WORD,RAW,C,NAME('SaveDIB'),PROC
+END
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+MODULE('JPGLIB.DLL')
+  EncodeJPGFileFromDIB(HDIB hDib, *CSTRING szPathName),BOOL,C,RAW,NAME('EncodeJPGFileFromDIB'),PROC
+END
+[END]
+EMBED %AfterGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+HDIB                EQUATE(HANDLE)
+
+! Print Options selection
+PW_BESTFIT          EQUATE(1)
+PW_STRETCHTOPAGE    EQUATE(2)
+PW_SCALE            EQUATE(3)
+
+! Print Area selection
+PW_WINDOW           EQUATE(1)
+PW_CLIENT           EQUATE(2)
+
+!Rubber Banding Modes
+PRINT_MODE          EQUATE(1)
+SAVE_MODE           EQUATE(2)
+
+! Error constants
+  ITEMIZE(0),PRE()
+ERR_MIN                 EQUATE         ! All error #s >= this value
+ERR_NOT_DIB             EQUATE(0)      ! Tried to load a file, NOT a DIB!
+ERR_MEMORY              EQUATE         ! Not enough memory!
+ERR_READ                EQUATE         ! Error reading file!
+ERR_LOCK                EQUATE         ! Error on a GlobalLock()!
+ERR_OPEN                EQUATE         ! Error opening a file!
+ERR_CREATEPAL           EQUATE         ! Error creating palette.
+ERR_GETDC               EQUATE         ! Couldn't get a DC.
+ERR_CREATEDDB           EQUATE         ! Error create a DDB.
+ERR_STRETCHBLT          EQUATE         ! StretchBlt() returned failure.
+ERR_STRETCHDIBITS       EQUATE         ! StretchDIBits() returned failure.
+ERR_SETDIBITSTODEVICE   EQUATE         ! SetDIBitsToDevice() failed.
+ERR_STARTDOC            EQUATE         ! Error calling StartDoc().
+ERR_NOGDIMODULE         EQUATE         ! Couldn't find GDI module in memory.
+ERR_SETABORTPROC        EQUATE         ! Error calling SetAbortProc().
+ERR_STARTPAGE           EQUATE         ! Error calling StartPage().
+ERR_NEWFRAME            EQUATE         ! Error calling NEWFRAME escape.
+ERR_ENDPAGE             EQUATE         ! Error calling EndPage().
+ERR_ENDDOC              EQUATE         ! Error calling EndDoc().
+ERR_SETDIBITS           EQUATE         ! Error calling SetDIBits().
+ERR_FILENOTFOUND        EQUATE         ! Error opening file in GetDib()
+ERR_INVALIDHANDLE       EQUATE         ! Invalid Handle
+ERR_DIBFUNCTION         EQUATE         ! Error on call to DIB function
+ERR_MAX                 EQUATE         ! All dibapi error #s < this value
+ERR_NOTINITIALIZED      EQUATE         ! SCCTOOLS library not initialized
+ERR_FORMATNOTAVAILABLE  EQUATE         ! Clipboard Format not available
+  END
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+     INCLUDE('PRNPROP.CLW'),ONCE
+[END]
+[END]
+[END]

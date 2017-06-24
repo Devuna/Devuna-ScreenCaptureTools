@@ -1,0 +1,94 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_SaveWindowButton Template</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="bannerBase">SCT_SaveWindowButton control template</h1>
+
+<p>The <b>SCT_SaveWindowButton</b> template generates code to save the desired window to the clipboard or a file.</p>
+
+<p><b>Window to Save</b>&nbsp;&nbsp;Select one of the choices from the dropdown list.  The choices and their meaning are as follows:</p>
+
+<dl class="indent2">
+<dt>This Window</dt><dd>the current procedure window</dd>
+<dt>Top Window</dt><dd>the first child window for the application</dd>
+<dt>Application</dt><dd>the application window</dd>
+<dt>Desktop</dt><dd>the desktop window</dd>
+</dl>
+
+<p><b>Save Area</b>&nbsp;&nbsp;Select one of the choices from the dropdown list.  The choices and their meaning are as follows:</p>
+
+<dl class="indent2">
+    <dt>Window</dt><dd>the entire window</dd>
+    <dt>Client Area</dt><dd>the window client area</dd>
+</dl>
+
+<p><b>Destination</b>&nbsp;&nbsp;Select either <b>Clipboard</b> or <b>File</b> from the dropdown list.  If you select <b>Clipboard</b>, the Filename prompts are disabled and the selected area will be saved to the clipboard.  If you select <b>File</b>, the Filename prompts are enabled and the selected area will be saved to the file specified in the <b>Filename Field</b> prompt.</p>
+
+<p><b>Prompt for Filename</b>&nbsp;&nbsp;This check box controls the generation of a <b>FILEDIALOG </b>procedure call to prompt the user for the file destination.</p>
+
+<p><b>Filename Field</b>&nbsp;&nbsp;Select a local data variable that will contain the Filename to be used.  Default is <I>SCT_szFileName</I>.</p>
+
+<p><b>Check for Error</b>&nbsp;&nbsp;This check box controls the generation of error checking code.  If an error is returned from the Screen Capture Tools library, and error message will be displayed.</p>
+
+<p><b>Result Field</b>&nbsp;&nbsp;Select the local data variable that will store the result of the library call.  Default is <I>SCT_wResult</I>.</p>
+
+<p><b>Compress Image</b>&nbsp;&nbsp;If this option is enabled, images saved to disk will be in JPEG format.  If this option is not enabled, images saved to disk will be in DIB format.</p>
+
+<p><img src="../images/note.gif" alt=""></p>
+
+<p><i>The template automatically creates local data variables for the filename and result fields.</i></p>
+
+<p>This template generates code  in the button accepted embed similar to the following:</p>
+
+<blockquote>
+SCT_szFileName = ''<br />
+FILEDIALOG('',SCT_szFileName,'bitmap(*.bmp)|*.bmp',FILE:Save+FILE:KeepDir+FILE:LongName)<br />
+IF INSTRING('.',SCT_szFileName)<br />
+&nbsp;&nbsp;&nbsp;SCT_szFileName = SUB(SCT_szFileName,1,INSTRING('.',SCT_szFileName)) &amp; 'bmp'<br />
+ELSE<br />
+&nbsp;&nbsp;&nbsp;SCT_szFileName = SCT_szFileName &amp; '.bmp'<br />
+END<br />
+IF UPPER(SCT_szFileName[LEN(SCT_szFileName)-12 : LEN(SCT_szFileName)]) = 'CLIPBOARD.BMP'<br />
+&nbsp;&nbsp;&nbsp;SCT_szFileName = 'CLIPBOARD'<br />
+END<br />
+IF SCT_szFileName<br />
+&nbsp;&nbsp;&nbsp;SCT_SaveWindow(Window{PROP:Handle},SCT_szFileName)  !save desired window<br />
+&nbsp;&nbsp;&nbsp;IF SCT_wResult&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!if an error is returned<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SCT_Error(SCT_wResult)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!&nbsp;&nbsp;&nbsp;display error message<br />
+&nbsp;&nbsp;&nbsp;END&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!endif<br />
+END
+</blockquote>
+
+<p><b>See Also:&nbsp;&nbsp;&nbsp;</b><a href="sct_savewindow_procedure.htm">SCT_SaveWindow Procedure</a>, <a href="sct_savewindow_procedure.htm">SCT_SaveWindow Procedure</a></p>
+
+</body>
+</html>

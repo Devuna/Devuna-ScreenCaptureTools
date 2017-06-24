@@ -1,0 +1,73 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_PrintScreen Template</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="bannerBase">SCT_PrintScreen extension template</h1>
+
+<p>The <b>SCT_PrintScreen</b> template adds code to the Application First Procedure to cause the contents of the clipboard or a window to be printed to the default printer when the user presses the PrintScreen Key.  The template also provides an option for a popup menu to allow the user to print, save, or copy the captured image to the clipboard</p>
+
+<p><b>Window to Print</b>&nbsp;&nbsp;Select one of the choices from the dropdown list.  The choices and their meaning are as follows:</p>
+
+<dl class="indent2">
+    <dt>Top Window</dt>
+    <dd>the first child window for the application</dd>
+    <dt>Application</dt>
+    <dd>the application window</dd>
+    <dt>DeskTop</dt>
+    <dd>the desktop window</dd>
+</dl>
+
+<p><b>Print Option</b>&nbsp;&nbsp;Select one of the choices from the dropdown list.  The choices and their meaning are as follows:</p>
+
+<dl class="indent2">
+    <dt>Best Fit</dt>
+    <dd>Fits the printed screen on the page in as large of an area as possible while still retaining the correct screen aspect ratio.  The <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters are not used if this option is selected.</dd>
+    <dt>Stretch to Page</dt>
+    <dd>Stretches the printed screen to fill the entire printed page.  The <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters are not used if this option is selected.</dd>
+</dl>
+
+<p><b>Scale</b>&nbsp;&nbsp;Scales the printed screen by the integer scaling factors specified in the <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters.  If the scaling is set too large, the screen may extend off the printed page and will be clipped.</p>
+
+<p><b>X Scale</b>&nbsp;&nbsp;Specifies the x-axis scaling factor for the printed window.  The x and y scaling factors are only used if the <b>Scale</b> option above is selected.</p>
+
+<p><b>Y Scale</b>&nbsp;&nbsp;Specifies the y-axis scaling factor for the printed window.</p>
+
+<p><b>X Position</b>&nbsp;&nbsp;Specifies the x-axis origin for the printed window.</p>
+
+<p><b>Y Position</b>&nbsp;&nbsp;Specifies the y-axis origin for the printed window.</p>
+
+<p><b>Use popup menu</b>&nbsp;&nbsp;If this option is enabled, a popup window will be presented to the user to allow them to print the captured image to the printer, save the captured image to a disk file, or copy the captured image to the clipboard.  If the <b>DeskTop</b> option is selected for the 'Window to Print' prompt, only the first two popup menu choices are displayed.</p>
+
+<p><b>Compress Image</b>&nbsp;&nbsp;If this option is enabled, images saved to disk will be in JPEG format.  If this option is not enabled, images saved to disk will be in DIB format.</p>
+
+<p>This template works by registering the application as a clipboard viewer, subclassing the Application First Procedure window handler, and responding to system generated clipboard messages.</p>
+
+</body>
+</html>

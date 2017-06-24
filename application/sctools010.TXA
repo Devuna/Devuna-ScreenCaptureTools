@@ -1,0 +1,668 @@
+[MODULE]
+NAME 'sctools010.clw'
+[COMMON]
+FROM ABC GENERATED
+MODIFIED '2017/06/20' '11:06:28'
+[DATA]
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(ptOrigin)
+[REPORTCONTROLS]
+! STRING(@s20),USE(ptOrigin)
+ptOrigin                 LIKE(POINT)
+!!> GUID('1b33d649-6b2c-4f1d-bea2-e42ca8dcfa5b'),PICTURE(@s20)
+[SCREENCONTROLS]
+! PROMPT('b Rubber Band Mode:'),USE(?bRubberBandMode:Prompt)
+! ENTRY(@n3),USE(bRubberBandMode)
+[REPORTCONTROLS]
+! STRING(@n3),USE(bRubberBandMode)
+bRubberBandMode          BYTE
+!!> GUID('2299dbcc-b1b0-4672-84fc-ef81cdb2dc81'),PROMPT('b Rubber Band Mode:'),HEADER('b Rubber Band Mode'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('sz Filename:'),USE(?szFilename:Prompt)
+! TEXT,USE(szFilename)
+[REPORTCONTROLS]
+! TEXT,USE(szFilename)
+szFilename               CSTRING(256)
+!!> GUID('a109515c-c42b-4684-8c68-60b9510c1de1'),PROMPT('sz Filename:'),HEADER('sz Filename'),PICTURE(@s255)
+[SCREENCONTROLS]
+! PROMPT('b Compress:'),USE(?bCompress:Prompt)
+! ENTRY(@n3),USE(bCompress)
+[REPORTCONTROLS]
+! STRING(@n3),USE(bCompress)
+bCompress                BYTE
+!!> GUID('b22050d8-dc0b-40e1-b531-e865eb5e73ad'),PROMPT('b Compress:'),HEADER('b Compress'),PICTURE(@n3)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(CurrentRect)
+[REPORTCONTROLS]
+! STRING(@s20),USE(CurrentRect)
+CurrentRect              LIKE(RECT)
+!!> GUID('1ff9bd82-5496-4a1c-81e3-0d7c5f4e1a83'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@n3),USE(DrawRubberRect)
+[REPORTCONTROLS]
+! STRING(@n3),USE(DrawRubberRect)
+DrawRubberRect           BYTE
+!!> GUID('3ed244c5-f1d1-4b52-91ae-5a24b59e10ec'),INITIAL('0'),PICTURE(@n3)
+[SCREENCONTROLS]
+! PROMPT('print Option:'),USE(?printOption:Prompt)
+! ENTRY(@n-14),USE(printOption),RIGHT(1)
+[REPORTCONTROLS]
+! STRING(@n-14),USE(printOption),RIGHT(1)
+printOption              LONG
+!!> GUID('58f564dc-1bd5-4038-b43c-1e32b501d3d2'),PROMPT('print Option:'),HEADER('print Option'),PICTURE(@n-14),JUSTIFY(RIGHT,1)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(wScaleX)
+[REPORTCONTROLS]
+! STRING(@s20),USE(wScaleX)
+wScaleX                  WORD
+!!> GUID('411667a0-b318-4749-8ed9-0b0195347ddf'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(wScaleY)
+[REPORTCONTROLS]
+! STRING(@s20),USE(wScaleY)
+wScaleY                  WORD
+!!> GUID('a541bff1-248b-44df-a589-788879bbae3c'),PICTURE(@s20)
+[SCREENCONTROLS]
+! PROMPT('w Result:'),USE(?wResult:Prompt)
+! ENTRY(@s20),USE(wResult)
+[REPORTCONTROLS]
+! STRING(@s20),USE(wResult)
+wResult                  WORD
+!!> GUID('232d6bcb-0851-4181-af2b-3f58b84b14a5'),PROMPT('w Result:'),HEADER('w Result'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(rptOrigin)
+[REPORTCONTROLS]
+! STRING(@s20),USE(rptOrigin)
+rptOrigin                LIKE(POINT)
+!!> GUID('ece068ec-4ef7-43f0-881c-3ee5d07bccba'),PICTURE(@s20)
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME SCT_PrintSelectedArea
+PROTOTYPE '(LONG param_PrintOption=1, LONG param_ScaleX=1, LONG param_ScaleY=1,LONG param_x, LONG param_y),USHORT,PROC'
+PARAMETERS '(param_PrintOption, param_ScaleX, param_ScaleY, param_x, param_y)'
+GLOBAL
+[COMMON]
+DESCRIPTION 'Create rubber banding window'
+FROM ABC Source
+MODIFIED '2013/07/18' '12:43:29'
+[DATA]
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hDC)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hDC)
+hDC                      HDC
+!!> GUID('cf01aa6e-fb59-4dd7-8bb4-9316ff136d62'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(ScreenX)
+[REPORTCONTROLS]
+! STRING(@s20),USE(ScreenX)
+ScreenX                  UNSIGNED
+!!> GUID('eb26438f-728d-4f61-9ee1-10b8519c3f8b'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(ScreenY)
+[REPORTCONTROLS]
+! STRING(@s20),USE(ScreenY)
+ScreenY                  UNSIGNED
+!!> GUID('5e9dfba3-6a6a-42b3-a1d0-49135ef6155d'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s7),USE(szDriver)
+[REPORTCONTROLS]
+! STRING(@s7),USE(szDriver)
+szDriver                 CSTRING(8)
+!!> GUID('504976ba-8da9-4bab-9465-751cddf4ecbd'),INITIAL('DISPLAY'),PICTURE(@s7)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hWndRubberBand)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hWndRubberBand)
+hWndRubberBand           HWND
+!!> GUID('dc95699a-2547-4533-9473-f96491639fb5'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(thisMsg)
+[REPORTCONTROLS]
+! STRING(@s20),USE(thisMsg)
+thisMsg                  LIKE(MSGTYPE)
+!!> GUID('c05fca5f-bf77-4001-a1f1-cd853c7ccd18'),PICTURE(@s20)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  IF ~SCT_bInitialized
+     RETURN(ERR_NOTINITIALIZED)
+  END
+  bRubberBandMode = PRINT_MODE
+  printOption = param_PrintOption
+  wScaleX = param_ScaleX
+  wScaleY = param_ScaleY
+
+  rptOrigin.x = param_x
+  rptOrigin.y = param_y
+
+  hDC = CreateDC(szDriver,0,0,0)
+  ScreenX = GetDeviceCaps(hDC, HORZRES)
+  ScreenY = GetDeviceCaps(hDC, VERTRES)
+  DeleteDC(hDC)
+
+  hWndRubberBand = CreateWindowEx(WS_EX_TRANSPARENT,        |   ! Window Ex Style
+                                    SCT_szClassName,        |   ! Name of the window's class
+                                    0,                      |   ! Text for window caption
+                                    WS_POPUP + WS_VISIBLE,  |   ! Window Style
+                                    0,                      |   ! Default horizontal position
+                                    0,                      |   ! Default vertical position
+                                    ScreenX,                |   ! Full screen width
+                                    ScreenY,                |   ! Full screen height
+                                    SCT_hWndApplication,    |   ! Child of Application Frame
+                                    0,                      |   ! Use the window class menu
+                                    SCT_hInstance,          |   ! This instance owns this window
+                                    0)                          ! Pointer (not used)
+
+  ShowWindow(hWndRubberBand, SW_SHOW)
+  UpdateWindow(hWndRubberBand)
+  LOOP WHILE(GetMessage(thisMsg,0,0,0))
+    TranslateMessage(thisMsg)
+    DispatchMessage(thisMsg)
+  END
+  RETURN(wResult)
+[END]
+[END]
+[PROCEDURE]
+NAME RubberBandWndProc
+PROTOTYPE '(HWND hWnd, WORD wMessage, WORD wParam, LONG lParam),LONG,PASCAL'
+PARAMETERS '(HWND hWnd, WORD wMessage, WORD wParam, LONG lParam)'
+GLOBAL
+NOEXPORT
+[COMMON]
+DESCRIPTION 'This is our Rubber Banding window message procedure.'
+FROM ABC Source
+MODIFIED '2013/07/18' '12:43:24'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  CASE wMessage
+    OF WM_CREATE
+
+    OF WM_DESTROY
+       PostQuitMessage(0)
+
+    OF WM_SYSCOMMAND
+
+    OF WM_COMMAND
+
+    OF WM_PAINT
+       BeginPaint(hWnd, ps)
+       EndPaint(hWnd, ps)
+
+    OF WM_LBUTTONDOWN
+       DrawRubberRect = TRUE
+
+       ptOrigin.x = BAND(lParam,0FFFFh)
+       ptOrigin.y = BAND(BSHIFT(lParam,-16),0FFFFh)
+       ClientToScreen(hWnd,ptOrigin)
+       CurrentRect.right = ptOrigin.x
+       CurrentRect.left = ptOrigin.x
+       CurrentRect.bottom = ptOrigin.y
+       CurrentRect.top = ptOrigin.y
+       NormalizeRect(CurrentRect)     ! Make sure it is a normal rect
+       hDC = GetDC(hWnd)
+       DrawSelect(hDC, TRUE, CurrentRect) ! Draw the rubber-band box
+       wResult = ReleaseDC(hWnd,hDC)
+
+    OF WM_LBUTTONUP
+       ClipCursor(0)
+       DrawRubberRect = FALSE
+       hDC = GetDC(hWnd)
+       DrawSelect(hDC, FALSE, CurrentRect)   ! erase old rubber-band
+       IF ~IsRectEmpty(CurrentRect)
+          CASE bRubberBandMode
+            OF PRINT_MODE
+               szJobName = 'Selected Area'
+               wResult = PrintScreen2(CurrentRect, printOption, wScaleX, wScaleY, szJobName, rptOrigin)
+            OF SAVE_MODE
+               hDIB = CopyScreenToDIB(CurrentRect)
+               IF UPPER(szFilename) = 'CLIPBOARD'
+                  OpenClipboard(hWnd)
+                  EmptyClipboard()
+                  SetClipboardData(CF_DIB, hDIB)
+                  CloseClipboard()
+                  wResult = FALSE
+               ELSE
+                  IF bCompress
+                     wResult = EncodeJPGFileFromDIB(hDIB,szFileName)
+                  ELSE
+                     wResult = SaveDIB(hDIB,szFileName)
+                  END
+               END
+               GlobalFree(hDIB)
+          END
+       END
+       DestroyWindow(hWnd)
+
+    OF WM_MOUSEMOVE
+       IF DrawRubberRect
+          hDC = GetDC(hWnd)
+          DrawSelect(hDC, FALSE, CurrentRect)   ! erase old rubber-band
+          CurrentRect.left = ptOrigin.x         ! Update rect with new mouse info
+          CurrentRect.top = ptOrigin.y
+          pt.x = BAND(lParam,0FFFFh)
+          pt.y = BAND(BSHIFT(lParam,-16),0FFFFh)
+
+          ! Convert to screen coordinates
+          ClientToScreen(hWnd, pt)
+          CurrentRect.right = pt.x
+          CurrentRect.bottom = pt.y
+          NormalizeRect(CurrentRect)
+          DrawSelect(hDC, TRUE, CurrentRect) ! And draw the new rubber-band
+          wResult = ReleaseDC(hWnd,hDC)
+       ELSE
+       END
+
+  END
+
+  RETURN DefWindowProc(hWnd, wMessage, wParam, lParam)
+
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 50
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+!**********************************************************************
+! RubberBandWndProc()
+!
+! This is our Rubber Banding window message procedure.
+!
+! History   Date      Author              Reason
+!            12/31/99  Randy Rogers        Created
+!*********************************************************************
+ps          LIKE(PAINTSTRUCT)
+pt          LIKE(POINT)
+hDC         HDC
+BKcolor     COLORREF
+hPen        HANDLE
+hPenOrig    HANDLE
+hBr         HANDLE
+hBrOrig     HANDLE
+szJobName   CSTRING(64)
+hDIB        HDIB
+[END]
+[END]
+[CALLS]
+DrawSelect
+NormalizeRect
+[PROCEDURE]
+NAME SCT_SaveSelectedArea
+PROTOTYPE '(*CSTRING param_szFilename, BYTE param_Compress=0),USHORT,PROC'
+PARAMETERS '(param_szFilename, param_Compress)'
+GLOBAL
+[COMMON]
+DESCRIPTION 'Create rubber banding window'
+FROM ABC Source
+MODIFIED '2013/07/18' '12:43:36'
+[DATA]
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hDC)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hDC)
+hDC                      HDC
+!!> GUID('9678cc36-e029-4670-b6af-898e2ebc2827'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(ScreenX)
+[REPORTCONTROLS]
+! STRING(@s20),USE(ScreenX)
+ScreenX                  UNSIGNED
+!!> GUID('457ea42d-584a-47c8-b162-d77620bce330'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(ScreenY)
+[REPORTCONTROLS]
+! STRING(@s20),USE(ScreenY)
+ScreenY                  UNSIGNED
+!!> GUID('5c621e61-bc24-4891-9274-f11f307c7242'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s7),USE(szDriver)
+[REPORTCONTROLS]
+! STRING(@s7),USE(szDriver)
+szDriver                 CSTRING(8)
+!!> GUID('fe30a7f1-929b-4680-94d2-d29ae1cddacd'),INITIAL('DISPLAY'),PICTURE(@s7)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hWndRubberBand)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hWndRubberBand)
+hWndRubberBand           HWND
+!!> GUID('e9a1cca1-506d-4720-9f25-f706eb34169a'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(thisMsg)
+[REPORTCONTROLS]
+! STRING(@s20),USE(thisMsg)
+thisMsg                  LIKE(MSGTYPE)
+!!> GUID('5768a9d2-d406-4e7d-8e1b-070d112f6aa9'),PICTURE(@s20)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 50
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  IF ~SCT_bInitialized
+     RETURN(ERR_NOTINITIALIZED)
+  END
+  bRubberBandMode = SAVE_MODE
+  szFilename = param_szFilename
+  bCompress = param_Compress
+  hDC = CreateDC(szDriver,0,0,0)
+  ScreenX = GetDeviceCaps(hDC, HORZRES)
+  ScreenY = GetDeviceCaps(hDC, VERTRES)
+  DeleteDC(hDC)
+
+  hWndRubberBand = CreateWindowEx(WS_EX_TRANSPARENT,        |   ! Window Ex Style
+                                    SCT_szClassName,        |   ! Name of the window's class
+                                    0,                      |   ! Text for window caption
+                                    WS_POPUP + WS_VISIBLE,  |   ! Window Style
+                                    0,                      |   ! Default horizontal position
+                                    0,                      |   ! Default vertical position
+                                    ScreenX,                |   ! Full screen width
+                                    ScreenY,                |   ! Full screen height
+                                    SCT_hWndApplication,    |   ! Child of Application Frame
+                                    0,                      |   ! Use the window class menu
+                                    SCT_hInstance,          |   ! This instance owns this window
+                                    0)                          ! Pointer (not used)
+
+  ShowWindow(hWndRubberBand, SW_SHOW)
+  UpdateWindow(hWndRubberBand)
+  LOOP WHILE(GetMessage(thisMsg,0,0,0))
+    TranslateMessage(thisMsg)
+    DispatchMessage(thisMsg)
+  END
+  RETURN(wResult)
+[END]
+[END]
+[PROCEDURE]
+NAME NormalizeRect
+PROTOTYPE '(*RECT prc)'
+PARAMETERS '(*RECT prc)'
+GLOBAL
+NOEXPORT
+[COMMON]
+DESCRIPTION 'If the rectangle coordinates are reversed, swaps them.'
+FROM ABC Source
+MODIFIED '2013/07/18' '12:43:19'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  IF prc.right < prc.left
+     sTemp = prc.right
+     prc.right = prc.left
+     prc.left = sTemp
+  END
+  IF prc.bottom < prc.top
+     sTemp = prc.bottom
+     prc.bottom = prc.top
+     prc.top = sTemp
+  END
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 50
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+!*************************************************************************
+!  FUNCTION   : NormalizeRect(RECT *prc)
+!
+!  PURPOSE    : If the rectangle coordinates are reversed, swaps them.
+!               This is used to make sure that the first coordinate of
+!               our rect is the upper left, and the second is lower right.
+!
+! History:   Date      Author         Reason
+!            9/15/91   Mark Bader     Created from SHOWDIB code
+!            12/24/99  Randy Rogers   Converted to Clarion for Windows C5b
+!*************************************************************************
+sTemp   SIGNED
+[END]
+[END]
+[PROCEDURE]
+NAME DrawSelect
+PROTOTYPE '(HDC hdc,BOOL fDraw,*RECT lprClip)'
+PARAMETERS '(HDC hdc,BOOL fDraw,*RECT lprClip)'
+GLOBAL
+NOEXPORT
+[COMMON]
+DESCRIPTION 'Draws the selected clip rectangle with its dimensions on the DC'
+FROM ABC Source
+CATEGORY 'WinCap'
+MODIFIED '2013/07/18' '13:13:08'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  rcClip = lprClip
+  IF ~IsRectEmpty(rcClip)
+     ! If a rectangular clip region has been selected, draw it
+     PatBlt(hdc, rcClip.left, rcClip.top, rcClip.right - rcClip.left, 1, DSTINVERT)
+     PatBlt(hdc, rcClip.left, rcClip.bottom, 1, -(rcClip.bottom - rcClip.top), DSTINVERT)
+     PatBlt(hdc, rcClip.right - 1, rcClip.top, 1, rcClip.bottom - rcClip.top, DSTINVERT)
+     PatBlt(hdc, rcClip.right, rcClip.bottom - 1, -(rcClip.right - rcClip.left), 1, DSTINVERT)
+
+     ! Format the dimensions string ...
+     sz = FORMAT(rcClip.right - rcClip.left,@n_4) & ' x ' & FORMAT(rcClip.bottom - rcClip.top,@n_4)
+     len = LEN(CLIP(sz))
+
+     ! ... and center it in the rectangle
+  COMPILE('****',_WIDTH32_)
+     GetTextExtentPoint32(hdc,sz,len,lpSize)
+     dx = lpSize.cx
+     dy = lpSize.cy
+  ****
+  OMIT('****',_WIDTH32_)
+     dw = GetTextExtent(hdc, sz, len)
+     dx = BAND(dw,0FFFFh)
+     dy = BAND(BSHIFT(dw,-16),0FFFFh)
+  ****
+     x = (rcClip.right + rcClip.left - dx) / 2
+     y = (rcClip.bottom + rcClip.top - dy) / 2
+     hdcBits = CreateCompatibleDC(hdc)
+     SetTextColor(hdcBits, 0FFFFFFh)
+     SetBkColor(hdcBits, 0000000h)
+
+     ! Output the text to the DC
+     hbm = CreateBitmap(dx, dy, 1, 1, 0)
+     IF hbm
+        hbm = SelectObject(hdcBits, hbm)
+        ExtTextOut(hdcBits, 0, 0, 0, 0, sz, len, 0)
+        BitBlt(hdc, x, y, dx, dy, hdcBits, 0, 0, SRCINVERT)
+        hbm = SelectObject(hdcBits, hbm)
+        DeleteObject(hbm)
+     END
+     DeleteDC(hdcBits)
+  END
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 50
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+!***************************************************************************
+!
+! DrawSelect
+!
+! Draws the selected clip rectangle with its dimensions on the DC
+!
+! History:   Date      Author         Reason
+!            9/15/91   Mark Bader     Created from SHOWDIB code
+!            12/24/99  Randy Rogers   Converted to Clarion for Windows C5b
+!***************************************************************************
+sz      CSTRING(80)
+dw      DWORD
+x       SIGNED
+y       SIGNED
+len     SIGNED
+dx      SIGNED
+dy      SIGNED
+hdcBits HDC
+hbm     HBITMAP
+rcClip  LIKE(RECT)
+lpSize  LIKE(SIZE)
+[END]
+[END]
+[END]

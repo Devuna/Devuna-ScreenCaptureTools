@@ -1,0 +1,352 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME SCT_ClipboardToImage
+PROTOTYPE '(UNSIGNED param_hWindow, LONG param_feq),USHORT,PROC'
+PARAMETERS '(param_hWindow, param_feq)'
+GLOBAL
+[COMMON]
+DESCRIPTION 'Display Clipboard Bitmap in passed feq'
+FROM ABC Source
+MODIFIED '2013/07/18' '12:42:28'
+[DATA]
+[SCREENCONTROLS]
+! TEXT,USE(szPath)
+[REPORTCONTROLS]
+! TEXT,USE(szPath)
+szPath                   CSTRING(256)
+!!> GUID('a5bb3378-252e-442e-a028-19775a89b8f7'),PICTURE(@s255)
+[SCREENCONTROLS]
+! ENTRY(@s1),USE(szPrefix)
+[REPORTCONTROLS]
+! STRING(@s1),USE(szPrefix)
+szPrefix                 CSTRING(2)
+!!> GUID('858a0a05-2bc0-4730-93d3-16546a1dfe79'),INITIAL('$'),PICTURE(@s1)
+[SCREENCONTROLS]
+! TEXT,USE(szTempFile)
+[REPORTCONTROLS]
+! TEXT,USE(szTempFile)
+szTempFile               CSTRING(257)
+!!> GUID('f9e52799-9413-4880-9978-46f2da2da73c'),PICTURE(@s255)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hDC)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hDC)
+hDC                      HDC
+!!> GUID('927a2de1-c5c6-4936-b241-2417fff5f76c'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hBitmap)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hBitmap)
+hBitmap                  HBITMAP
+!!> GUID('6e42c769-829a-40fc-a8e8-566baad94897'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hDIB)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hDIB)
+hDIB                     HDIB
+!!> GUID('f93c7cda-7022-49b0-8b47-114d1b1ce834'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(clientRect)
+[REPORTCONTROLS]
+! STRING(@s20),USE(clientRect)
+clientRect               LIKE(RECT)
+!!> GUID('18beea8e-a16f-459c-9f6e-7e78de3bcde6'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hMetaFile)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hMetaFile)
+hMetaFile                HENHMETAFILE
+!!> GUID('bfffbe9b-bd67-4e2e-bfd4-198bf8c512d4'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(emh)
+[REPORTCONTROLS]
+! STRING(@s20),USE(emh)
+emh                      LIKE(ENHMETAHEADER)
+!!> GUID('9e737fe4-95a4-4a70-a025-532764976588'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hMemDC)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hMemDC)
+hMemDC                   HDC
+!!> GUID('1120b490-adaa-4deb-b2eb-be18787decd0'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hOldBitmap)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hOldBitmap)
+hOldBitmap               HBITMAP
+!!> GUID('b3d1f0c6-4d33-4593-bd4d-cb36fcb63a4c'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@s7),USE(szDriver)
+[REPORTCONTROLS]
+! STRING(@s7),USE(szDriver)
+szDriver                 CSTRING(8)
+!!> GUID('3aa3de24-0713-416e-b579-9bfb60f2c3d6'),INITIAL('DISPLAY'),PICTURE(@s7)
+[SCREENCONTROLS]
+! PROMPT('w Return Value:'),USE(?wReturnValue:Prompt)
+! ENTRY(@n6),USE(wReturnValue)
+[REPORTCONTROLS]
+! STRING(@n6),USE(wReturnValue)
+wReturnValue             USHORT
+!!> GUID('c320b824-8bca-469b-9c59-fd5cfebde2e3'),PROMPT('w Return Value:'),HEADER('w Return Value'),PICTURE(@n6)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(hGMem)
+[REPORTCONTROLS]
+! STRING(@s20),USE(hGMem)
+hGMem                    HGLOBAL
+!!> GUID('4dd12ea6-255a-4bac-998a-d00e1da33762'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@n13),USE(pMFP)
+[REPORTCONTROLS]
+! STRING(@n13),USE(pMFP)
+pMFP                     ULONG
+!!> GUID('f51c6937-b7cf-462e-bb1b-a2540277ba53'),PICTURE(@n13)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(mfp)
+[REPORTCONTROLS]
+! STRING(@s20),USE(mfp)
+mfp                      LIKE(METAFILEPICT)
+!!> GUID('6a518e67-1cc7-47af-bdb7-d5124f2e30b3'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@n13),USE(xScale)
+[REPORTCONTROLS]
+! STRING(@n13),USE(xScale)
+xScale                   ULONG
+!!> GUID('ee07ec0b-3499-45d4-90f2-4f50194659b4'),PICTURE(@n13)
+[SCREENCONTROLS]
+! ENTRY(@n13),USE(yScale)
+[REPORTCONTROLS]
+! STRING(@n13),USE(yScale)
+yScale                   ULONG
+!!> GUID('1c0f5477-d916-4ac6-bc53-0224d8a71fbc'),PICTURE(@n13)
+[SCREENCONTROLS]
+! ENTRY(@n13),USE(iScale)
+[REPORTCONTROLS]
+! STRING(@n13),USE(iScale)
+iScale                   ULONG
+!!> GUID('937444b8-012b-4c40-adee-0a45e0833239'),PICTURE(@n13)
+[SCREENCONTROLS]
+! ENTRY(@s20),USE(pt)
+[REPORTCONTROLS]
+! STRING(@s20),USE(pt)
+pt                       LIKE(POINT)
+!!> GUID('cb37d50a-57c8-4338-9c9c-4717b7ce9dc2'),PICTURE(@s20)
+[SCREENCONTROLS]
+! ENTRY(@n13),USE(uBufSize)
+[REPORTCONTROLS]
+! STRING(@n13),USE(uBufSize)
+uBufSize                 ULONG
+!!> GUID('ed3f66b3-edfa-407b-aa2a-57eddb66b06c'),PICTURE(@n13)
+[SCREENCONTROLS]
+! ENTRY(@n13),USE(lpMeta)
+[REPORTCONTROLS]
+! STRING(@n13),USE(lpMeta)
+lpMeta                   ULONG
+!!> GUID('04ae8ed2-e85c-4fa2-abcb-efad24a593ca'),PICTURE(@n13)
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  IF ~SCT_bInitialized
+     RETURN(ERR_NOTINITIALIZED)
+  ELSE
+     wReturnValue = FALSE
+  END
+
+!  IF IsClipboardFormatAvailable(CF_DIB)
+!     OpenClipboard(param_hWindow)
+!     hDIB = GetClipboardData(CF_DIB)
+!     SaveDIB(hDIB,szTempFile)
+!     CloseClipboard()
+!     param_feq{PROP:Text} = szTempFile
+
+!  ELSIF IsClipboardFormatAvailable(CF_BITMAP)
+  IF IsClipboardFormatAvailable(CF_BITMAP)
+     OpenClipboard(param_hWindow)
+     hBitmap = GetClipboardData(CF_BITMAP)
+     hDIB = BitmapToDIB(hBitmap,0)
+
+     DO UpdateImage
+
+     GlobalFree(hDIB)
+     CloseClipboard()
+
+  ELSIF IsClipboardFormatAvailable(CF_ENHMETAFILE)
+     ! create a DC for the screen and create
+     ! a memory DC compatible to screen DC
+     hDC = CreateDC(szDriver, 0, 0, 0)
+     hMemDC = CreateCompatibleDC(hDC)
+
+     ! get contents of clipboard
+     OpenClipboard(param_hWindow)
+     hMetafile = GetClipboardData(CF_ENHMETAFILE)
+     GetEnhMetaFileHeader(hMetafile,SIZE(emh),emh)
+     clientRect.left = 0
+     clientRect.top = 0
+     clientRect.right = emh.rclFrame.right * GetDeviceCaps(hDC, HORZRES) / GetDeviceCaps(hDC, HORZSIZE) / 100
+     clientRect.bottom = emh.rclFrame.bottom * GetDeviceCaps(hDC, VERTRES) / GetDeviceCaps(hDC, VERTSIZE) / 100
+
+     ! create a compatible bitmap
+     ! select bitmap into memory DC
+     ! and play the metafile
+     hBitmap = CreateCompatibleBitmap(hDC, clientRect.right, clientRect.bottom)
+     hOldBitmap = SelectObject(hMemDC,hBitmap)
+     PatBlt(hMemDC,0,0,clientRect.right,clientRect.bottom,WHITENESS)
+     PlayEnhMetaFile(hMemDC,hMetaFile,clientRect)
+     CloseClipboard()
+
+     ! convert bitmap to DIB
+     hDIB = BitmapToDIB(hBitmap,GetSystemPalette())
+
+     DO UpdateImage
+
+     hBitmap = SelectObject(hMemDC, hOldBitmap)
+     DeleteDC(hDC)
+     DeleteDC(hMemDC)
+     DeleteObject(hBitmap)
+     GlobalFree(hDIB)
+
+  ELSIF IsClipboardFormatAvailable(CF_METAFILEPICT)
+     ! create a DC for the screen and create
+     ! a memory DC compatible to screen DC
+     hDC = CreateDC(szDriver, 0, 0, 0)
+     hMemDC = CreateCompatibleDC(hDC)
+
+     ! get contents of clipboard
+     OpenClipboard(param_hWindow)
+     hGMem = GetClipboardData(CF_METAFILEPICT)
+     pMFP = GlobalLock(hGMem)
+     memcpy(ADDRESS(mfp),pMFP,SIZE(mfp))                         !Copy to local
+
+     ! convert to enhanced metafile
+     uBufSize = GetMetaFileBitsEx(mfp.hMF,0,0)
+     lpMeta = GlobalAlloc(GPTR,uBufSize)
+     GetMetaFileBitsEx(mfp.hMF,uBufSize,lpMeta)
+     hMetaFile = SetWinMetaFileBits(uBufSize,lpMeta,hMemDC,pMFP)
+
+     GetEnhMetaFileHeader(hMetafile,SIZE(emh),emh)
+     clientRect.left = 0
+     clientRect.top = 0
+     clientRect.right = emh.rclFrame.right * GetDeviceCaps(hDC, HORZRES) / GetDeviceCaps(hDC, HORZSIZE) / 100
+     clientRect.bottom = emh.rclFrame.bottom * GetDeviceCaps(hDC, VERTRES) / GetDeviceCaps(hDC, VERTSIZE) / 100
+
+     ! create a compatible bitmap
+     ! select bitmap into memory DC
+     ! and play the metafile
+     hBitmap = CreateCompatibleBitmap(hDC, clientRect.right, clientRect.bottom)
+     hOldBitmap = SelectObject(hMemDC,hBitmap)
+     PatBlt(hMemDC,0,0,clientRect.right,clientRect.bottom,WHITENESS)
+     PlayEnhMetaFile(hMemDC,hMetaFile,clientRect)
+     GlobalUnlock(hGMem)
+     GlobalFree(lpMeta)
+     CloseClipboard()
+
+     ! convert bitmap to DIB
+     hDIB = BitmapToDIB(hBitmap,GetSystemPalette())
+
+     DO UpdateImage
+
+     hBitmap = SelectObject(hMemDC, hOldBitmap)
+     DeleteDC(hDC)
+     DeleteDC(hMemDC)
+     DeleteObject(hBitmap)
+     GlobalFree(hDIB)
+     DeleteEnhMetaFile(hMetaFile)
+
+  ELSE
+     wReturnValue = ERR_FORMATNOTAVAILABLE
+  END
+
+  RETURN(wReturnValue)
+[END]
+EMBED %ProcedureRoutines
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+UpdateImage ROUTINE
+  lpBI = GlobalLock(hDIB)
+  bi &= (lpBI)
+
+  ! Compute the size
+  bmfHdr.bfType = DIB_HEADER_MARKER
+  dwDIBSize = bi.biSize + PaletteSize(lpBI) + bi.biSizeImage
+
+  ! Calculate the file size by adding the DIB size to sizeof(BITMAPFILEHEADER)
+  bmfHdr.bfSize = dwDIBSize + size(BITMAPFILEHEADER)
+  bmfHdr.bfReserved1 = 0
+  bmfHdr.bfReserved2 = 0
+
+  !*
+  !* Now, calculate the offset the actual bitmap bits will be in
+  !* the file -- It's the Bitmap file header plus the DIB header,
+  !* plus the size of the color table.
+  !*
+  bmfHdr.bfOffBits = size(BITMAPFILEHEADER) + bi.biSize + PaletteSize(lpBI)
+
+  hMem = GlobalAlloc(GHND,bmfHdr.bfSize)
+  pMem = GlobalLock(hMem)
+  memcpy(pMem,address(bmfHdr),size(BITMAPFILEHEADER))
+  memcpy(pMem+size(BITMAPFILEHEADER),lpBI,dwDIBSize)
+
+  param_feq{prop:imageblob} = pMem
+  globalfree(pMem)
+  globalfree(lpbi)
+
+  EXIT
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 3500
+PROPERTY:END
+DIB_HEADER_MARKER    EQUATE(04D42h)  !'BM'
+lpBI            LONG    !pointer to bitmapheaderinfo
+bi              &BITMAPINFOHEADER
+bmfHdr          LIKE(BITMAPFILEHEADER)
+dwDIBSize       DWORD
+dwBmBitsSize    DWORD
+hMem            HGLOBAL
+pMem            LONG
+[END]
+[END]
+[END]

@@ -1,0 +1,94 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_Error Procedure</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="BannerBase">SCT_Error Procedure <span style="font-size:.75em;">(display an error message)</span></h1>
+
+<p><b>SCT_Error(USHORT</b> <I>param_wErrNo </I><b>)</b></p>
+
+<p><b>SCT_Error</b>&nbsp;&nbsp;Displays a Message with an error message corresponding to the specified error number.</p>
+
+<p><I>param_wErrNo</I>&nbsp;&nbsp;parameter must be set to one of the following:</p>
+
+<dl class="Indent2">
+    <dt>ERR_NOT_DIB</dt>
+    <dd>Tried to load a non-DIB file.</dd>
+    <dt>ERR_MEMORY</dt>
+    <dd>Not enough memory.</dd>
+    <dt>ERR_READ</dt>
+    <dd>Error reading a file.</dd>
+    <dt>ERR_LOCK</dt>
+    <dd>Error on a GlobalLock.</dd>
+    <dt>ERR_OPEN</dt>
+    <dd>Error opening a file.</dd>
+    <dt>ERR_CREATEPAL</dt>
+    <dd>Error creating a palette.</dd>
+    <dt>ERR_GETDC</dt>
+    <dd>Error getting a DC.</dd>
+    <dt>ERR_CREATEDDB</dt>
+    <dd>Error creating a bitmap.</dd>
+    <dt>ERR_STRETCHBLT</dt>
+    <dd>StretchBlt failed.</dd>
+    <dt>ERR_STRETCHDIBITS</dt>
+    <dd>StretchDIBits failed.</dd>
+    <dt>ERR_SETDIBITSTODEVICE</dt>
+    <dd>SetDIBitsToDevice failed.</dd>
+    <dt>ERR_STARTDOC</dt>
+    <dd>Error calling StartDoc.</dd>
+    <dt>ERR_NOGDIMODULE</dt>
+    <dd>GDI module was not in memory.</dd>
+    <dt>ERR_SETABORTPROC</dt>
+    <dd>Error calling SetAbortProc.</dd>
+    <dt>ERR_STARTPAGE</dt>
+    <dd>Error calling StartPage.</dd>
+    <dt>ERR_NEWFRAME</dt>
+    <dd>Error calling NEWFRAME escape.</dd>
+    <dt>ERR_ENDPAGE</dt>
+    <dd>Error calling EndPage.</dd>
+    <dt>ERR_ENDDOC</dt>
+    <dd>Error calling EndDoc.</dd>
+    <dt>ERR_SETDIBITS</dt>
+    <dd>Error calling SetDIBits.</dd>
+    <dt>ERR_FILENOTFOUND</dt>
+    <dd>Error opening file in LoadDIBLoadDIB.</dd>
+    <dt>ERR_INVALIDHANDLE</dt>
+    <dd>Invalid handle.</dd>
+    <dt>ERR_DIBFUNCTION</dt>
+    <dd>Error on call to DIB function.</dd>
+    <dt>ERR_NOTINITIALIZED</dt>
+    <dd>Screen Capture Tools library not initialized.</dd>
+    <dt>ERR_FORMATNOTAVAILABLE</dt>
+    <dd>Clipboard does not contain a supported format.</dd>
+</dl>
+
+<p><b>Return Value</b>&nbsp;&nbsp;&nbsp;None.</p>
+
+</body>
+</html>

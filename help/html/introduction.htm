@@ -1,0 +1,69 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>Introduction</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="BannerBase">Introduction</h1>
+
+<div class="Base">
+
+<h2><img src="../images/sctools.gif" alt="" style="vertical-align:middle">&nbsp;&nbsp;&nbsp;Screen Capture Tools</h2>
+
+<p>Screen Capture/Printing API and Template Specification</p>
+
+<p>The following help file contains descriptions of the functions defined in the SCTOOLS.DLL dynamic-linked library and descriptions of the templates provided to simplify the use of the library.</p>
+
+<p>SCTOOLS.DLL provides a Clarion wrapper for a library (dibapi.dll) of Windows Device-Independent Bitmap (DIB) functions to capture the screen, print bitmaps, convert between bitmap formats, and to display DIBs.  SCTOOLS.DLL also provides a Clarion wrapper for a library (jpgapi.dll) which contains functions for working with compressed jpg image files.  The actual jpg compression is implemented in the Intel JPEG library (ijl15.dll)</p>
+
+<p>The dibapi.dll is a component of the WINCAP sample program, available in the Microsoft Software Library as WINCAP.ZIP.  We have included WINCAP.ZIP in the install set; if you are interested in documentation and source code for dibapi.dll, please choose the 'Custom' setup option.  The source code was originally written in 1992 and is a bit out of date.  We have converted the source code to use current api calls and recompiled using Microsoft Visual C++.  Most procedures in our version of dibapi.dll are th
+
+<p>The Intel JPEG library (IJL) is a software library for application developers that provides high performance JPEG encoding and decoding of full color, and grayscale, continuous-tone still images.  The IJL was designed for use on Intel ® processors-based systems and has been tuned for high performance and efficient memory usage.  Additionally, the IJL was developed to take advantage of MMX ™ technology if present.  The library and documentation are available for download from Intel's developer web site de
+
+<p>The jpgapi.dll is a 32-bit Windows dll written by Devuna to provide a high level 'c' interface to the Intel JPEG library.</p>
+
+<p>To use the Screen Capture Tools library in your application simply add the <a href="sct_initialization_template.htm">SCT_Initialization</a> extension template to the Application Global Extensions and you can begin making calls to the library.  Additional Code and Control Templates are provided to simplify most uses of the library.</p>
+
+<p>A sample program SCT_DEMO.APP is provided that demonstrates use of all of the templates supplied with Screen Capture Tools.</p>
+
+<p>The Screen Capture Tools library, templates, and documentation are copyright © 2000 - 2017 Devuna.</p>
+
+<p>Please visit our web site at www.devuna.com for information on other tools for Clarion Developers.</p>
+
+<p>If you experience problems or have comments or suggestions for improvement of the library, please contact us by...</p>
+
+<p>email: rrogers@devuna.com<br />
+phone: (519) 935-3201<br />
+mail: Devuna<br />
+Box 103<br />
+Hepworth, Ontario<br />
+Canada N0H 1P0</p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+#! ================================================================================================
+#!                             DEVUNA - Screen Capture Tools Templates
+#! ================================================================================================
+#! Author:  Randy Rogers (KCR) <rrogers@devuna.com>
+#! Notice:  Copyright (C) 2017, Devuna
+#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+#! ================================================================================================
+#!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+#!
+#!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+#!    it under the terms of the GNU General Public License as published by
+#!    the Free Software Foundation, either version 3 of the License, or
+#!    (at your option) any later version.
+#!
+#!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+#!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#!    GNU General Public License for more details.
+#!
+#!    You should have received a copy of the GNU General Public License
+#!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+#! ================================================================================================
+#!
+#!===============================================================================================
+#CODE(SCT_PrintClipboard,'Screen Capture Tools Print Clipboard'),REQ(SCT_Initialization),HLP('~SCT_PrintClipboard_Template')
+#LOCALDATA
+SCT_wResult         USHORT
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Print Clipboard','Code template to add Print Clipboard.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_PrintClipboard.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('Print &Option:',DROP('Default|Best Fit|Stretch to Page|Scale')),%SCTOption,DEFAULT('Best Fit')
+  #ENABLE(%SCTOption = 'Scale')
+    #BOXED('Scaling')
+      #PROMPT('&X Scale',SPIN(@n3,1,100)),%SCTscaleX,DEFAULT(1)
+      #PROMPT('&Y Scale',SPIN(@n3,1,100)),%SCTscaleY,DEFAULT(1)
+    #ENDBOXED
+  #ENDENABLE
+  #BOXED('Origin')
+    #PROMPT('&X Position',SPIN(@n6,0,15000)),%SCToriginX,DEFAULT(0)
+    #PROMPT('&Y Position',SPIN(@n6,0,15000)),%SCToriginY,DEFAULT(0)
+  #ENDBOXED
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#DECLARE(%param5)
+#DECLARE(%param6)
+#!
+#! Setup Parameters
+#SET(%param1,%Window & '{PROP:Handle}')
+#!
+#CASE(%SCTOption)
+#OF('Default')
+  #SET(%param2,',PW_DEFAULT')
+  #SET(%param3,',')
+  #SET(%param4,',')
+#OF('Best Fit')
+  #SET(%param2,',')
+  #SET(%param3,',')
+  #SET(%param4,',')
+#OF('Stretch to Page')
+  #SET(%param2,',PW_STRETCHTOPAGE')
+  #SET(%param3,',')
+  #SET(%param4,',')
+#OF('Scale')
+  #SET(%param2,',PW_SCALE')
+  #SET(%param3,',' & %SCTscaleX)
+  #SET(%param4,',' & %SCTscaleY)
+#ENDCASE
+#SET(%param5,',' & %SCToriginX)
+#SET(%param6,',' & %SCToriginY)
+#SET(%ValueConstruct,'SCT_PrintClipboard(' & %param1 & %param2 & %param3 & %param4 & %param5 & %param6 & ')')
+#IF(%SCTError)
+%SCTResult = %ValueConstruct #<!print clipboard
+IF %SCTResult                #<! if an error is returned
+   SCT_Error(%SCTResult)     #<!  display error message
+END                          #<! endif
+#ELSE
+%ValueConstruct              #<!print clipboard
+#ENDIF
+#!
+#!
+#!===============================================================================================
+#CODE(SCT_PrintWindow,'Screen Capture Tools Print Window'),REQ(SCT_Initialization),HLP('~SCT_PrintWindow_Template')
+#LOCALDATA
+SCT_wResult         USHORT
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Print Window','Code template to add Print Window.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_PrintWindow.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('&Window to Print:',DROP('ThisWindow|TopWindow|Application|DeskTop')),%SCTWindow,DEFAULT('ThisWindow')
+  #PROMPT('Print &Area:',DROP('Window|Client Area')),%SCTArea,DEFAULT('Window')
+  #PROMPT('Print &Option:',DROP('Default|Best Fit|Stretch to Page|Scale')),%SCTOption,DEFAULT('Best Fit')
+  #ENABLE(%SCTOption = 'Scale')
+    #BOXED('Scaling')
+      #PROMPT('&X Scale',SPIN(@n3,1,100)),%SCTscaleX,DEFAULT(1)
+      #PROMPT('&Y Scale',SPIN(@n3,1,100)),%SCTscaleY,DEFAULT(1)
+    #ENDBOXED
+  #ENDENABLE
+  #BOXED('Origin')
+    #PROMPT('&X Position',SPIN(@n6,0,15000)),%SCToriginX,DEFAULT(0)
+    #PROMPT('&Y Position',SPIN(@n6,0,15000)),%SCToriginY,DEFAULT(0)
+  #ENDBOXED
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#DECLARE(%param5)
+#DECLARE(%param6)
+#DECLARE(%param7)
+#!
+#! Setup Parameters
+#CASE(%SCTWindow)
+#OF('ThisWindow')
+  #SET(%param1,%Window & '{PROP:Handle}')
+#OF('TopWindow')
+  #SET(%param1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+#OF('Application')
+  #SET(%param1,'SCT_GetAppWindow()')
+#OF('DeskTop')
+  #SET(%param1,'SCT_GetDesktopWindow()')
+#ENDCASE
+#!
+#CASE(%SCTArea)
+#OF('Window')
+  #SET(%param2,',')
+#OF('Client Area')
+  #SET(%param2,',PW_CLIENT')
+#ENDCASE
+#!
+#CASE(%SCTOption)
+#OF('Default')
+  #SET(%param3,',PW_DEFAULT')
+  #SET(%param4,',')
+  #SET(%param5,',')
+#OF('Best Fit')
+  #SET(%param3,',')
+  #SET(%param4,',')
+  #SET(%param5,',')
+#OF('Stretch to Page')
+  #SET(%param3,',PW_STRETCHTOPAGE')
+  #SET(%param4,',')
+  #SET(%param5,',')
+#OF('Scale')
+  #SET(%param3,',PW_SCALE')
+  #SET(%param4,',' & %SCTscaleX)
+  #SET(%param5,',' & %SCTscaleY)
+#ENDCASE
+#SET(%param6,',' & %SCToriginX)
+#SET(%param7,',' & %SCToriginY)
+#SET(%ValueConstruct,'SCT_PrintWindow(' & %param1 & %param2 & %param3 & %param4 & %param5 & %param6 & %param7 & ')')
+#IF(%SCTError)
+%SCTResult = %ValueConstruct #<!print desired window
+IF %SCTResult                #<! if an error is returned
+   SCT_Error(%SCTResult)     #<!  display error message
+END                          #<! endif
+#ELSE
+%ValueConstruct              #<!print desired window
+#ENDIF
+#!
+#!
+#!===============================================================================================
+#CODE(SCT_PrintSelectedArea,'Screen Capture Tools Print Selected Area'),REQ(SCT_Initialization),HLP('~SCT_PrintSelectedArea_Template')
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Print Selected Area','Code template to add Print Selected Area.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_PrintSelectedArea.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('Print &Option:',DROP('Default|Best Fit|Stretch to Page|Scale')),%SCTOption,DEFAULT('Best Fit')
+  #ENABLE(%SCTOption = 'Scale')
+    #BOXED('Scaling')
+      #PROMPT('&X Scale',SPIN(@n3,1,100)),%SCTscaleX,DEFAULT(1)
+      #PROMPT('&Y Scale',SPIN(@n3,1,100)),%SCTscaleY,DEFAULT(1)
+    #ENDBOXED
+  #ENDENABLE
+  #BOXED('Origin')
+    #PROMPT('&X Position',SPIN(@n6,0,15000)),%SCToriginX,DEFAULT(0)
+    #PROMPT('&Y Position',SPIN(@n6,0,15000)),%SCToriginY,DEFAULT(0)
+  #ENDBOXED
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#DECLARE(%param5)
+#!
+#CASE(%SCTOption)
+#OF('Default')
+  #SET(%param1,'PW_DEFAULT')
+  #SET(%param2,',')
+  #SET(%param3,',')
+#OF('Best Fit')
+  #SET(%param1,'')
+  #SET(%param2,',')
+  #SET(%param3,',')
+#OF('Stretch to Page')
+  #SET(%param1,'PW_STRETCHTOPAGE')
+  #SET(%param2,',')
+  #SET(%param3,',')
+#OF('Scale')
+  #SET(%param1,'PW_SCALE')
+  #SET(%param2,',' & %SCTscaleX)
+  #SET(%param3,',' & %SCTscaleY)
+#ENDCASE
+#SET(%param4,',' & %SCToriginX)
+#SET(%param5,',' & %SCToriginY)
+#SET(%ValueConstruct,'SCT_PrintSelectedArea(' & %param1 & %param2 & %param3 & %param4 & %param5 & ')')
+#IF(%SCTError)
+%SCTResult = %ValueConstruct #<!print desired window
+IF %SCTResult                #<! if an error is returned
+   SCT_Error(%SCTResult)     #<!  display error message
+END                          #<! endif
+#ELSE
+%ValueConstruct              #<!print desired window
+#ENDIF
+#!
+#!
+#!===============================================================================================
+#CODE(SCT_SaveClipboard,'Screen Capture Tools Save Clipboard'),REQ(SCT_Initialization),HLP('~SCT_SaveClipboard_Template')
+#LOCALDATA
+SCT_wResult         USHORT
+SCT_szFileName      CSTRING(256)
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Save Clipboard','Code template to add Save Clipboard.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_SaveClipboard.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('&Prompt for Filename',CHECK),%SCTFileDialog,DEFAULT(%TRUE),AT(10)
+  #PROMPT('&Filename Field:',FROM(%LocalData)),%SCTFilename,DEFAULT('SCT_szFileName')
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #PROMPT('&Compress Image',CHECK),%SCTCompress,DEFAULT(%FALSE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#!
+#! Setup Parameters
+#SET(%param1,%Window & '{PROP:Handle}')
+#!
+#SET(%param2,',' & %SCTFilename)
+#!
+#SET(%param3,',' & %SCTCompress)
+#!
+#IF(%SCTFileDialog)
+#INSERT(%FileDialog,%SCTFilename,%SCTCompress)
+#ENDIF
+#!
+#SET(%ValueConstruct,'SCT_SaveClipboard(' & %param1 & %param2 & %param3 & ')')
+IF %SCTFilename
+#IF(%SCTError)
+   %SCTResult = %ValueConstruct #<!save clipboard
+   IF %SCTResult                #<! if an error is returned
+      SCT_Error(%SCTResult)     #<!  display error message
+   END                          #<! endif
+#ELSE
+   %ValueConstruct              #<!save desired clipboard
+#ENDIF
+END
+#!
+#!
+#!===============================================================================================
+#CODE(SCT_SaveWindow,'Screen Capture Tools Save Window'),REQ(SCT_Initialization),HLP('~SCT_SaveWindow_Template')
+#LOCALDATA
+SCT_wResult         USHORT
+SCT_szFileName      CSTRING(256)
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Save Window','Code template to add Save Window.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_SaveWindow.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('&Window to Save:',DROP('ThisWindow|TopWindow|Application|DeskTop')),%SCTWindow,DEFAULT('ThisWindow')
+  #PROMPT('&Save Area:',DROP('Window|Client Area')),%SCTArea,DEFAULT('Window')
+  #PROMPT('&Destination:',DROP('Clipboard|File')),%SCTDestination,DEFAULT('File')
+  #ENABLE(%SCTDestination = 'File')
+    #PROMPT('&Prompt for Filename',CHECK),%SCTFileDialog,DEFAULT(%TRUE),AT(10)
+    #PROMPT('&Filename Field:',FROM(%LocalData)),%SCTFilename,DEFAULT('SCT_szFileName')
+    #PROMPT('&Compress Image',CHECK),%SCTCompress,DEFAULT(%FALSE),AT(10)
+  #ENDENABLE
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#DECLARE(%param1)
+#DECLARE(%param2)
+#DECLARE(%param3)
+#DECLARE(%param4)
+#!
+#! Setup Parameters
+#CASE(%SCTWindow)
+#OF('ThisWindow')
+  #SET(%param1,%Window & '{PROP:Handle}')
+#OF('TopWindow')
+  #SET(%param1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+#OF('Application')
+  #SET(%param1,'SCT_GetAppWindow()')
+#OF('DeskTop')
+  #SET(%param1,'SCT_GetDesktopWindow()')
+#ENDCASE
+#!
+#SET(%param2,',' & %SCTFilename)
+#!
+#CASE(%SCTArea)
+#OF('Window')
+  #SET(%param3,',PW_WINDOW')
+#OF('Client Area')
+  #SET(%param3,',PW_CLIENT')
+#ENDCASE
+#!
+#SET(%param4,',' & %SCTCompress)
+#!
+#IF(%SCTDestination = 'Clipboard')
+%SCTFilename = 'CLIPBOARD'
+#ELSE
+  #IF(%SCTFileDialog)
+#INSERT(%FileDialog,%SCTFilename,%SCTCompress)
+  #ENDIF
+#ENDIF
+#!
+#SET(%ValueConstruct,'SCT_SaveWindow(' & %param1 & %param2 & %param3  & %param4 & ')')
+IF %SCTFilename
+#IF(%SCTError)
+   %SCTResult = %ValueConstruct #<!save desired window
+   IF %SCTResult                #<! if an error is returned
+      SCT_Error(%SCTResult)     #<!  display error message
+   END                          #<! endif
+#ELSE
+   %ValueConstruct              #<!save desired window
+#ENDIF
+END
+#!
+#!
+#!===============================================================================================
+#CODE(SCT_SaveSelectedArea,'Screen Capture Tools Save Selected Area'),REQ(SCT_Initialization),HLP('~SCT_SaveSelectedArea_Template')
+#LOCALDATA
+SCT_szFileName      CSTRING(256)
+#ENDLOCALDATA
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Save Selected Area','Code template to add Save Selected Area.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_SaveSelectedArea.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('&Destination:',DROP('Clipboard|File')),%SCTDestination,DEFAULT('File')
+  #ENABLE(%SCTDestination = 'File')
+    #PROMPT('&Prompt for Filename',CHECK),%SCTFileDialog,DEFAULT(%TRUE),AT(10)
+    #PROMPT('&Filename Field:',FROM(%LocalData)),%SCTFilename,DEFAULT('SCT_szFileName')
+    #PROMPT('&Compress Image',CHECK),%SCTCompress,DEFAULT(%FALSE),AT(10)
+  #ENDENABLE
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#IF(%SCTDestination = 'Clipboard')
+%SCTFilename = 'CLIPBOARD'
+#ELSE
+  #IF(%SCTFileDialog)
+#INSERT(%FileDialog,%SCTFilename,%SCTCompress)
+  #ENDIF
+#ENDIF
+#!
+IF %SCTFilename
+#IF(%SCTError)
+   %SCTResult = SCT_SaveSelectedArea(%SCTFilename, %SCTCompress) #<!save user selected rectangle
+   IF %SCTResult                #<! if an error is returned
+      SCT_Error(%SCTResult)     #<!  display error message
+   END                          #<! endif
+#ELSE
+   SCT_SaveSelectedArea(%SCTFilename, %SCTCompress) #<!save user selected rectangle
+#ENDIF
+END
+#!
+#!
+#!===============================================================================================
+#CODE(SCT_ClipboardToImage,'Screen Capture Tools Paste Clipboard into Image'),REQ(SCT_Initialization),HLP('~SCT_ClipboardToImage_Template')
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Paste Clipboard into Image','Code template to add Paste Clipboard into Image.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('This code template calls SCT_ClipboardToImage.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('&ImageControl:',FROM(%Control,%ControlType='IMAGE')),%SCTImageControl,REQ
+  #PROMPT('&Check for Error',CHECK),%SCTError,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTError)
+    #PROMPT('&Result Field:',FROM(%LocalData)),%SCTResult,DEFAULT('SCT_wResult')
+  #ENDENABLE
+#ENDBOXED
+#!
+#IF(%SCTError)
+%SCTResult = SCT_ClipboardToImage(%Window{PROP:Handle},%SCTImageControl) #<!pate clipboard into image control
+IF %SCTResult                #<! if an error is returned
+   SCT_Error(%SCTResult)     #<!  display error message
+END                          #<! endif
+#ELSE
+SCT_ClipboardToImage(%Window{PROP:Handle},%SCTImageControl)
+#ENDIF
+#!
+#!
+#!===============================================================================================
+#GROUP(%FileDialog,%pFilename,%pCompress)
+%pFilename = ''
+#IF(%pCompress)
+IF FILEDIALOG('',%pFilename,'jpeg (*.jpg)|*.jpg',FILE:Save+FILE:KeepDir+FILE:LongName)
+   IF INSTRING('.',%pFilename,-1,LEN(%pFilename))
+      %pFilename = SUB(%pFilename,1,INSTRING('.',%pFilename,-1,LEN(%pFilename))) & 'jpg'
+   ELSE
+      %pFilename = %pFilename & '.jpg'
+   END
+  #IF(NOT INSTRING('CLIPBOARD',UPPER(%TplName),1))
+   IF UPPER(%pFilename[LEN(%pFilename)-12 : LEN(%pFilename)]) = 'CLIPBOARD.JPG'
+      %pFilename = 'CLIPBOARD'
+   END
+  #ENDIF
+   DISPLAY() #<! Refresh Screen to make sure FileDialog screen is not visible
+END
+#ELSE
+IF FILEDIALOG('',%pFilename,'bitmap (*.bmp)|*.bmp',FILE:Save+FILE:KeepDir+FILE:LongName)
+   IF INSTRING('.',%pFilename,-1,LEN(%pFilename))
+      %pFilename = SUB(%pFilename,1,INSTRING('.',%pFilename,-1,LEN(%pFilename))) & 'bmp'
+   ELSE
+      %pFilename = %pFilename & '.bmp'
+   END
+  #IF(NOT INSTRING('CLIPBOARD',UPPER(%TplName),1))
+   IF UPPER(%pFilename[LEN(%pFilename)-12 : LEN(%pFilename)]) = 'CLIPBOARD.BMP'
+      %pFilename = 'CLIPBOARD'
+   END
+  #ENDIF
+   DISPLAY() #<! Refresh Screen to make sure FileDialog screen is not visible
+END
+#ENDIF
+#!
+#!
+#!===============================================================================================
+#GROUP(%EndOfFile)
+#!===============================================================================================

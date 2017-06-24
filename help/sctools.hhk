@@ -1,0 +1,138 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+
+<HTML>
+<!-- Sitemap 1.0 -->
+<OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="Introduction">
+		<param name="Name" value="Introduction">
+		<param name="Local" value="html/introduction.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_ClipboardToImage Procedure">
+		<param name="Name" value="SCT_ClipboardToImage Procedure">
+		<param name="Local" value="html/sct_clipboardtoimage_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_Error Procedure">
+		<param name="Name" value="SCT_Error Procedure">
+		<param name="Local" value="html/sct_error_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_GetAppClientWindow Procedure">
+		<param name="Name" value="SCT_GetAppClientWindow Procedure">
+		<param name="Local" value="html/sct_getappclientwindow_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_GetAppWindow Procedure">
+		<param name="Name" value="SCT_GetAppWindow Procedure">
+		<param name="Local" value="html/sct_getappwindow_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_HotKeyPrint_Template">
+		<param name="Name" value="SCT_HotKeyPrint_Template">
+		<param name="Local" value="html/sct_hotkeyprint_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_Init Procedure">
+		<param name="Name" value="SCT_Init Procedure">
+		<param name="Local" value="html/sct_init_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_Initialization Template">
+		<param name="Name" value="SCT_Initialization Template">
+		<param name="Local" value="html/sct_initialization_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintClipboard Procedure">
+		<param name="Name" value="SCT_PrintClipboard Procedure">
+		<param name="Local" value="html/sct_printclipboard_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintClipboard_Template">
+		<param name="Name" value="SCT_PrintClipboard Template">
+		<param name="Local" value="html/sct_printclipboard_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintScreen">
+		<param name="Name" value="SCT_PrintScreen Template">
+		<param name="Local" value="html/sct_printscreen_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintSelectedArea Procedure">
+		<param name="Name" value="SCT_PrintSelectedArea Procedure">
+		<param name="Local" value="html/sct_printselectedarea_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintSelectedArea Template">
+		<param name="Name" value="SCT_PrintSelectedArea Template">
+		<param name="Local" value="html/sct_printselectedarea_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintWindow Procedure">
+		<param name="Name" value="SCT_PrintWindow Procedure">
+		<param name="Local" value="html/sct_printwindow_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintWindow Template">
+		<param name="Name" value="SCT_PrintWindow Template">
+		<param name="Local" value="html/sct_printwindow_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_PrintWindowButton Template">
+		<param name="Name" value="SCT_PrintWindowButton Template">
+		<param name="Local" value="html/sct_printwindowbutton_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_SaveClipboard">
+		<param name="Name" value="SCT_SaveClipboard Procedure">
+		<param name="Local" value="html/sct_saveclipboard_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_SaveClipboard Template">
+		<param name="Name" value="SCT_SaveClipboard Template">
+		<param name="Local" value="html/sct_saveclipboard_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_SaveSelectedArea Procedure">
+		<param name="Name" value="SCT_SaveSelectedArea Procedure">
+		<param name="Local" value="html/sct_saveselectedarea_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_SaveWindow Procedure">
+		<param name="Name" value="SCT_SaveWindow Procedure">
+		<param name="Local" value="html/sct_savewindow_procedure.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_SaveWindow Template">
+		<param name="Name" value="SCT_SaveWindow Template">
+		<param name="Local" value="html/sct_savewindow_template.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Keyword" value="SCT_SaveWindowButton Template">
+		<param name="Name" value="SCT_SaveWindowButton Template">
+		<param name="Local" value="html/sct_savewindowbutton_template.htm">
+		</OBJECT>
+</UL></HTML>

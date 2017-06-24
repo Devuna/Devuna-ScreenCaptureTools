@@ -1,0 +1,98 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_PrintWindowButton Template</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="bannerBase">SCT_PrintWindowButton control template</h1>
+
+<p>The <b>SCT_PrintWindowButton</b> template adds a button control to the window and generates code to print the desired window to the default printer.</p>
+
+<p><b>Window to Print</b>&nbsp;&nbsp;Select one of the choices from the dropdown list.  The choices and their meaning are as follows:</p>
+
+<dl class="indent2">
+    <dt>This Window</dt>
+    <dd>the current procedure window</dd>
+    <dt>Top Window</dt>
+    <dd>the first child window for the application</dd>
+    <dt>Application</dt>
+    <dd>the application window</dd>
+    <dt>Desktop</dt>
+    <dd>the desktop window</dd>
+</dl>
+
+<p><b>Print Area</b>&nbsp;&nbsp;An integer constant or variable that specifies the area of the window to be printed.  See below for a listing of the possible values for this parameter.  If omitted, the entire window is printed.</p>
+
+<dl class="indent2">
+    <dt>Window</dt>
+    <dd>the entire window</dd>
+    <dt>Client Area</dt>
+    <dd>the client area</dd>
+</dl>
+
+<p><b>Print Option</b>&nbsp;&nbsp;Select one of the choices from the dropdown list.  The choices and their meaning are as follows:</p>
+
+<dl class="indent2">
+    <dt>Best Fit</dt>
+    <dd>Fits the printed screen on the page in as large of an area as possible while still retaining the correct screen aspect ratio.  The <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters are not used if this option is selected.</dd>
+    <dt>Stretch to Page</dt>
+    <dd>Stretches the printed screen to fill the entire printed page.  The <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters are not used if this option is selected.</dd>
+    <dt>Scale</dt>
+    <dd>Scales the printed screen by the integer scaling factors specified in the <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters.  If the scaling is set too large, the screen may extend off the printed page and will be clipped.</dd>
+</dl>
+
+<p><b>X Scale</b>&nbsp;&nbsp;Specifies the x-axis scaling factor for the printed window.  The x and y scaling factors are only used if the <b>Scale</b> option above is selected.</p>
+
+<p><b>Y Scale</b>&nbsp;&nbsp;Specifies the y-axis scaling factor for the printed window.</p>
+
+<p><b>X Position</b>&nbsp;&nbsp;Specifies the x-axis origin for the printed window.</p>
+
+<p><b>Y Position</b>&nbsp;&nbsp;Specifies the y-axis origin for the printed window.</p>
+
+<p><b>Check for Error</b>&nbsp;&nbsp;This check box controls the generation of error checking code.  If an error is returned from the Screen Capture Tools library, and error message will be displayed.</p>
+
+<p><b>Result Field</b>&nbsp;&nbsp;Select the local data variable that will store the result of the library call.  Default is <I>SCT_wResult</I>.</p>
+
+<p><img src="../images/note.gif" alt=""></p>
+
+<p><b>The template automatically creates a local data variable for the result field.</b></p>
+
+<p>This template generates code in the button accepted embed similar to the following:</p>
+
+
+<blockquote>
+SCT_wResult = SCT_PrintWindow(ThisWindow{PROP:Handle})&nbsp;&nbsp;!print desired window<br />
+IF SCT_wResult&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp!if an error is returned<br />
+&nbsp;&nbsp;&nbsp;SCT_Error(SCT_wResult)&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;!&nbsp;&nbsp&nbsp;display error message<br />
+END&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;!endif
+</blockquote>
+
+<p><b>See Also:&nbsp;&nbsp;&nbsp;</b><a href="sct_printwindow_procedure.htm">SCT_PrintWindow Procedure</a>, <a href="sct_printwindow_template.htm">SCT_PrintWindow Template</a></p>
+
+</body>
+</html>

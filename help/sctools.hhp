@@ -1,0 +1,41 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=sctools.chm
+Contents file=sctools.hhc
+Default topic=html\contents.htm
+Display compile progress=No
+Index file=sctools.hhk
+Language=0x1009 English (Canada)
+
+
+[FILES]
+html\contents.htm
+html\introduction.htm
+html\sct_clipboardtoimage_procedure.htm
+html\sct_error_procedure.htm
+html\sct_getappwindow_procedure.htm
+html\sct_getappclientwindow_procedure.htm
+html\sct_init_procedure.htm
+html\sct_printselectedarea_procedure.htm
+html\sct_printwindow_procedure.htm
+html\sct_saveselectedarea_procedure.htm
+html\sct_savewindow_procedure.htm
+html\sct_clipboardtoimage_template.htm
+html\sct_printselectedarea_template.htm
+html\sct_printwindow_template.htm
+html\sct_saveselectedarea_template.htm
+html\sct_savewindow_template.htm
+html\sct_printwindowbutton_template.htm
+html\sct_savewindowbutton_template.htm
+html\sct_initialization_template.htm
+html\sct_printclipboard_procedure.htm
+html\sct_printscreen_template.htm
+html\sct_hotkeyprint_template.htm
+html\sct_saveclipboard_procedure.htm
+html\sct_printclipboard_template.htm
+html\sct_saveclipboard_template.htm
+
+[TEXT POPUPS]
+
+[INFOTYPES]
+

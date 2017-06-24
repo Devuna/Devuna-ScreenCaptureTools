@@ -1,0 +1,83 @@
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of xxx (https://github.com/Devuna/xxx)
+!
+!    xxx is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    xxx is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with xxx.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME SCT_SaveWindow
+PROTOTYPE '(UNSIGNED param_hWindow, *CSTRING param_szFilename, LONG param_printArea=1, BYTE param_Compress=0),USHORT,PROC'
+PARAMETERS '(param_hWindow, param_szFilename, param_printArea, param_Compress)'
+GLOBAL
+[COMMON]
+DESCRIPTION 'Save A Window Bitmap'
+FROM ABC Source
+MODIFIED '2013/07/18' '14:14:22'
+[PROMPTS]
+%GenerateOpenClose LONG  (0)
+%GenerateSaveRestore LONG  (0)
+[EMBED]
+EMBED %ProcessedCode
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+  IF ~SCT_bInitialized
+     RETURN(ERR_NOTINITIALIZED)
+  END
+  hDIB = CopyWindowToDIB(param_hWindow,param_printArea)
+  IF UPPER(param_szFilename) = 'CLIPBOARD'
+     OpenClipboard(param_hWindow)
+     EmptyClipboard()
+     SetClipboardData(CF_DIB, hDIB)
+     CloseClipboard()
+     rVal = FALSE
+  ELSE
+     IF param_Compress
+        rVal = EncodeJPGFileFromDIB(hDIB, param_szFileName)
+     ELSE
+        rVal = SaveDIB(hDIB,param_szFileName)
+     END
+  END
+  GlobalFree(hDIB)
+  RETURN(rVal)
+[END]
+EMBED %DataSection
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+hDIB    HDIB
+rVal    LONG
+[END]
+[END]
+[END]

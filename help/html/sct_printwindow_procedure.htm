@@ -1,0 +1,87 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_PrintWindow Procedure</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="bannerBase">SCT_PrintWindow Procedure <span style="font-size:.75em;">(capture window to default printer)</span></h1>
+
+<p><b>SCT_PrintWindow( </b>UNSIGNED  <I>param_hWindow</I> [, LONG <I>param_printArea</I>=PW_WINDOW] [, LONG <I>param_printOption</I>=PW_BESTFIT] [, LONG <I>param_wScaleX</I>=1] [, LONG <I>param_wScaleY</I>=1] [, LONG <I>param_x</I>=0] [, LONG <I>param_y</I>=0] <b>)</b></p>
+
+<p><b>SCT_PrintWindow</b>&nbsp;&nbsp;Prints the window associated with the window handle to the default printer.</p>
+
+<dl class="indent2">
+    <dt>param_hWindow</dt>
+    <dd>The window handle of the window to be printed.</dd>
+    <dt>param_printArea</dt>
+    <dd>An integer constant or variable that specifies the area of the window to be printed.  See below for a listing of the possible values for this parameter.  If omitted, the entire window is printed.</dd>
+        <dl class="indent1">
+            <dt>PW_WINDOW</dt>
+            <dd>Print the entire window</dd>
+            <dt>PW_CLIENT</dt>
+            <dd>Print the client area of the window</dd>
+        </dl>
+    <dt>param_printOption</dt>
+    <dd>An integer constant or variable that specifies the printing options.
+        <dl class="indent1">
+            <dt>PW_BESTFIT</dt>
+            <dd>Fits the printed screen on the page in as large of an area as possible while still retaining the correct screen aspect ratio.  The <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters are not used if this option is selected. This is the default value.</dd>
+            <dt>PW_STRETCHTOPAGE</dt>
+            <dd>Stretches the printed screen to fill the entire printed page.  The <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters are not used if this option is selected.</dd>
+            <dt>PW_SCALE</dt>
+            <dd>Scales the printed screen by the integer scaling factors specified in the <I>param_wScaleX</I> and <I>param_wScaleY</I> parameters.  If the scaling is set too large, the screen may extend off the printed page and will be clipped</dd>
+        </dl>
+    <dt>param_wScaleX</dt>
+    <dd>Specifies the x-axis scaling factor for the printed window.  The x and y scaling factors are only used if the PW_SCALE option below is selected.</dd>
+    <dt>param_wScaleY</dt>
+    <dd>Specifies the y-axis scaling factor for the printed window.</dd>
+    <dt>param_x</dt>
+    <dd>Specifies the x-axis origin for the printed window.</dd>
+    <dt>param_y</dt>
+    <dd>Specifies the y-axis origin for the printed window.</dd>
+</dl>
+
+<p><b>Return Value</b>&nbsp;&nbsp;&nbsp;0 if successful<br />
+<span style="margin-left:108px;">&nbsp;or, one of these symbolic constants, defined in sctools.inc, if not successful.</span></p>
+<ul style="margin-left:8em;">
+    <li>ERR_NOTINITIALIZED</li>
+    <li>ERR_DIBFUNCTION</li>
+    <li>ERR_INVALIDHANDLE</li>
+    <li>ERR_LOCK</li>
+    <li>ERR_SETABORTPROC</li>
+    <li>ERR_STARTDOC</li>
+    <li>ERR_NEWFRAME</li>
+    <li>ERR_ENDDOC</li>
+    <li>ERR_GETDC</li>
+    <li>ERR_STRETCHDIBITS</li>
+</ul>
+
+<p><b>See Also:&nbsp;&nbsp;&nbsp;</b><a href="sct_printwindow_template.htm">SCT_PrintWindow Template</a>, <a href="sct_error_procedure.htm">SCT_Error Procedure</a></p>
+
+</body>
+</html>

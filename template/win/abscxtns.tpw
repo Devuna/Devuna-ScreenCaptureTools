@@ -1,0 +1,419 @@
+#! ================================================================================================
+#!                             DEVUNA - Screen Capture Tools Templates
+#! ================================================================================================
+#! Author:  Randy Rogers (KCR) <rrogers@devuna.com>
+#! Notice:  Copyright (C) 2017, Devuna
+#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+#! ================================================================================================
+#!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+#!
+#!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+#!    it under the terms of the GNU General Public License as published by
+#!    the Free Software Foundation, either version 3 of the License, or
+#!    (at your option) any later version.
+#!
+#!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+#!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#!    GNU General Public License for more details.
+#!
+#!    You should have received a copy of the GNU General Public License
+#!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+#! ================================================================================================
+#!
+#!===============================================================================================
+#EXTENSION(SCT_Initialization,'Screen Capture Tools Initialization Code'),APPLICATION,PRIORITY(10000),HLP('~SCT_Initialization_Template')
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools Initialization Code','Extension template to add Screen Capture Tool support.')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY ('This extension template adds the necessary equates'),AT(10)
+  #DISPLAY ('and libraries to your application to enable you to utilize'),AT(10)
+  #DISPLAY ('the Screen Capture Tools API calls.'),AT(10)
+  #DISPLAY('')
+  #PROMPT('&Generate template globals as EXTERNAL',CHECK),%SCGlobalExternal,AT(10,,180)
+  #ENABLE(%SCGlobalExternal)
+    #PROMPT('E&xternal Globals Source Module',OPTION),%SCExternalSource,AT(,,180),DEFAULT('Dynamic Link Library (DLL)')
+    #PROMPT('&Dynamic Link Library (DLL)',RADIO)
+    #PROMPT('&Statically Linked Library (LIB)',RADIO)
+  #ENDENABLE
+#ENDBOXED
+#!
+#AT(%CustomGlobalDeclarations)
+  #IF(%Target32)
+     #PROJECT('SCTOOLS.LIB')
+  #ELSE
+     #ERROR('Screen Capture Tools requires 32-bit target.')
+  #END
+#ENDAT
+#!
+#AT(%AfterGlobalIncludes)
+#!   #SET(%ValueConstruct,'''SCTOOL' & SUB(%CWVersion,1,1) & 'X.INC''')
+#!   INCLUDE(%ValueConstruct,'SCToolsEquates')
+   INCLUDE('SCTOOLS.INC','SCToolsEquates')
+#ENDAT
+#!
+#AT(%GlobalMap)
+#!  #SET(%ValueConstruct,'''SCTOOL' & SUB(%CWVersion,1,1) & 'X.INC''')
+#!  INCLUDE(%ValueConstruct,'SCToolsLibrary')
+    INCLUDE('SCTOOLS.INC','SCToolsLibrary')
+#ENDAT
+#!
+#AT(%GlobalData)
+  #IF(%SCGlobalExternal)
+    #IF(%SCExternalSource='Dynamic Link Library (DLL)')
+    #ELSE
+    #ENDIF
+  #ELSE
+  #ENDIF
+#ENDAT
+#!
+#!
+#AT(%WindowManagerMethodCodeSection,'Init','(),BYTE'),WHERE(%Procedure = %FirstProcedure),PRIORITY(8001),DESCRIPTION('Screen Capture Tool Initialization')
+#INSERT(%EmbedStart)
+SCT_Init(%Window{PROP:Handle},%Window{PROP:ClientHandle},SYSTEM{PROP:AppInstance})
+#INSERT(%EmbedEnd)
+#ENDAT
+#!
+#!
+#!
+#!
+#!===============================================================================================
+#EXTENSION(SCT_PrintScreen,'Print Screen Extension'),PROCEDURE,REQ(SCT_Initialization),HLP('~SCT_PrintScreen_Template')
+#!===============================================================================================
+#RESTRICT
+  #IF(%Procedure = %FirstProcedure AND %ProgramExtension = 'EXE')
+    #ACCEPT
+  #ELSE
+    #REJECT
+  #ENDIF
+#ENDRESTRICT
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools','Print Screen Extension')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY ('This template adds code to the application'),AT(10)
+  #DISPLAY ('frame to cause the contents of the clipboard'),AT(10)
+  #DISPLAY ('to be printed when the PrintScreen key is pressed.'),AT(10)
+  #DISPLAY ('')
+  #PROMPT('&Window to Print:',DROP('TopWindow|Application|DeskTop')),%SCTWindow,DEFAULT('DeskTop')
+  #ENABLE(%SCTWindow <> 'DeskTop')
+    #PROMPT('Print &Area:',DROP('Window|Client Area')),%SCTArea,DEFAULT('Window')
+  #ENDENABLE
+  #PROMPT('Print &Option:',DROP('Best Fit|Stretch to Page|Scale')),%SCTOption,DEFAULT('Best Fit')
+  #ENABLE(%SCTOption = 'Scale')
+    #PROMPT('&X Scale',SPIN(@n3,1,100)),%SCTscaleX,DEFAULT(1)
+    #PROMPT('&Y Scale',SPIN(@n3,1,100)),%SCTscaleY,DEFAULT(1)
+  #ENDENABLE
+  #BOXED('Origin')
+    #PROMPT('&X Position',SPIN(@n6,0,15000)),%SCToriginX,DEFAULT(0)
+    #PROMPT('&Y Position',SPIN(@n6,0,15000)),%SCToriginY,DEFAULT(0)
+  #ENDBOXED
+  #PROMPT('&Use Popup Menu',CHECK),%SCTUsePopupMenu,DEFAULT(%FALSE),AT(10)
+  #ENABLE(%SCTUsePopupMenu)
+    #PROMPT('&Compress Image',CHECK),%SCTCompress,DEFAULT(%FALSE),AT(10)
+  #ENDENABLE
+  #DISPLAY ('')
+#ENDBOXED
+#!
+#!
+#AT(%ModuleDataSection)
+SCT_%Procedure::WindowProc  LONG
+SCT_hNextViewer       UNSIGNED
+EVENT:SCT_PrintScreen EQUATE(EVENT:USER+123)
+#ENDAT
+#!
+#!
+#AT(%CustomModuleDeclarations)
+    #ADD(%CustomModuleMapModule,'CURRENT MODULE')
+    #SET(%ValueConstruct,' ' & %Procedure & '::WindowProc')
+    #ADD(%CustomModuleMapProcedure,%ValueConstruct)
+    #SET(%CustomModuleMapProcedurePrototype,'(UNSIGNED hWnd, UNSIGNED wMsg, UNSIGNED wParam, LONG lParam),LONG,PASCAL')
+#ENDAT
+#!
+#!
+#LOCALDATA
+SCT_szFileName        CSTRING(256)
+#ENDLOCALDATA
+#!
+#!
+#AT(%WindowManagerMethodCodeSection,'Init','(),BYTE'),PRIORITY(8200),DESCRIPTION('Print Screen: Init')
+SCT_%Procedure::WindowProc = %Window{Prop:WndProc}      ! Save address of code that handles window messages
+%Window{Prop:WndProc} = ADDRESS(%Procedure::WindowProc)  ! Re-assign address of code that handles window messages
+#ENDAT
+#!
+#!
+#AT(%WindowManagerMethodCodeSection,'Kill','(),BYTE'),PRIORITY(1000),DESCRIPTION('Print Screen: Kill')
+IF SCT_%Procedure::WindowProc
+   %Window{Prop:WndProc} = SCT_%Procedure::WindowProc   #<! Restore the handler for this window
+END
+#ENDAT
+#!
+#!
+#AT(%WindowEventHandling,'CloseWindow'),PRIORITY(5000),DESCRIPTION('Print Screen: CloseWindow')
+IF SCT_hNextViewer
+   SCT_ChangeClipboardChain(%Window{PROP:Handle},SCT_hNextViewer)
+END
+#ENDAT
+#!
+#!
+#AT(%WindowEventHandling,'OpenWindow'),PRIORITY(5000),DESCRIPTION('Print Screen: OpenWindow')
+SCT_hNextViewer = SCT_SetClipboardViewer(%Window{PROP:Handle})
+#ENDAT
+#!
+#!
+#AT(%WindowManagerMethodCodeSection,'TakeWindowEvent','(),BYTE'),PRIORITY(2800),DESCRIPTION('Print Screen: EVENT:SCT_PrintScreen')
+  #!
+  #!
+  #DECLARE(%param1)
+  #DECLARE(%param2)
+  #DECLARE(%param3)
+  #DECLARE(%param4)
+  #DECLARE(%param5)
+  #DECLARE(%param6)
+  #DECLARE(%param7)
+  #DECLARE(%SaveConstruct)
+  #!
+  #! Setup Parameters
+  #CASE(%SCTWindow)
+  #OF('TopWindow')
+    #SET(%param1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+  #OF('Application')
+    #SET(%param1,'SCT_GetAppWindow()')
+  #OF('DeskTop')
+    #SET(%param1,'SCT_GetDesktopWindow()')
+  #ENDCASE
+  #!
+  #CASE(%SCTArea)
+  #OF('Window')
+    #SET(%param2,',PW_WINDOW')
+  #OF('Client Area')
+    #SET(%param2,',PW_CLIENT')
+  #ENDCASE
+  #!
+  #CASE(%SCTOption)
+  #OF('Best Fit')
+    #SET(%param3,',')
+    #SET(%param4,',')
+    #SET(%param5,',')
+  #OF('Stretch to Page')
+    #SET(%param3,',PW_STRETCHTOPAGE')
+    #SET(%param4,',')
+    #SET(%param5,',')
+  #OF('Scale')
+    #SET(%param3,',PW_SCALE')
+    #SET(%param4,',' & %SCTscaleX)
+    #SET(%param5,',' & %SCTscaleY)
+  #ENDCASE
+  #SET(%param6,',' & %SCToriginX)
+  #SET(%param7,',' & %SCToriginY)
+  #IF(%SCTWindow = 'Clipboard')
+    #SET(%ValueConstruct,'SCT_PrintClipboard(' & %param1 & %param3 & %param4 & %param5 & %param6 & %param7 & ')')
+  #ELSE
+    #SET(%ValueConstruct,'SCT_PrintWindow(' & %param1 & %param2 & %param3 & %param4 & %param5 & %param6 & %param7 & ')')
+  #ENDIF
+  #SET(%SaveConstruct,'SCT_SaveWindow(' & %param1 & ',SCT_szFilename' & %param2 & ', ' & %SCTCompress & ')')
+  #!
+  #!
+  OF EVENT:SCT_PrintScreen
+  #IF(%SCTUsePopupMenu)
+    #IF(%SCTWindow = 'DeskTop')
+     CASE POPUP('&Print Window|&Save Window')
+    #ELSE
+     CASE POPUP('&Print Window|&Save Window|Place Window in &Clipboard')
+    #ENDIF
+     OF 1                            #<!print desired window
+        %ValueConstruct
+     OF 2                            #<!save desired window
+        #INSERT(%FileDialog,'SCT_szFileName',%SCTCompress)
+        %SaveConstruct
+     OF 3                            #<!place window into cliboard
+        SCT_szFileName = 'CLIPBOARD'
+        %SaveConstruct
+     END
+  #ELSE
+     %ValueConstruct
+  #END
+#ENDAT
+#!
+#!
+#!------------------------------------------------------------
+#AT(%LocalProcedures)
+%Procedure::WindowProc PROCEDURE(UNSIGNED hWnd, UNSIGNED wMsg, UNSIGNED wParam, LONG lParam)
+AsyncKeyState  SHORT
+#EMBED(%SubClassWindowDataSection,'Print Screen (SubClassWindow):  Data Section')
+    CODE
+    #EMBED(%SubClassWindowBeginCodeSection,'Print Screen (SubClassWindow):  Start of Code')
+    CASE wMsg
+      #EMBED(%SubClassWindowCaseSection,'Print Screen (SubClassWindow):  Inside CASE MESSAGE statement')
+      OF 00308h !WM_DRAWCLIPBOARD
+         IF SCT_hNextViewer
+            SCT_SendMessage(SCT_hNextViewer,00308h,wParam,lParam)
+         END
+         AsyncKeyState = SCT_GetAsyncKeyState(VK_SNAPSHOT)
+         IF AsyncKeyState <> 0
+            POST(EVENT:SCT_PrintScreen,,1)
+         END
+      OF 0030Dh !WM_CHANGECBCHAIN
+         IF wParam = SCT_hNextViewer
+            SCT_hNextViewer = lParam
+         ELSIF SCT_hNextViewer
+            SCT_SendMessage(SCT_hNextViewer,0030Dh,wParam,lParam)
+         END
+    END
+    #EMBED(%SubClassWindowEndCodeSection,'Print Screen (SubClassWindow):  End of Code')
+    RETURN(SCT_CallWindowProc(SCT_%Procedure::WindowProc,hWnd,wMsg,wParam,lParam))
+#ENDAT
+#!
+#!
+#!
+#!
+#!===============================================================================================
+#EXTENSION(SCT_HotKeyPrint,'Hot Key Print Extension'),APPLICATION,REQ(SCT_Initialization),HLP('~SCT_HotKeyPrint_Template')
+#!===============================================================================================
+#BOXED('Default MakeHead Prompts'),AT(0,0),WHERE(%False),HIDE
+  #INSERT(%MakeHeadHiddenPrompts)
+#ENDBOXED
+#PREPARE
+  #INSERT (%MakeHead,'Screen Capture Tools','Hot Key Print Extension')
+#ENDPREPARE
+#BOXED('SCTools')
+  #INSERT (%Head)
+  #DISPLAY('')
+  #DISPLAY('Use this extension to provide print screen hot   ')
+  #DISPLAY('key activation to an application.                ')
+  #DISPLAY('')
+  #PROMPT('&Window to Capture:',DROP('ThisWindow|TopWindow|Application|DeskTop')),%SCTWindow,DEFAULT('ThisWindow')
+  #PROMPT('Capture &Area:',DROP('Window|Client Area')),%SCTArea,DEFAULT('Window')
+  #PROMPT('Print &Option:',DROP('Best Fit|Stretch to Page|Scale')),%SCTOption,DEFAULT('Best Fit')
+  #ENABLE(%SCTOption = 'Scale')
+    #PROMPT('&X Scale',SPIN(@n3,1,100)),%SCTscaleX,DEFAULT(1)
+    #PROMPT('&Y Scale',SPIN(@n3,1,100)),%SCTscaleY,DEFAULT(1)
+  #ENDENABLE
+  #PROMPT('&Hot Key',KEYCODE),%SCTHotKey,DEFAULT('CtrlMouseRight')
+  #PROMPT('&Use Popup Menu',CHECK),%SCTUsePopupMenu,DEFAULT(%TRUE),AT(10)
+  #ENABLE(%SCTUsePopupMenu)
+    #PROMPT('&Compress Image',CHECK),%SCTCompress,DEFAULT(%FALSE),AT(10)
+  #ENDENABLE
+#ENDBOXED
+#!
+#!
+#ATSTART
+#DECLARE(%PrintParam1)
+#DECLARE(%PrintParam2)
+#DECLARE(%PrintParam3)
+#DECLARE(%PrintParam4)
+#DECLARE(%PrintParam5)
+#DECLARE(%PrintConstruct)
+#DECLARE(%SaveParam1)
+#DECLARE(%SaveParam2)
+#DECLARE(%SaveParam3)
+#DECLARE(%SaveConstruct)
+#DECLARE(%SCTFilename)
+#SET(%SCTFilename, 'szHotKeyFilename')
+#ENDAT
+#!
+#!
+#AT(%AfterGlobalIncludes),DESCRIPTION('Hot Key Print: Global Include')
+eSCTHOTKEY          EQUATE(%SCTHotKey)     #<!PrintScreen Key
+#ENDAT
+#!
+#!
+#AT(%DataSection),PRIORITY(2500),DESCRIPTION('Hot Key Print: Before Window')
+%[20]SCTFilename CSTRING(256)              #<! Area used to hold saved file
+#ENDAT
+#!
+#!
+#AT(%WindowManagerMethodCodeSection,'SetAlerts'),PRIORITY(7500),DESCRIPTION('Hot Key Print: SetAlerts')
+ALERT(eSCTHOTKEY)                          #<!Alert PrintScreen hot key
+#ENDAT
+#!
+#!
+#AT(%WindowEventHandling,'AlertKey'),PRIORITY(5000),DESCRIPTION('Hot Key Print: AlertKey')
+#!
+#! Setup Print Parameters
+#CASE(%SCTWindow)
+#OF('ThisWindow')
+  #SET(%PrintParam1,%Window & '{PROP:Handle}')
+#OF('TopWindow')
+  #SET(%PrintParam1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+#OF('Application')
+  #SET(%PrintParam1,'SCT_GetAppWindow()')
+#OF('DeskTop')
+  #SET(%PrintParam1,'SCT_GetDesktopWindow()')
+#ENDCASE
+#!
+#CASE(%SCTArea)
+#OF('Window')
+  #SET(%PrintParam2,',PW_WINDOW')
+#OF('Client Area')
+  #SET(%PrintParam2,',PW_CLIENT')
+#ENDCASE
+#!
+#CASE(%SCTOption)
+#OF('Best Fit')
+  #SET(%PrintParam3,'')
+  #SET(%PrintParam4,'')
+  #SET(%PrintParam5,'')
+#OF('Stretch to Page')
+  #SET(%PrintParam3,',PW_STRETCHTOPAGE')
+  #SET(%PrintParam4,'')
+  #SET(%PrintParam5,'')
+#OF('Scale')
+  #SET(%PrintParam3,',PW_SCALE')
+  #SET(%PrintParam4,',' & %SCTscaleX)
+  #SET(%PrintParam5,',' & %SCTscaleY)
+#ENDCASE
+#!
+#SET(%PrintConstruct,'SCT_PrintWindow(' & %PrintParam1 & %PrintParam2 & %PrintParam3 & %PrintParam4 & %PrintParam5 & ')')
+#!
+#! Setup Save Parameters
+#CASE(%SCTWindow)
+#OF('ThisWindow')
+  #SET(%SaveParam1,%Window & '{PROP:Handle}')
+#OF('TopWindow')
+  #SET(%SaveParam1,'SCT_GetTopWindow(SCT_GetAppClientWindow())')
+#OF('Application')
+  #SET(%SaveParam1,'SCT_GetAppWindow()')
+#OF('DeskTop')
+  #SET(%SaveParam1,'SCT_GetDesktopWindow()')
+#ENDCASE
+#!
+  #SET(%SaveParam2,',' & %SCTFilename)
+#!
+#CASE(%SCTArea)
+#OF('Window')
+  #SET(%SaveParam3,',PW_WINDOW')
+#OF('Client Area')
+  #SET(%SaveParam3,',PW_CLIENT')
+#ENDCASE
+#!
+#SET(%SaveConstruct,'SCT_SaveWindow(' & %SaveParam1 & %SaveParam2 & %SaveParam3 & ', ' & %SCTCompress & ')')
+#!
+#!
+CASE KEYCODE()
+OF eSCTHOTKEY
+  #IF(%SCTUsePopupMenu)
+   CASE POPUP('&Print Window|&Save Window|Place Window in &Clipboard')
+   OF 1                            #<!print desired window
+      %PrintConstruct
+   OF 2                            #<!save desired window
+      #INSERT(%FileDialog,%SCTFilename,%SCTCompress)
+      %SaveConstruct
+   OF 3                            #<!place window into clipboard
+      %SCTFilename = 'CLIPBOARD'
+      %SaveConstruct
+   END
+  #ELSE
+   %PrintConstruct                 #<!print desired window
+  #ENDIF
+END
+#ENDAT

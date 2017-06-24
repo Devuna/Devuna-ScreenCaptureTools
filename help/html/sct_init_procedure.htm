@@ -1,0 +1,55 @@
+<!--
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=Windows-1252">
+<title>SCT_Init Procedure</title>
+<link rel="stylesheet" type="text/css" href="sctools.css">
+</head>
+
+<body>
+
+<h1 class="bannerBase">SCT_Init Procedure <span style="font-size:.75em;">(initialize the screen capture tools library)</span></h1>
+
+<p><b>SCT_Init( </b>LONG <I>param_hWndApplication, </I>LONG <I>param_hWndClient</I>, LONG <I>param_hInstance </I><b>)</b></p>
+
+<p><b>SCT_Init</b>&nbsp;&nbsp;Initializes the Screen Capture Tools Library.  This procedure must be called before making any other calls to the library.</p>
+
+<dl class="indent2">
+    <dt>param_hWndApplication</dt>
+    <dd>The window handle for the application main window.</dd>
+    <dd>e.g. AppFrame{PROP:Handle}</dd>
+    <dt>param_hWndClient</dt>
+    <dd>The window handle for the application client window.</dd>
+    <dd>e.g. AppFrame{PROP:ClientHandle}</dd>
+    <dt>param_hInstance</dt>
+    <dd>The instance handle for the .EXE file.</dd>
+    <dd>e.g. SYSTEM{PROP:AppInstance}</dd>
+</dl>
+
+<p><b>Return Value</b>&nbsp;&nbsp;&nbsp;None.</p>
+
+<p><b>See Also:</b>&nbsp;&nbsp;&nbsp;<a href="sct_initialization_template.htm">SCT_Initialization Template</a></p>
+
+</body>
+</html>

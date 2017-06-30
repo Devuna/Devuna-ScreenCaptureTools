@@ -25,14 +25,14 @@
 *.jpg binary
 *.png binary
 *.sbp binary
-
+*.zip binary
 
 # Declare help as documentation folder
 help/* linguist-documentation
 dibapi/* linguist-documentation
+ijl15/* linguist-documentation
 jpgapi/* linguist-documentation
 WinCap/* linguist-documentation
-
 
 # Declare languuage association
 *.clw linguist-language=Clarion

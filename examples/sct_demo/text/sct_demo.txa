@@ -1,3 +1,520 @@
+[APPLICATION]
+VERSION 34
+TODO ABC ToDo
+PROCEDURE Main
+[COMMON]
+FROM ABC
+MODIFIED '2014/05/25' '15:29:56'
+[PROMPTS]
+%ProgramAuthor DEFAULT  ('Randy Rogers')
+%MessageDescription LONG  (1)
+%GlobalExternal LONG  (0)
+%ExternalSource DEFAULT  ('Dynamic Link Library (DLL)')
+%GenerateEmbedComments LONG  (0)
+%INIActive LONG  (0)
+%INIFile DEFAULT  ('Program Name.INI')
+%ININame DEFAULT  ('')
+%PreserveVars MULTI LONG  ()
+%PreserveVar DEPEND %PreserveVars DEFAULT TIMES 0
+
+%EnableRunTimeTranslator LONG  (0)
+%DefaultGenerate LONG  (0)
+%DefaultRILogout LONG  (1)
+%GlobalUseDefaultFileManager LONG  (1)
+%GlobalFileManagerClass DEFAULT  ('')
+%GlobalUseDefaultRelationManager LONG  (1)
+%GlobalRelationManagerClass DEFAULT  ('')
+%LockRecoverTime DEFAULT  ('10')
+%DefaultThreaded DEFAULT  ('Use File Setting')
+%DefaultCreate DEFAULT  ('Use File Setting')
+%DefaultExternal DEFAULT  ('None External')
+%DefaultExternalSource DEFAULT  ('')
+%DefaultExternalAPP LONG  (0)
+%DefaultExport LONG  (0)
+%DefaultOpenMode DEFAULT  ('Share')
+%DefaultUserAccess DEFAULT  ('Read/Write')
+%DefaultOtherAccess DEFAULT  ('Deny None')
+%DefaultLazyOpen LONG  (1)
+%OverrideGenerate DEPEND %File LONG TIMES 0
+
+%OverrideRILogout DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideUseDefaultFileManager DEPEND %File LONG TIMES 0
+
+%OverrideFileManagerClass DEPEND %File DEFAULT TIMES 0
+
+%OverrideUseDefaultRelationManager DEPEND %File LONG TIMES 0
+
+%OverrideRelationManagerClass DEPEND %File DEFAULT TIMES 0
+
+%OverrideThreaded DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideCreate DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideExternal DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideExternalSource DEPEND %File DEFAULT TIMES 0
+
+%OverrideExternalAPP DEPEND %File LONG TIMES 0
+
+%OverrideExport DEPEND %File LONG TIMES 0
+
+%OverrideOpenMode DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideUserAccess DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideOtherAccess DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideLazyOpen DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%StandardExternalModule DEPEND %Module LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('sct_demo.clw') (1)
+WHEN  ('sct_demo001.clw') (1)
+WHEN  ('sct_demo002.clw') (1)
+WHEN  ('sct_demo003.clw') (1)
+
+%WindowManagerType DEFAULT  ('WindowManager')
+%ResetOnGainFocus LONG  (0)
+%AutoToolbar LONG  (1)
+%AutoRefresh LONG  (1)
+%ErrorManagerType DEFAULT  ('ErrorClass')
+%PopupClass DEFAULT  ('PopupClass')
+%SelectFileClass DEFAULT  ('SelectFileClass')
+%ResizerType DEFAULT  ('WindowResizeClass')
+%ResizerDeFaultFindParents LONG  (1)
+%ResizerDefaultOptimizeMoves LONG  (1)
+%ResizerDefaultOptimizeRedraws LONG  (1)
+%INIClass DEFAULT  ('INIClass')
+%RunTimeTranslatorType DEFAULT  ('TranslatorClass')
+%ExtractionFilename DEFAULT  ('')
+%TranslationGroups MULTI LONG  ()
+%TranslationFile DEPEND %TranslationGroups DEFAULT TIMES 0
+
+%TranslationGroup DEPEND %TranslationGroups DEFAULT TIMES 0
+
+%FileManagerType DEFAULT  ('FileManager')
+%ViewManagerType DEFAULT  ('ViewManager')
+%RelationManagerType DEFAULT  ('RelationManager')
+%BrowserType DEFAULT  ('BrowseClass')
+%ActiveInvisible LONG  (0)
+%AllowUnfilled LONG  (0)
+%RetainRow LONG  (1)
+%BrowseEIPManagerType DEFAULT  ('BrowseEIPManager')
+%EditInPlaceType DEFAULT  ('EditEntryClass')
+%StepManagerType DEFAULT  ('StepClass')
+%StepManagerLongType DEFAULT  ('StepLongClass')
+%StepManagerRealType DEFAULT  ('StepRealClass')
+%StepManagerStringType DEFAULT  ('StepStringClass')
+%StepManagerCustomType DEFAULT  ('StepCustomClass')
+%StepLocatorType DEFAULT  ('StepLocatorClass')
+%EntryLocatorType DEFAULT  ('EntryLocatorClass')
+%IncrementalLocatorType DEFAULT  ('IncrementalLocatorClass')
+%FilteredLocatorType DEFAULT  ('FilterLocatorClass')
+%FileDropManagerType DEFAULT  ('FileDropClass')
+%FileDropComboManagerType DEFAULT  ('FileDropComboClass')
+%QBEFormType DEFAULT  ('QueryFormClass')
+%QBEFormVisualType DEFAULT  ('QueryFormVisual')
+%QBEListType DEFAULT  ('QueryListClass')
+%QBEListVisualType DEFAULT  ('QueryListVisual')
+%ProcessType DEFAULT  ('ProcessClass')
+%PrintPreviewType DEFAULT  ('PrintPreviewClass')
+%ReportManagerType DEFAULT  ('ReportManager')
+%AsciiViewerClass DEFAULT  ('AsciiViewerClass')
+%AsciiSearchClass DEFAULT  ('AsciiSearchClass')
+%AsciiPrintClass DEFAULT  ('AsciiPrintClass')
+%AsciiFileManagerType DEFAULT  ('AsciiFileClass')
+%ToolbarClass DEFAULT  ('ToolbarClass')
+%ToolbarListBoxType DEFAULT  ('ToolbarListboxClass')
+%ToolbarRelTreeType DEFAULT  ('ToolbarReltreeClass')
+%ToolbarUpdateClassType DEFAULT  ('ToolbarUpdateClass')
+%ClassItem UNIQUE DEFAULT  ('ErrorManager', 'ErrorStatusManager', 'FileManager:', |
+  'FuzzyMatcher', 'INIManager', 'RelationManager:', 'Translator')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 5
+WHEN  ('ErrorManager') ('ErrorClass')
+WHEN  ('ErrorStatusManager') ('ErrorStatusClass')
+WHEN  ('FuzzyMatcher') ('FuzzyClass')
+WHEN  ('INIManager') ('INIClass')
+WHEN  ('Translator') ('TranslatorClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 5
+WHEN  ('ErrorManager') ('')
+WHEN  ('ErrorStatusManager') ('')
+WHEN  ('FuzzyMatcher') ('')
+WHEN  ('INIManager') ('')
+WHEN  ('Translator') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
+
+%FuzzyMatchingEnabled LONG  (1)
+%IgnoreCase LONG  (1)
+%WordOnly LONG  (0)
+%WindowFrameDragging LONG  (1)
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 5
+WHEN  ('ErrorManager') ('YES')
+WHEN  ('ErrorStatusManager') ('YES')
+WHEN  ('FuzzyMatcher') ('YES')
+WHEN  ('INIManager') ('YES')
+WHEN  ('Translator') ('YES')
+
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 5
+WHEN  ('ErrorManager') ('GlobalErrors')
+WHEN  ('ErrorStatusManager') ('GlobalErrorsStatus')
+WHEN  ('FuzzyMatcher') ('FuzzyMatcher')
+WHEN  ('INIManager') ('INIMgr')
+WHEN  ('Translator') ('Translator')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 5
+WHEN  ('ErrorManager') (1)
+WHEN  ('ErrorStatusManager') (1)
+WHEN  ('FuzzyMatcher') (1)
+WHEN  ('INIManager') (1)
+WHEN  ('Translator') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 5
+WHEN  ('ErrorManager') (1)
+WHEN  ('ErrorStatusManager') (1)
+WHEN  ('FuzzyMatcher') (1)
+WHEN  ('INIManager') (1)
+WHEN  ('Translator') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 5
+WHEN  ('ErrorManager') ('')
+WHEN  ('ErrorStatusManager') ('ADOBlob')
+WHEN  ('FuzzyMatcher') ('')
+WHEN  ('INIManager') ('')
+WHEN  ('Translator') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 5
+WHEN  ('ErrorManager') (0)
+WHEN  ('ErrorStatusManager') (0)
+WHEN  ('FuzzyMatcher') (0)
+WHEN  ('INIManager') (0)
+WHEN  ('Translator') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 2
+WHEN  ('FuzzyMatcher')TIMES 0
+WHEN  ('INIManager')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 2
+WHEN  ('FuzzyMatcher')TIMES 0
+WHEN  ('INIManager')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%FileDeclarationMode DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use User Options')
+
+%FileDeclarationThread DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
+
+%FileDeclarationBindable DEPEND %File LONG TIMES 1
+WHEN  ('') (1)
+
+%FileDeclarationName DEPEND %File DEFAULT TIMES 0
+
+%FileDeclarationOver DEPEND %File DEFAULT TIMES 0
+
+%FileDeclarationType DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
+
+%NoGenerateGlobals LONG  (0)
+%ImageClass DEFAULT  ('ImageManager')
+%DefaultErrorCategory DEFAULT  ('ABC')
+%StoreErrorHistory LONG  (0)
+%LimitStoredHistory LONG  (0)
+%ErrorHistoryThreshold DEFAULT  ('300')
+%HistoryViewTrigger DEFAULT  ('Level:Fatal')
+%FuzzyMatcherClass DEFAULT  ('FuzzyClass')
+%GridClass DEFAULT  ('GridClass')
+%SidebarClass DEFAULT  ('SidebarClass')
+%OverrideAbcSettings LONG  (0)
+%AbcSourceLocation DEFAULT  ('LINK')
+%AbcLibraryName DEFAULT  ('')
+%INIType DEFAULT  ('NVD_INI')
+%REGRoot DEFAULT  ('REG_CLASSES_ROOT')
+%WindowEnableEnhanceFocus LONG  (0)
+%SelectedText LONG  (1)
+%SelectedRadio LONG  (1)
+%SelectedSpin LONG  (1)
+%SelectedCheck LONG  (1)
+%SelectedDropList LONG  (1)
+%SelectedDisplayChangeColor LONG  (1)
+%SelectedColor LONG  (65535)
+%SelectedStyle LONG  (1)
+%ExcludeSelectedDropList LONG  (1)
+%SelectedRequired LONG  (0)
+%SelectedRequiredColor LONG  (65535)
+%SelectedDisplayBox LONG  (1)
+%SelectedDisplayBoxFillColor LONG  (65535)
+%SelectedDisplayBoxBorderColor LONG  (0)
+%SelectedDisplayBoxBorderSize DEFAULT  ('2')
+%SelectedRequiredBox LONG  (0)
+%SelectedRequiredDisplayBoxFillColor LONG  (255)
+%SelectedRequiredDisplayBoxBorderColor LONG  (0)
+%SelectedCaret LONG  (1)
+%SelectedCaretColor LONG  (8421504)
+%SelectedCaretCharacter DEFAULT  ('»')
+%SelectedCaretCharacterSeparation DEFAULT  ('8')
+%GlobalUseEnterInsteadTab LONG  (0)
+%GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalEnableAutoSizeColumn LONG  (0)
+%GlobalEnableListFormatManager LONG  (0)
+%GlobalUserFieldListFormatManager DEFAULT  ('1')
+%TableOrigin DEFAULT  ('Application')
+%FileEquate DEFAULT  ('LFM_CFile')
+%ConfigFilePRE DEFAULT  ('CFG')
+%ConfigFileOEM LONG  (0)
+%ConfigFileTHREAD LONG  (1)
+%ConfigFileENCRYPT LONG  (0)
+%ConfigFilePASSWORD DEFAULT  ('')
+%FormatNameSize DEFAULT  ('30')
+%FormatBufferSize DEFAULT  ('5120')
+%VariableBufferSize DEFAULT  ('2048')
+%ConfigFilePath DEFAULT  ('')
+%UseConfigFileName DEFAULT  ('Default')
+%ConfigFileNAME DEFAULT  ('Formats.FDB')
+%ColonCounter DEFAULT  ('')
+%WrongSymbol DEFAULT  ('')
+%DictionaryTableOrigin FILE  ()
+%CalendarManagerType DEFAULT  ('CalendarClass')
+%GlobalUseABCClasess LONG  (1)
+%AppTemplateFamily DEFAULT  ('ABC')
+%CWTemplateVersion DEFAULT  ('v10.0')
+%ABCVersion DEFAULT  ('10000')
+%GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
+%GlobalUseEnterInsteadTabEnableValue DEFAULT  ('True')
+%GlobalChangeColor LONG  (0)
+%GlobalColorSunday LONG  (255)
+%GlobalColorSaturday LONG  (255)
+%GlobalColorHoliday LONG  (32768)
+%GlobalColorOther LONG  (0)
+%GlobalSelectOnClose DEFAULT  ('Select')
+%UseDefaultXPManifest LONG  (0)
+%FormVCRManagerType DEFAULT  ('FormVCRClass')
+%ToolbarFormVCRType DEFAULT  ('ToolbarFormVCRClass')
+%ProgramIcon DEFAULT  ('sctools.ico')
+%INIInAppDirectory LONG  (1)
+%DisableINISaveWindow LONG  (0)
+%GlobalEnableRebase LONG  (0)
+%RBDMethod DEFAULT  ('Specify manually')
+%RBDImageBase DEFAULT  ('10000000')
+%EditInPlaceInterface DEFAULT  ('Original')
+%EditInPlaceEntryType DEFAULT  ('EditEntryClass')
+%EditInPlaceTextType DEFAULT  ('EditTextClass')
+%EditInPlaceCheckType DEFAULT  ('EditCheckClass')
+%EditInPlaceSpinType DEFAULT  ('EditSpinClass')
+%EditInPlaceDropListType DEFAULT  ('EditDropListClass')
+%EditInPlaceDropComboType DEFAULT  ('EditDropComboClass')
+%EditInPlaceColorType DEFAULT  ('EditColorClass')
+%EditInPlaceFileType DEFAULT  ('EditFileClass')
+%EditInPlaceFontType DEFAULT  ('EditFontClass')
+%EditInPlaceMultiSelectType DEFAULT  ('EditMultiSelectClass')
+%EditInPlaceCalendarType DEFAULT  ('EditCalendarClass')
+%EditInPlaceLookupType DEFAULT  ('EditLookupClass')
+%EditInPlaceOtherType DEFAULT  ('EditEntryClass')
+%ReportTargetSelectorManagerType DEFAULT  ('ReportTargetSelectorClass')
+%BreakManagerType DEFAULT  ('BreakManagerClass')
+%GlobalLFMSortOrderMenuText DEFAULT  ('SortOrder')
+%DefaultLocalExternal LONG  (0)
+%OverrideLocalExternal DEPEND %File LONG TIMES 0
+
+%ErrorStatusManagerType DEFAULT  ('ErrorStatusClass')
+%AllowSelectCopy LONG  (0)
+%SelectedList LONG  (1)
+%INIProgramIniLocation DEFAULT  ('APPDIR')
+%INICSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
+%CSIDLCompanyDir DEFAULT  ('')
+%CSIDLProductDir DEFAULT  ('')
+%CSIDLCreate LONG  (0)
+%GenerateXPManifest LONG  (1)
+%LinkGenerateXPManifest LONG  (1)
+%AddVistaXPManifest LONG  (0)
+%VistaManifestExecutionLevel DEFAULT  ('asInvoker')
+%VistaManifestUIAccess LONG  (0)
+%W7ManifestVista LONG  (1)
+%W7ManifestW7 LONG  (1)
+%ForceMakeTransparentXPManifest LONG  (0)
+%ExtUIXPMenuEnableGlobal LONG  (0)
+%ExtUIXPMenuColorTypeGlobal DEFAULT  ('AUTONOBAR')
+%ExtUIXPMenuDisableImageBar LONG  (1)
+%ExtUIXPMenuEnableRuntime LONG  (0)
+%ExtUIXPMenuRuntimeVar DEFAULT  ('')
+%ExtUIXPMenuColorLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorRightGlobal LONG  (12560039)
+%ExtUIXPMenuColorSelectionBarLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectionBarRightGlobal LONG  (15920364)
+%ExtUIXPMenuSelVertical LONG  (1)
+%ExtUIXPMenuColorSelectionBorderGlobal LONG  (15920364)
+%ExtUIXPMenuColorHotLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorHotRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectedLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectedRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalBarLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalBarRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalText LONG  (0)
+%ExtUIXPMenuColorSelectedText LONG  (0)
+%ExtUIXPMenuColorHotText LONG  (0)
+%ExtUIXPMenuFlat LONG  (1)
+%ExtUIMDITabGlobal DEFAULT  ('DISABLE')
+%ExtUIMDITabStyleGlobal DEFAULT  ('Default')
+%ExtUITabStyleGlobal DEFAULT  ('Default')
+%GeneratePropDataPath LONG  (0)
+%PropDataPathLocation DEFAULT  ('Use same CSIDL value as set for INI file')
+%DataPathCSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
+%DataPathCSIDLCompanyDir DEFAULT  ('')
+%DataPathCSIDLProductDir DEFAULT  ('')
+%DataPathCSIDLCreate LONG  (0)
+%DataPathOtherDirectory DEFAULT  ('')
+%DataPathOtherDirectoryCreate LONG  (0)
+%ExtUIXPMenuColorItemBackgroundGlobal LONG  (-2147483644)
+%ExtUIXPMenuShowImageBar LONG  (0)
+%ExtUIXPMenuSeparator3D LONG  (1)
+%ExtUIXPMenuSeparatorFull LONG  (0)
+%ExtUIXPMenuVerticalLine LONG  (1)
+%EnableExceptionMessage LONG  (0)
+%GlobalInterLine DEFAULT  ('0')
+%NoThemedControlsDependency LONG  (0)
+%ForceMakeColorXPManifest LONG  (0)
+%ForceSHEETNoTheme LONG  (0)
+%ButtonMarginsCompatibility LONG  (0)
+%W7ManifestW8 LONG  (1)
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
+%W7ManifestW81 LONG  (1)
+%EnableOSK DEFAULT  ('OFF')
+%VistaManifestdpiAware LONG  (1)
+%W7ManifestW10 LONG  (1)
+%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
+
+%Repository DEFAULT  ('')
+[ADDITION]
+NAME ABCSCTool SCT_Initialization
+[INSTANCE]
+INSTANCE 3
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Initialization Code')
+%TplDescription DEFAULT  ('Extension template to add Screen Capture Tool support.')
+%SCGlobalExternal LONG  (0)
+%SCExternalSource DEFAULT  ('Dynamic Link Library (DLL)')
+[ADDITION]
+NAME ABCSCTool SCT_HotKeyPrint
+[INSTANCE]
+INSTANCE 1
+PARENT 3
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools')
+%TplDescription DEFAULT  ('Hot Key Print Extension')
+%SCTWindow DEFAULT  ('ThisWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTHotKey DEFAULT  ('CtrlMouseRight')
+%SCTUsePopupMenu LONG  (1)
+%SCTCompress LONG  (0)
+[ADDITION]
+NAME GenTXA GenerateTXA
+[INSTANCE]
+INSTANCE 4
+[PROMPTS]
+%GenAPP LONG  (0)
+%GenDCTX LONG  (0)
+%GenAPPSLG LONG  (1)
+[PERSIST]
+%SaveCreateLocalMap DEFAULT  ('1')
+%GenerationCompleted DEPEND %Module DEFAULT TIMES 4
+WHEN  ('sct_demo.clw') ('1')
+WHEN  ('sct_demo001.clw') ('1')
+WHEN  ('sct_demo002.clw') ('1')
+WHEN  ('sct_demo003.clw') ('1')
+
+%LastTarget32 DEFAULT  ('1')
+%LastProgramExtension DEFAULT  ('EXE')
+%LastApplicationDebug DEFAULT  ('')
+%LastApplicationLocalLibrary DEFAULT  ('')
+[PROJECT]
+#noedit
+-- NAMESPACE ClarionDefaultNamespace
+#system win32 exe
+#model clarion dll
+#set RELEASE = on
+#pragma link_option(icon=>sctools.ico)
+#compile "sct_demo.clw" -- GENERATED
+#compile "sct_demo001.clw" -- GENERATED
+#compile "sct_demo002.clw" -- GENERATED
+#compile "sct_demo003.clw" -- GENERATED
+#link "sct_demo.EXE"
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
@@ -48,4 +565,2804 @@ PROPERTY:END
 [END]
 [END]
 [END]
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME Main
+[COMMON]
+FROM ABC Frame
+MODIFIED '2009/01/29' '19:39:35'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('6206224d-3d5a-494a-bd77-3c7887b08497'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+SCT_wResult              USHORT
+!!> GUID('39b8755b-77f9-46ff-adc7-8a5505a0438e')
+SCT_szFileName           CSTRING(256)
+!!> GUID('ad425c2d-3e0d-4c84-a5bc-fbce41b286a7')
+[SCREENCONTROLS]
+! TEXT,USE(szPrinterName)
+[REPORTCONTROLS]
+! TEXT,USE(szPrinterName)
+szPrinterName            CSTRING(1024)
+!!> GUID('cf3567aa-7eca-4185-a761-ef1337d3ba8e'),PICTURE(@s255)
+[SCREENCONTROLS]
+! TEXT,USE(sav:szPrinterName)
+[REPORTCONTROLS]
+! TEXT,USE(sav:szPrinterName)
+sav:szPrinterName        CSTRING(1024)
+!!> GUID('9dc56899-7c1d-4282-8012-105bda091dd2'),PICTURE(@s255)
+[PROMPTS]
+%INISaveWindow LONG  (1)
+%ButtonAction DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('No Special Action')
+WHEN  ('?Exit') ('No Special Action')
+WHEN  ('?FilePrint') ('No Special Action')
+WHEN  ('?FilePrintApplication') ('No Special Action')
+WHEN  ('?FilePrintClientArea') ('No Special Action')
+WHEN  ('?FilePrintClipboard') ('No Special Action')
+WHEN  ('?FilePrintDesktop') ('No Special Action')
+WHEN  ('?FilePrintSelectArea') ('No Special Action')
+WHEN  ('?FilePrintSetup') ('No Special Action')
+WHEN  ('?FilePrintWindow') ('No Special Action')
+WHEN  ('?FileSave') ('No Special Action')
+WHEN  ('?FileSaveApplication') ('No Special Action')
+WHEN  ('?FileSaveCilpboard') ('No Special Action')
+WHEN  ('?FileSaveClientArea') ('No Special Action')
+WHEN  ('?FileSaveDesktop') ('No Special Action')
+WHEN  ('?FileSaveSelectArea') ('No Special Action')
+WHEN  ('?FileSaveWindow') ('No Special Action')
+
+%MenuAction DEPEND %Control STRING TIMES 1
+WHEN  ('?Exit') ('No Special Action')
+
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeEvent {14}PROCEDURE(),BYTE,PROC,DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%SplashProcedure PROCEDURE  ()
+%ButtonRunName DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 14
+WHEN  ('?Exit') ()
+WHEN  ('?FilePrintApplication') ()
+WHEN  ('?FilePrintClientArea') ()
+WHEN  ('?FilePrintClipboard') ()
+WHEN  ('?FilePrintDesktop') ()
+WHEN  ('?FilePrintSelectArea') ()
+WHEN  ('?FilePrintSetup') ()
+WHEN  ('?FilePrintWindow') ()
+WHEN  ('?FileSaveApplication') ()
+WHEN  ('?FileSaveCilpboard') ()
+WHEN  ('?FileSaveClientArea') ()
+WHEN  ('?FileSaveDesktop') ()
+WHEN  ('?FileSaveSelectArea') ()
+WHEN  ('?FileSaveWindow') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 14
+WHEN  ('?Exit') (0)
+WHEN  ('?FilePrintApplication') (0)
+WHEN  ('?FilePrintClientArea') (0)
+WHEN  ('?FilePrintClipboard') (0)
+WHEN  ('?FilePrintDesktop') (0)
+WHEN  ('?FilePrintSelectArea') (0)
+WHEN  ('?FilePrintSetup') (0)
+WHEN  ('?FilePrintWindow') (0)
+WHEN  ('?FileSaveApplication') (0)
+WHEN  ('?FileSaveCilpboard') (0)
+WHEN  ('?FileSaveClientArea') (0)
+WHEN  ('?FileSaveDesktop') (0)
+WHEN  ('?FileSaveSelectArea') (0)
+WHEN  ('?FileSaveWindow') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('25000')
+WHEN  ('?Exit') ('25000')
+WHEN  ('?FilePrint') ('25000')
+WHEN  ('?FilePrintApplication') ('25000')
+WHEN  ('?FilePrintClientArea') ('25000')
+WHEN  ('?FilePrintClipboard') ('25000')
+WHEN  ('?FilePrintDesktop') ('25000')
+WHEN  ('?FilePrintSelectArea') ('25000')
+WHEN  ('?FilePrintSetup') ('25000')
+WHEN  ('?FilePrintWindow') ('25000')
+WHEN  ('?FileSave') ('25000')
+WHEN  ('?FileSaveApplication') ('25000')
+WHEN  ('?FileSaveCilpboard') ('25000')
+WHEN  ('?FileSaveClientArea') ('25000')
+WHEN  ('?FileSaveDesktop') ('25000')
+WHEN  ('?FileSaveSelectArea') ('25000')
+WHEN  ('?FileSaveWindow') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 14
+WHEN  ('?Exit') ()
+WHEN  ('?FilePrintApplication') ()
+WHEN  ('?FilePrintClientArea') ()
+WHEN  ('?FilePrintClipboard') ()
+WHEN  ('?FilePrintDesktop') ()
+WHEN  ('?FilePrintSelectArea') ()
+WHEN  ('?FilePrintSetup') ()
+WHEN  ('?FilePrintWindow') ()
+WHEN  ('?FileSaveApplication') ()
+WHEN  ('?FileSaveCilpboard') ()
+WHEN  ('?FileSaveClientArea') ()
+WHEN  ('?FileSaveDesktop') ()
+WHEN  ('?FileSaveSelectArea') ()
+WHEN  ('?FileSaveWindow') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 14
+WHEN  ('?Exit') (0)
+WHEN  ('?FilePrintApplication') (0)
+WHEN  ('?FilePrintClientArea') (0)
+WHEN  ('?FilePrintClipboard') (0)
+WHEN  ('?FilePrintDesktop') (0)
+WHEN  ('?FilePrintSelectArea') (0)
+WHEN  ('?FilePrintSetup') (0)
+WHEN  ('?FilePrintWindow') (0)
+WHEN  ('?FileSaveApplication') (0)
+WHEN  ('?FileSaveCilpboard') (0)
+WHEN  ('?FileSaveClientArea') (0)
+WHEN  ('?FileSaveDesktop') (0)
+WHEN  ('?FileSaveSelectArea') (0)
+WHEN  ('?FileSaveWindow') (0)
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 17
+WHEN  ('') ('None')
+WHEN  ('?Exit') ('None')
+WHEN  ('?FilePrint') ('None')
+WHEN  ('?FilePrintApplication') ('None')
+WHEN  ('?FilePrintClientArea') ('None')
+WHEN  ('?FilePrintClipboard') ('None')
+WHEN  ('?FilePrintDesktop') ('None')
+WHEN  ('?FilePrintSelectArea') ('None')
+WHEN  ('?FilePrintSetup') ('None')
+WHEN  ('?FilePrintWindow') ('None')
+WHEN  ('?FileSave') ('None')
+WHEN  ('?FileSaveApplication') ('None')
+WHEN  ('?FileSaveCilpboard') ('None')
+WHEN  ('?FileSaveClientArea') ('None')
+WHEN  ('?FileSaveDesktop') ('None')
+WHEN  ('?FileSaveSelectArea') ('None')
+WHEN  ('?FileSaveWindow') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 14
+WHEN  ('?Exit') ('')
+WHEN  ('?FilePrintApplication') ('')
+WHEN  ('?FilePrintClientArea') ('')
+WHEN  ('?FilePrintClipboard') ('')
+WHEN  ('?FilePrintDesktop') ('')
+WHEN  ('?FilePrintSelectArea') ('')
+WHEN  ('?FilePrintSetup') ('')
+WHEN  ('?FilePrintWindow') ('')
+WHEN  ('?FileSaveApplication') ('')
+WHEN  ('?FileSaveCilpboard') ('')
+WHEN  ('?FileSaveClientArea') ('')
+WHEN  ('?FileSaveDesktop') ('')
+WHEN  ('?FileSaveSelectArea') ('')
+WHEN  ('?FileSaveWindow') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 14
+WHEN  ('?Exit') ()
+WHEN  ('?FilePrintApplication') ()
+WHEN  ('?FilePrintClientArea') ()
+WHEN  ('?FilePrintClipboard') ()
+WHEN  ('?FilePrintDesktop') ()
+WHEN  ('?FilePrintSelectArea') ()
+WHEN  ('?FilePrintSetup') ()
+WHEN  ('?FilePrintWindow') ()
+WHEN  ('?FileSaveApplication') ()
+WHEN  ('?FileSaveCilpboard') ()
+WHEN  ('?FileSaveClientArea') ()
+WHEN  ('?FileSaveDesktop') ()
+WHEN  ('?FileSaveSelectArea') ()
+WHEN  ('?FileSaveWindow') ()
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 17
+WHEN  ('') (1)
+WHEN  ('?Exit') (1)
+WHEN  ('?FilePrint') (1)
+WHEN  ('?FilePrintApplication') (1)
+WHEN  ('?FilePrintClientArea') (1)
+WHEN  ('?FilePrintClipboard') (1)
+WHEN  ('?FilePrintDesktop') (1)
+WHEN  ('?FilePrintSelectArea') (1)
+WHEN  ('?FilePrintSetup') (1)
+WHEN  ('?FilePrintWindow') (1)
+WHEN  ('?FileSave') (1)
+WHEN  ('?FileSaveApplication') (1)
+WHEN  ('?FileSaveCilpboard') (1)
+WHEN  ('?FileSaveClientArea') (1)
+WHEN  ('?FileSaveDesktop') (1)
+WHEN  ('?FileSaveSelectArea') (1)
+WHEN  ('?FileSaveWindow') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 17
+WHEN  ('')TIMES 0
+WHEN  ('?Exit')TIMES 0
+WHEN  ('?FilePrint')TIMES 0
+WHEN  ('?FilePrintApplication')TIMES 0
+WHEN  ('?FilePrintClientArea')TIMES 0
+WHEN  ('?FilePrintClipboard')TIMES 0
+WHEN  ('?FilePrintDesktop')TIMES 0
+WHEN  ('?FilePrintSelectArea')TIMES 0
+WHEN  ('?FilePrintSetup')TIMES 0
+WHEN  ('?FilePrintWindow')TIMES 0
+WHEN  ('?FileSave')TIMES 0
+WHEN  ('?FileSaveApplication')TIMES 0
+WHEN  ('?FileSaveCilpboard')TIMES 0
+WHEN  ('?FileSaveClientArea')TIMES 0
+WHEN  ('?FileSaveDesktop')TIMES 0
+WHEN  ('?FileSaveSelectArea')TIMES 0
+WHEN  ('?FileSaveWindow')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabDisableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('AIBtn0')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('?MENUBAR1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
+
+[EMBED]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?FilePrintDesktop'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 2
+[END]
+[END]
+WHEN '?FilePrintApplication'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 4
+[END]
+[END]
+WHEN '?FilePrintWindow'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 5
+[END]
+[END]
+WHEN '?FilePrintClientArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 3
+[END]
+[END]
+WHEN '?FilePrintSelectArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 6
+[END]
+[END]
+WHEN '?FileSaveDesktop'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 9
+[END]
+[END]
+WHEN '?FileSaveApplication'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 7
+[END]
+[END]
+WHEN '?FileSaveClientArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 8
+[END]
+[END]
+WHEN '?FileSaveWindow'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 11
+[END]
+[END]
+WHEN '?FileSaveSelectArea'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 10
+[END]
+[END]
+WHEN '?FileSaveCilpboard'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 6000
+INSTANCE 14
+[END]
+[END]
+WHEN '?FilePrintClipboard'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 13
+[END]
+[END]
+WHEN '?FilePrintSetup'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+IF sav:szPrinterName = ''
+  sav:szPrinterName = GETINI('windows','device')
+END
+IF PRINTERDIALOG()
+  szPrinterName = PRINTER{PROPPRINT:Device} & ',' & |
+                  GETINI('PrinterPorts',PRINTER{PROPPRINT:Device})
+  PUTINI('windows','device', szPrinterName)
+END
+
+[END]
+[END]
+[END]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'TakeEvent'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 6300
+PROPERTY:END
+  CASE EVENT()
+  OF EVENT:StartAbout
+     START(About,25000)
+  OF EVENT:StartClipboardDemo
+     START(ClipboardDemo,25000)
+  END
+[END]
+[END]
+WHEN 'Kill'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 8500
+PROPERTY:END
+IF sav:szPrinterName <> ''
+  PUTINI('windows','device', sav:szPrinterName)
+END
+[END]
+[END]
+[END]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'OpenWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5001
+PROPERTY:END
+START(About,25000)
+!START(ClipboardDemo,25000)
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABCSCTool SCT_SaveClipboard
+[INSTANCE]
+INSTANCE 14
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Clipboard')
+%TplDescription DEFAULT  ('Code template to add Save Clipboard.')
+%SCTFileDialog LONG  (1)
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTError LONG  (1)
+%SCTCompress LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+[ADDITION]
+NAME ABCSCTool SCT_PrintClipboard
+[INSTANCE]
+INSTANCE 13
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Clipboard')
+%TplDescription DEFAULT  ('Code template to add Print Clipboard.')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[ADDITION]
+NAME ABCSCTool SCT_PrintScreen
+[INSTANCE]
+INSTANCE 12
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools')
+%TplDescription DEFAULT  ('Print Screen Extension')
+%SCTWindow DEFAULT  ('TopWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTUsePopupMenu LONG  (1)
+%SCTCompress LONG  (0)
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[ADDITION]
+NAME ABC DateTimeDisplay
+[INSTANCE]
+INSTANCE 1
+PROCPROP
+[PROMPTS]
+%DisplayDate LONG  (0)
+%DatePicture DEFAULT  ('October 31, 1959')
+%OtherDatePicture DEFAULT  ('')
+%ShowDayOfWeek LONG  (1)
+%DateDisplayLocation DEFAULT  ('Status Bar')
+%DateStatusSection DEFAULT  ('3')
+%DateControl DEFAULT  ('')
+%DisplayTime LONG  (0)
+%TimePicture DEFAULT  ('5:30PM')
+%OtherTimePicture DEFAULT  ('')
+%TimeDisplayLocation DEFAULT  ('Status Bar')
+%TimeStatusSection DEFAULT  ('4')
+%TimeControl DEFAULT  ('')
+[ADDITION]
+NAME ABCSCTool SCT_PrintWindow
+[INSTANCE]
+INSTANCE 2
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('DeskTop')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTError LONG  (1)
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[INSTANCE]
+INSTANCE 3
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTArea DEFAULT  ('Client Area')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[INSTANCE]
+INSTANCE 4
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+[INSTANCE]
+INSTANCE 5
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window')
+%TplDescription DEFAULT  ('Code template to add Print Window.')
+%SCTWindow DEFAULT  ('TopWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('250')
+%SCToriginY DEFAULT  ('250')
+[ADDITION]
+NAME ABCSCTool SCT_PrintSelectedArea
+[INSTANCE]
+INSTANCE 6
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Selected Area')
+%TplDescription DEFAULT  ('Code template to add Print Selected Area.')
+%SCTOption DEFAULT  ('Best Fit')
+%SCTscaleX DEFAULT  ('1')
+%SCTscaleY DEFAULT  ('1')
+%SCToriginX DEFAULT  ('0')
+%SCToriginY DEFAULT  ('0')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+[ADDITION]
+NAME ABCSCTool SCT_SaveWindow
+[INSTANCE]
+INSTANCE 7
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTArea DEFAULT  ('Window')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (0)
+[INSTANCE]
+INSTANCE 8
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('Application')
+%SCTArea DEFAULT  ('Client Area')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (0)
+[INSTANCE]
+INSTANCE 9
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('DeskTop')
+%SCTArea DEFAULT  ('Window')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (1)
+[INSTANCE]
+INSTANCE 11
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window')
+%TplDescription DEFAULT  ('Code template to add Save Window.')
+%SCTWindow DEFAULT  ('TopWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTDestination DEFAULT  ('File')
+%SCTCompress LONG  (0)
+[ADDITION]
+NAME ABCSCTool SCT_SaveSelectedArea
+[INSTANCE]
+INSTANCE 10
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Selected Area')
+%TplDescription DEFAULT  ('Code template to add Save Selected Area.')
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTFileDialog LONG  (1)
+%SCTDestination DEFAULT  ('File')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTCompress LONG  (1)
+[CALLS]
+About
+ClipboardDemo
+[WINDOW]
+AppFrame APPLICATION('Devuna Screen Capture Tools'),AT(,,310,192),RESIZE,MAXIMIZE,CENTERED, |
+          ICON('sctools.ico'),MAX,STATUS,SYSTEM
+          MENUBAR,USE(?MENUBAR1),#ORDINAL(1)
+            ITEM('E&xit'),USE(?Exit),MSG('Exit this application'),STD(STD:Close),#ORDINAL(2)
+            MENU('&Print Window'),USE(?FilePrint),MSG('Demonstrates the various Print W' & |
+              'indow Functions'),#ORDINAL(3)
+              ITEM('&Desktop'),USE(?FilePrintDesktop),MSG('Print Desktop'),#ORDINAL(4)
+              ITEM('&Application'),USE(?FilePrintApplication),MSG('Print Application'),#ORDINAL(5)
+              ITEM('&Client Area'),USE(?FilePrintClientArea),MSG('Print Application Client Area'), |
+                #ORDINAL(6)
+              ITEM('&Window'),USE(?FilePrintWindow),MSG('Print Top Client Window'),#ORDINAL(7)
+              ITEM('&Select Area'),USE(?FilePrintSelectArea),MSG('Print Selected Screen Area'), |
+                #ORDINAL(8)
+              ITEM('Clip&board'),USE(?FilePrintClipboard),#ORDINAL(9)
+              ITEM,USE(?SEPARATOR1),SEPARATOR,#ORDINAL(10)
+              ITEM('S&etup...'),USE(?FilePrintSetup),MSG('Setup Printer'),#ORDINAL(11)
+            END
+            MENU('&Save Window'),USE(?FileSave),MSG('Demonstrates the various Save Wind' & |
+              'ow Functions'),#ORDINAL(12)
+              ITEM('&Desktop'),USE(?FileSaveDesktop),MSG('Save Desktop to BMP'),#ORDINAL(13)
+              ITEM('&Application'),USE(?FileSaveApplication),MSG('Save Application to BMP'), |
+                #ORDINAL(14)
+              ITEM('&Client Area'),USE(?FileSaveClientArea),MSG('Save Application Clien' & |
+                't Area to BMP'),#ORDINAL(15)
+              ITEM('&Window'),USE(?FileSaveWindow),MSG('Save Top Client Window to BMP'),#ORDINAL(16)
+              ITEM('&Select Area'),USE(?FileSaveSelectArea),MSG('Print Selected Screen ' & |
+                'Area to BMP'),#ORDINAL(17)
+              ITEM('Clip&board'),USE(?FileSaveCilpboard),#ORDINAL(18)
+            END
+          END
+        END
+
+[END]
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME ClipboardDemo
+GLOBAL
+[COMMON]
+DESCRIPTION 'Demo Clipboard Function'
+FROM ABC Window
+MODIFIED '2014/05/25' '15:00:23'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('db821d16-7965-4cfe-9429-8e55007e6824'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+SCT_wResult              USHORT
+!!> GUID('0e0e79a6-7935-4dea-a052-8dd33f287e93')
+SCT_szFileName           CSTRING(256)
+!!> GUID('801f7773-cba2-4ed1-9acb-3c2c0775ced1')
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeAccepted {11}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('AsciiFileClass')
+WHEN  ('WindowToolbar') ('AsciiFileClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 8
+WHEN  ('') ('No Special Action')
+WHEN  ('?CaptureButton') ('No Special Action')
+WHEN  ('?Image1') ('No Special Action')
+WHEN  ('?OkButton') ('No Special Action')
+WHEN  ('?Panel1') ('No Special Action')
+WHEN  ('?PrintWindowButton') ('No Special Action')
+WHEN  ('?Prompt1') ('No Special Action')
+WHEN  ('?SaveWindowButton') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 4
+WHEN  ('?CaptureButton') ('')
+WHEN  ('?OkButton') ('')
+WHEN  ('?PrintWindowButton') ('')
+WHEN  ('?SaveWindowButton') ('')
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 4
+WHEN  ('?CaptureButton') ('')
+WHEN  ('?OkButton') ('')
+WHEN  ('?PrintWindowButton') ('')
+WHEN  ('?SaveWindowButton') ('')
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 4
+WHEN  ('?CaptureButton') ()
+WHEN  ('?OkButton') ()
+WHEN  ('?PrintWindowButton') ()
+WHEN  ('?SaveWindowButton') ()
+
+%ButtonThread DEPEND %Control LONG TIMES 4
+WHEN  ('?CaptureButton') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?PrintWindowButton') (0)
+WHEN  ('?SaveWindowButton') (0)
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 8
+WHEN  ('') ('25000')
+WHEN  ('?CaptureButton') ('25000')
+WHEN  ('?Image1') ('25000')
+WHEN  ('?OkButton') ('25000')
+WHEN  ('?Panel1') ('25000')
+WHEN  ('?PrintWindowButton') ('25000')
+WHEN  ('?Prompt1') ('25000')
+WHEN  ('?SaveWindowButton') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 4
+WHEN  ('?CaptureButton') ('')
+WHEN  ('?OkButton') ('')
+WHEN  ('?PrintWindowButton') ('')
+WHEN  ('?SaveWindowButton') ('')
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 4
+WHEN  ('?CaptureButton') ()
+WHEN  ('?OkButton') ()
+WHEN  ('?PrintWindowButton') ()
+WHEN  ('?SaveWindowButton') ()
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 4
+WHEN  ('?CaptureButton') (0)
+WHEN  ('?OkButton') (0)
+WHEN  ('?PrintWindowButton') (0)
+WHEN  ('?SaveWindowButton') (0)
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 8
+WHEN  ('') ('None')
+WHEN  ('?CaptureButton') ('None')
+WHEN  ('?Image1') ('None')
+WHEN  ('?OkButton') ('None')
+WHEN  ('?Panel1') ('None')
+WHEN  ('?PrintWindowButton') ('None')
+WHEN  ('?Prompt1') ('None')
+WHEN  ('?SaveWindowButton') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 4
+WHEN  ('?CaptureButton') ('')
+WHEN  ('?OkButton') ('')
+WHEN  ('?PrintWindowButton') ('')
+WHEN  ('?SaveWindowButton') ('')
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 4
+WHEN  ('?CaptureButton') ()
+WHEN  ('?OkButton') ()
+WHEN  ('?PrintWindowButton') ()
+WHEN  ('?SaveWindowButton') ()
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 8
+WHEN  ('') (1)
+WHEN  ('?CaptureButton') (1)
+WHEN  ('?Image1') (1)
+WHEN  ('?OkButton') (1)
+WHEN  ('?Panel1') (1)
+WHEN  ('?PrintWindowButton') (1)
+WHEN  ('?Prompt1') (1)
+WHEN  ('?SaveWindowButton') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?CaptureButton')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?PrintWindowButton')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?SaveWindowButton')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?CaptureButton')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?PrintWindowButton')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?SaveWindowButton')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?CaptureButton')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?PrintWindowButton')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?SaveWindowButton')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 8
+WHEN  ('')TIMES 0
+WHEN  ('?CaptureButton')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?OkButton')TIMES 0
+WHEN  ('?Panel1')TIMES 0
+WHEN  ('?PrintWindowButton')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?SaveWindowButton')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabDisableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('Off')
+WHEN  ('?Panel1') ('Off')
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('')
+WHEN  ('?Panel1') ('')
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 2
+WHEN  ('') (-1)
+WHEN  ('?Panel1') (-1)
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 2
+WHEN  ('') (-1)
+WHEN  ('?Panel1') (-1)
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Panel1') (0)
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('AIBtn0')
+WHEN  ('?Image1') ('AIBtn3')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
+WHEN  ('?Image1') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('?Prompt1')
+WHEN  ('?Image1') ('?Prompt1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Image1') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Image1') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Image1') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
+WHEN  ('?Image1') (0)
+
+[EMBED]
+EMBED %ControlEventHandling
+[INSTANCES]
+WHEN '?OkButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 1
+[END]
+[END]
+WHEN '?CaptureButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[GROUP]
+PRIORITY 5000
+INSTANCE 2
+[END]
+[END]
+WHEN '?PrintWindowButton'
+[INSTANCES]
+WHEN 'Accepted'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 6000
+PROPERTY:END
+!SCT_wResult = SCT_PrintWindow(Window{PROP:Handle},PW_WINDOW,0,0,0,250,500)
+!omit('!print desired window')
+[END]
+[END]
+[END]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'CloseWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+POST(EVENT:StartAbout,,1)
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABCSCTool SCT_SaveWindowButton
+[INSTANCE]
+INSTANCE 4
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Save Window Button')
+%TplDescription DEFAULT  ('Control template to add Save Window Button.')
+%SCTWindow DEFAULT  ('ThisWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTDestination DEFAULT  ('Clipboard')
+%SCTFileDialog LONG  (1)
+%SCTFilename DEFAULT  ('SCT_szFileName')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCTCompress LONG  (0)
+[ADDITION]
+NAME ABCSCTool SCT_PrintWindowButton
+[INSTANCE]
+INSTANCE 3
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Print Window Button')
+%TplDescription DEFAULT  ('Control template to add Print Window Button.')
+%SCTWindow DEFAULT  ('ThisWindow')
+%SCTArea DEFAULT  ('Window')
+%SCTOption DEFAULT  ('Default')
+%SCTscaleX DEFAULT  ('4')
+%SCTscaleY DEFAULT  ('3')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+%SCToriginX DEFAULT  ('200')
+%SCToriginY DEFAULT  ('200')
+[ADDITION]
+NAME ABC CloseCurrentWindow
+[INSTANCE]
+INSTANCE 1
+[ADDITION]
+NAME ABCSCTool SCT_ClipboardToImage
+[INSTANCE]
+INSTANCE 2
+[PROMPTS]
+%TplName DEFAULT  ('Screen Capture Tools Paste Clipboard into Image')
+%TplDescription DEFAULT  ('Code template to add Paste Clipboard into Image.')
+%SCTImageControl DEFAULT  ('?Image1')
+%SCTError LONG  (1)
+%SCTResult DEFAULT  ('SCT_wResult')
+[WINDOW]
+Window  WINDOW('Clipboard Image Demo'),AT(,,340,180),FONT('Segoe UI Semilight',11),DOUBLE, |
+          CENTER,ICON('sctools.ico'),GRAY,MDI,MSG('Press PrintScreen Key to Print the T' & |
+          'opmost Window')
+          PROMPT('With Devuna''s Screen Capture Tools you can easily paste DIB, BMP, EM' & |
+            'F, and WMF data from the Windows clipboard into an image control.'),AT(4,4,308, |
+            20),USE(?Prompt1),#ORIG(?Prompt1),#ORDINAL(1)
+          PANEL,AT(4,26,332,130),USE(?Panel1),BEVEL(-1,-1),#ORIG(?Panel1),#ORDINAL(2)
+          IMAGE,AT(5,27,330,128),USE(?Image1),CENTERED,HVSCROLL,#ORIG(?Image1),#ORDINAL(3)
+          BUTTON('&Print Window'),AT(4,162,80,14),USE(?PrintWindowButton),#ORIG(?PrintWindowButton), |
+            #SEQ(3),#ORDINAL(4)
+          BUTTON('&Window To Clipboard'),AT(88,162,80,14),USE(?SaveWindowButton),#ORIG(?SaveWindowButton), |
+            #SEQ(4),#ORDINAL(5)
+          BUTTON('&Clipboard to Image'),AT(172,162,80,14),USE(?CaptureButton),#ORIG(?Button2), |
+            #ORDINAL(6)
+          BUTTON('&OK'),AT(256,162,80,14),USE(?OkButton),#ORIG(?Button1),#ORDINAL(7)
+        END
+
+[END]
+[MODULE]
+[COMMON]
+FROM ABC GENERATED
+[EMBED]
+EMBED %StartOfModule
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 1300
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!
+!    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
+!
+!    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
+!    it under the terms of the GNU General Public License as published by
+!    the Free Software Foundation, either version 3 of the License, or
+!    (at your option) any later version.
+!
+!    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    GNU General Public License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+! ================================================================================
+!endregion Notices
+[END]
+[END]
+[PROCEDURE]
+NAME About
+GLOBAL
+[COMMON]
+FROM ABC Window
+MODIFIED '2017/06/24' '10:31:27'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('a18ede9f-39ea-4d01-b187-2d1814544c86'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('AsciiFileClass')
+WHEN  ('WindowToolbar') ('AsciiFileClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?Close') ('No Special Action')
+WHEN  ('?Image1') ('No Special Action')
+WHEN  ('?Prompt1') ('No Special Action')
+WHEN  ('?Prompt2') ('No Special Action')
+WHEN  ('?Prompt3') ('No Special Action')
+WHEN  ('?Prompt4') ('No Special Action')
+WHEN  ('?Prompt5') ('No Special Action')
+WHEN  ('?Prompt6') ('No Special Action')
+WHEN  ('?Prompt7') ('No Special Action')
+WHEN  ('?Prompt8') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%ButtonThread DEPEND %Control LONG TIMES 0
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?Close') ('25000')
+WHEN  ('?Image1') ('25000')
+WHEN  ('?Prompt1') ('25000')
+WHEN  ('?Prompt2') ('25000')
+WHEN  ('?Prompt3') ('25000')
+WHEN  ('?Prompt4') ('25000')
+WHEN  ('?Prompt5') ('25000')
+WHEN  ('?Prompt6') ('25000')
+WHEN  ('?Prompt7') ('25000')
+WHEN  ('?Prompt8') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?Close') ('None')
+WHEN  ('?Image1') ('None')
+WHEN  ('?Prompt1') ('None')
+WHEN  ('?Prompt2') ('None')
+WHEN  ('?Prompt3') ('None')
+WHEN  ('?Prompt4') ('None')
+WHEN  ('?Prompt5') ('None')
+WHEN  ('?Prompt6') ('None')
+WHEN  ('?Prompt7') ('None')
+WHEN  ('?Prompt8') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 10
+WHEN  ('?Close') (1)
+WHEN  ('?Image1') (1)
+WHEN  ('?Prompt1') (1)
+WHEN  ('?Prompt2') (1)
+WHEN  ('?Prompt3') (1)
+WHEN  ('?Prompt4') (1)
+WHEN  ('?Prompt5') (1)
+WHEN  ('?Prompt6') (1)
+WHEN  ('?Prompt7') (1)
+WHEN  ('?Prompt8') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabDisableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Image1') ('AIBtn3')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Image1') ('?Prompt1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+[EMBED]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'CloseWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+POST(EVENT:StartClipboardDemo,,1)
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABC CloseButton
+[INSTANCE]
+INSTANCE 1
+[WINDOW]
+Window  WINDOW('About Devuna Screen Capture Tools...'),AT(,,296,236),FONT('Segoe UI Semilight', |
+          11),DOUBLE,CENTER,ICON('sctools.ico'),GRAY,MDI,MSG('Press PrintScreen Key to ' & |
+          'Print the Topmost Window'),SYSTEM
+          PROMPT('Have you ever wished you had a simple way to enable your users to cap' & |
+            'ture screen images and save them to a file or print them?'),AT(9,8,279,20),USE(?Prompt1), |
+            #ORIG(?Prompt1),#ORDINAL(1)
+          PROMPT('Have you ever wanted an easy way to paste images from the Windows cli' & |
+            'pboard into an image control?'),AT(9,29,279,20),USE(?Prompt2),#ORIG(?Prompt2), |
+            #ORDINAL(2)
+          IMAGE('sctools.ico'),AT(9,56),USE(?Image1),CENTERED,#ORIG(?Image1),#ORDINAL(3)
+          PROMPT('Devuna Screen Capture Tools make these tasks a breeze...'),AT(36,60,256, |
+            12),USE(?Prompt3),#ORIG(?Prompt3),#ORDINAL(4)
+          PROMPT('Our Screen Capture Tools include a library that handles all the low l' & |
+            'evel Windows API calls, a Clarion wrapper DLL, and a set of templates that' & |
+            ' make using the wrapper library routines a snap.'),AT(9,84,279,26),USE(?Prompt4), |
+            #ORIG(?Prompt4),#ORDINAL(5)
+          PROMPT('With Devuna''s Screen Capture Tools you can easily paste DIB, BMP, EM' & |
+            'F, and WMF data from the Windows clipboard into an image control.'),AT(9,112, |
+            279,20),USE(?Prompt5),TRN,#ORIG(?Prompt5),#ORDINAL(6)
+          PROMPT('The PrintScreen functionality is ideal for a quick ''report'' of what' & |
+            ' is on the screen, for documentation, or for help desk support.  No more c' & |
+            'opying to the clipboard and switching to another application to print or s' & |
+            'ave the clipboard image.'),AT(9,132,279,26),USE(?Prompt6),TRN,#ORIG(?Prompt6), |
+            #ORDINAL(7)
+          PROMPT('Compatible with Clarion 10 ABC and Legacy Templates.  Price:  $99.00  US'), |
+            AT(9,183,279,10),USE(?Prompt7),#ORIG(?Prompt7),#ORDINAL(8)
+          PROMPT('Need more information?  phone:  (519) 935-3201 or email:  rrogers@devuna.com'), |
+            AT(9,199,279,10),USE(?Prompt8),#ORIG(?Prompt8),#ORDINAL(9)
+          BUTTON('Close'),AT(125,216,45,14),USE(?Close),#ORIG(?Close),#SEQ(1),#ORDINAL(10)
+        END
+
+[END]
+FROM ABC GENERATED
+[PROCEDURE]
+NAME About
+GLOBAL
+[COMMON]
+FROM ABC Window
+MODIFIED '2017/06/24' '10:31:27'
+[DATA]
+[SCREENCONTROLS]
+! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
+! ENTRY(@n3),USE(FilesOpened)
+[REPORTCONTROLS]
+! STRING(@n3),USE(FilesOpened)
+FilesOpened              BYTE
+!!> GUID('a18ede9f-39ea-4d01-b187-2d1814544c86'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
+[PROMPTS]
+%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
+%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('WindowManager')
+WHEN  ('WindowToolbar') ('ToolbarClass')
+
+%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('')
+WHEN  ('WindowToolbar') ('')
+
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
+WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
+  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
+
+%ReturnValue FIELD  ()
+%WindowOperationMode DEFAULT  ('Use WINDOW setting')
+%INISaveWindow LONG  (1)
+%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('ThisWindow')
+WHEN  ('WindowToolbar') ('Toolbar')
+
+%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (1)
+WHEN  ('WindowToolbar') (1)
+
+%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('AsciiFileClass')
+WHEN  ('WindowToolbar') ('AsciiFileClass')
+
+%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
+
+%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
+
+%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
+WHEN  ('Default') (0)
+WHEN  ('WindowToolbar') (0)
+
+%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
+
+%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
+
+%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
+
+%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
+
+%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
+
+%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
+WHEN  ('WindowToolbar')TIMES 0
+
+%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
+
+%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
+
+%ButtonAction DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?Close') ('No Special Action')
+WHEN  ('?Image1') ('No Special Action')
+WHEN  ('?Prompt1') ('No Special Action')
+WHEN  ('?Prompt2') ('No Special Action')
+WHEN  ('?Prompt3') ('No Special Action')
+WHEN  ('?Prompt4') ('No Special Action')
+WHEN  ('?Prompt5') ('No Special Action')
+WHEN  ('?Prompt6') ('No Special Action')
+WHEN  ('?Prompt7') ('No Special Action')
+WHEN  ('?Prompt8') ('No Special Action')
+
+%ButtonRunName DEPEND %Control DEFAULT TIMES 0
+
+%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%ButtonThread DEPEND %Control LONG TIMES 0
+
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?Close') ('25000')
+WHEN  ('?Image1') ('25000')
+WHEN  ('?Prompt1') ('25000')
+WHEN  ('?Prompt2') ('25000')
+WHEN  ('?Prompt3') ('25000')
+WHEN  ('?Prompt4') ('25000')
+WHEN  ('?Prompt5') ('25000')
+WHEN  ('?Prompt6') ('25000')
+WHEN  ('?Prompt7') ('25000')
+WHEN  ('?Prompt8') ('25000')
+
+%ButtonParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
+
+%ButtonRequest DEPEND %Control DEFAULT TIMES 10
+WHEN  ('?Close') ('None')
+WHEN  ('?Image1') ('None')
+WHEN  ('?Prompt1') ('None')
+WHEN  ('?Prompt2') ('None')
+WHEN  ('?Prompt3') ('None')
+WHEN  ('?Prompt4') ('None')
+WHEN  ('?Prompt5') ('None')
+WHEN  ('?Prompt6') ('None')
+WHEN  ('?Prompt7') ('None')
+WHEN  ('?Prompt8') ('None')
+
+%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
+
+%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
+
+%PreLookupKey DEPEND %Control KEY TIMES 0
+
+%PreLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupKey DEPEND %Control KEY TIMES 0
+
+%PostLookupField DEPEND %Control COMPONENT TIMES 0
+
+%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
+
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 10
+WHEN  ('?Close') (1)
+WHEN  ('?Image1') (1)
+WHEN  ('?Prompt1') (1)
+WHEN  ('?Prompt2') (1)
+WHEN  ('?Prompt3') (1)
+WHEN  ('?Prompt4') (1)
+WHEN  ('?Prompt5') (1)
+WHEN  ('?Prompt6') (1)
+WHEN  ('?Prompt7') (1)
+WHEN  ('?Prompt8') (1)
+
+%ForceWindowRefresh DEPEND %Control LONG TIMES 0
+
+%LookupAssign DEPEND %Control MULTI LONG TIMES 0
+
+%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
+
+%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
+
+%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
+
+%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
+
+%CheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
+
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
+
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
+
+%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
+
+%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
+
+%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
+
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
+
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 10
+WHEN  ('?Close')TIMES 0
+WHEN  ('?Image1')TIMES 0
+WHEN  ('?Prompt1')TIMES 0
+WHEN  ('?Prompt2')TIMES 0
+WHEN  ('?Prompt3')TIMES 0
+WHEN  ('?Prompt4')TIMES 0
+WHEN  ('?Prompt5')TIMES 0
+WHEN  ('?Prompt6')TIMES 0
+WHEN  ('?Prompt7')TIMES 0
+WHEN  ('?Prompt8')TIMES 0
+
+%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
+WHEN  ('Default') ('NO')
+WHEN  ('WindowToolbar') ('NO')
+
+%ProcedureDisableEnhanceFocus LONG  (0)
+%ProcedureUseEnterInsteadTabOverride LONG  (0)
+%WindowUseEnterInsteadTab LONG  (1)
+%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
+%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%WindowStyles MULTI LONG  ()
+%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleOtherListboxes MULTI DEFAULT  ()
+%ProcedureAutoBindFields MULTI LONG  ()
+%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedures MULTI LONG  ()
+%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
+
+%ProcedureUserBindFields MULTI LONG  ()
+%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
+
+%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
+
+%ProcedureUserBindProcedures MULTI LONG  ()
+%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
+
+%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
+
+%ProcedureUserBindExpressions MULTI LONG  ()
+%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
+
+%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
+
+%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
+
+%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
+
+%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
+%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
+%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
+
+%ProcedureAutoBindValidToAddField LONG  (0)
+%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
+%ProcedureUseEnterInsteadTabDisableNextTabStop LONG  (0)
+%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
+%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
+
+%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
+
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+
+%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
+
+%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+
+%ProcedureOneInstance LONG  (0)
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+
+%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
+
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
+%ActiveImageEnable DEPEND %Control LONG TIMES 0
+
+%AIObjectName DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Image1') ('AIBtn3')
+
+%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (1)
+
+%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+WHEN  ('?Image1') ('?Prompt1')
+
+%AIImgRound DEPEND %Control LONG TIMES 0
+
+%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+%AIDisableImg DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+%AIHotImg DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+%AIPressedImg DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
+
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('?Image1') (0)
+
+[EMBED]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'CloseWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+POST(EVENT:StartClipboardDemo,,1)
+[END]
+[END]
+[END]
+[ADDITION]
+NAME ABC CloseButton
+[INSTANCE]
+INSTANCE 1
+[WINDOW]
+Window  WINDOW('About Devuna Screen Capture Tools...'),AT(,,296,236),FONT('Segoe UI Semilight', |
+          11),DOUBLE,CENTER,ICON('sctools.ico'),GRAY,MDI,MSG('Press PrintScreen Key to ' & |
+          'Print the Topmost Window'),SYSTEM
+          PROMPT('Have you ever wished you had a simple way to enable your users to cap' & |
+            'ture screen images and save them to a file or print them?'),AT(9,8,279,20),USE(?Prompt1), |
+            #ORIG(?Prompt1),#ORDINAL(1)
+          PROMPT('Have you ever wanted an easy way to paste images from the Windows cli' & |
+            'pboard into an image control?'),AT(9,29,279,20),USE(?Prompt2),#ORIG(?Prompt2), |
+            #ORDINAL(2)
+          IMAGE('sctools.ico'),AT(9,56),USE(?Image1),CENTERED,#ORIG(?Image1),#ORDINAL(3)
+          PROMPT('Devuna Screen Capture Tools make these tasks a breeze...'),AT(36,60,256, |
+            12),USE(?Prompt3),#ORIG(?Prompt3),#ORDINAL(4)
+          PROMPT('Our Screen Capture Tools include a library that handles all the low l' & |
+            'evel Windows API calls, a Clarion wrapper DLL, and a set of templates that' & |
+            ' make using the wrapper library routines a snap.'),AT(9,84,279,26),USE(?Prompt4), |
+            #ORIG(?Prompt4),#ORDINAL(5)
+          PROMPT('With Devuna''s Screen Capture Tools you can easily paste DIB, BMP, EM' & |
+            'F, and WMF data from the Windows clipboard into an image control.'),AT(9,112, |
+            279,20),USE(?Prompt5),TRN,#ORIG(?Prompt5),#ORDINAL(6)
+          PROMPT('The PrintScreen functionality is ideal for a quick ''report'' of what' & |
+            ' is on the screen, for documentation, or for help desk support.  No more c' & |
+            'opying to the clipboard and switching to another application to print or s' & |
+            'ave the clipboard image.'),AT(9,132,279,26),USE(?Prompt6),TRN,#ORIG(?Prompt6), |
+            #ORDINAL(7)
+          PROMPT('Compatible with Clarion 10 ABC and Legacy Templates.  Price:  $99.00  US'), |
+            AT(9,183,279,10),USE(?Prompt7),#ORIG(?Prompt7),#ORDINAL(8)
+          PROMPT('Need more information?  phone:  (519) 935-3201 or email:  rrogers@devuna.com'), |
+            AT(9,199,279,10),USE(?Prompt8),#ORIG(?Prompt8),#ORDINAL(9)
+          BUTTON('Close'),AT(125,216,45,14),USE(?Close),#ORIG(?Close),#SEQ(1),#ORDINAL(10)
+        END
+
 [END]

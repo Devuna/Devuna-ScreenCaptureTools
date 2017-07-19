@@ -25,13 +25,23 @@ WHEN  ('Translator') ('')
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
 
 %ProgramAuthor DEFAULT  ('')
+%Repository DEFAULT  ('')
+%ProgramIcon DEFAULT  ('')
 %MessageDescription LONG  (1)
 %GlobalExternal LONG  (0)
 %ExternalSource DEFAULT  ('Dynamic Link Library (DLL)')
 %GenerateEmbedComments LONG  (0)
-%INIActive LONG  (0)
+%INIType DEFAULT  ('NVD_INI')
 %INIFile DEFAULT  ('Program Name.INI')
 %ININame DEFAULT  ('')
+%INIProgramIniLocation DEFAULT  ('APPDIR')
+%INICSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
+%CSIDLCompanyDir DEFAULT  ('')
+%CSIDLProductDir DEFAULT  ('')
+%CSIDLCreate LONG  (0)
+%INIInAppDirectory LONG  (1)
+%REGRoot DEFAULT  ('REG_CLASSES_ROOT')
+%DisableINISaveWindow LONG  (0)
 %PreserveVars MULTI LONG  ()
 %PreserveVar DEPEND %PreserveVars DEFAULT TIMES 0
 
@@ -39,13 +49,125 @@ WHEN  ('Translator') ('')
 %FuzzyMatchingEnabled LONG  (0)
 %IgnoreCase LONG  (1)
 %WordOnly LONG  (0)
-%WindowFrameDragging LONG  (1)
+%ButtonMarginsCompatibility LONG  (0)
+%UseDefaultXPManifest LONG  (1)
+%GenerateXPManifest LONG  (0)
+%LinkGenerateXPManifest LONG  (0)
+%AddVistaXPManifest LONG  (0)
+%VistaManifestExecutionLevel DEFAULT  ('asInvoker')
+%VistaManifestUIAccess LONG  (0)
+%NoThemedControlsDependency LONG  (0)
+%VistaManifestdpiAware LONG  (1)
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
+%W7ManifestVista LONG  (0)
+%W7ManifestW7 LONG  (0)
+%W7ManifestW8 LONG  (1)
+%W7ManifestW81 LONG  (1)
+%W7ManifestW10 LONG  (1)
+%ForceMakeTransparentXPManifest LONG  (0)
+%ForceMakeColorXPManifest LONG  (0)
+%ForceSHEETNoTheme LONG  (0)
+%ExtUIXPMenuEnableGlobal LONG  (0)
+%ExtUIXPMenuColorTypeGlobal DEFAULT  ('AUTONOBAR')
+%ExtUIXPMenuDisableImageBar LONG  (1)
+%ExtUIXPMenuEnableRuntime LONG  (0)
+%ExtUIXPMenuRuntimeVar DEFAULT  ('SCT_wclass')
+%ExtUIXPMenuColorLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorRightGlobal LONG  (12560039)
+%ExtUIXPMenuColorSelectionBarLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectionBarRightGlobal LONG  (15920364)
+%ExtUIXPMenuSelVertical LONG  (1)
+%ExtUIXPMenuColorSelectionBorderGlobal LONG  (15920364)
+%ExtUIXPMenuColorHotLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorHotRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectedLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectedRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalBarLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalBarRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorItemBackgroundGlobal LONG  (-2147483644)
+%ExtUIXPMenuColorNormalText LONG  (0)
+%ExtUIXPMenuColorSelectedText LONG  (0)
+%ExtUIXPMenuColorHotText LONG  (0)
+%ExtUIXPMenuFlat LONG  (1)
+%ExtUIXPMenuShowImageBar LONG  (0)
+%ExtUIXPMenuSeparator3D LONG  (1)
+%ExtUIXPMenuSeparatorFull LONG  (0)
+%ExtUIXPMenuVerticalLine LONG  (1)
+%ExtUIMDITabGlobal DEFAULT  ('DISABLE')
+%ExtUIMDITabStyleGlobal DEFAULT  ('Default')
+%ExtUITabStyleGlobal DEFAULT  ('Default')
+%WindowEnableEnhanceFocus LONG  (0)
+%SelectedText LONG  (1)
+%SelectedRadio LONG  (1)
+%SelectedSpin LONG  (1)
+%SelectedCheck LONG  (1)
+%SelectedDropList LONG  (1)
+%SelectedList LONG  (1)
+%SelectedDisplayChangeColor LONG  (1)
+%SelectedColor LONG  (65535)
+%SelectedStyle LONG  (1)
+%SelectedRequired LONG  (0)
+%SelectedRequiredColor LONG  (65535)
+%SelectedDisplayBox LONG  (1)
+%SelectedDisplayBoxFillColor LONG  (65535)
+%SelectedDisplayBoxBorderColor LONG  (0)
+%SelectedDisplayBoxBorderSize DEFAULT  ('2')
+%SelectedRequiredBox LONG  (0)
+%SelectedRequiredDisplayBoxFillColor LONG  (255)
+%SelectedRequiredDisplayBoxBorderColor LONG  (0)
+%SelectedCaret LONG  (1)
+%SelectedCaretColor LONG  (8421504)
+%SelectedCaretCharacter DEFAULT  ('»')
+%SelectedCaretCharacterSeparation DEFAULT  ('8')
+%ExcludeSelectedDropList LONG  (1)
+%EnableOSK DEFAULT  ('OFF')
+%GlobalUseEnterInsteadTab LONG  (0)
+%GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
+%GlobalUseEnterInsteadTabEnableValue DEFAULT  ('True')
+%GlobalInterLine DEFAULT  ('0')
+%GlobalEnableAutoSizeColumn LONG  (0)
+%GlobalEnableListFormatManager LONG  (0)
+%GlobalUserFieldListFormatManager DEFAULT  ('1')
+%TableOrigin DEFAULT  ('Application')
+%FileEquate DEFAULT  ('LFM_CFile')
+%ConfigFilePRE DEFAULT  ('CFG')
+%ConfigFileOEM LONG  (0)
+%ConfigFileTHREAD LONG  (1)
+%ConfigFileENCRYPT LONG  (0)
+%ConfigFilePASSWORD DEFAULT  ('')
+%FormatNameSize DEFAULT  ('30')
+%FormatBufferSize DEFAULT  ('5120')
+%VariableBufferSize DEFAULT  ('2048')
+%ConfigFilePath DEFAULT  ('')
+%UseConfigFileName DEFAULT  ('Default')
+%ConfigFileNAME DEFAULT  ('Formats.FDB')
+%ColonCounter DEFAULT  ('')
+%WrongSymbol DEFAULT  ('')
+%DictionaryTableOrigin FILE  ()
+%GlobalLFMSortOrderMenuText DEFAULT  ('SortOrder')
+%GlobalEnableRebase LONG  (0)
+%RBDMethod DEFAULT  ('Specify manually')
+%RBDImageBase DEFAULT  ('10000000')
 %DefaultGenerate LONG  (0)
 %DefaultRILogout LONG  (1)
 %LockRecoverTime DEFAULT  ('10')
 %DefaultThreaded DEFAULT  ('Use File Setting')
 %DefaultCreate DEFAULT  ('Use File Setting')
 %DefaultExternal DEFAULT  ('None External')
+%DefaultLocalExternal LONG  (0)
 %DefaultExternalSource DEFAULT  ('')
 %DefaultExternalAPP LONG  (0)
 %DefaultExport LONG  (0)
@@ -53,9 +175,18 @@ WHEN  ('Translator') ('')
 %DefaultUserAccess DEFAULT  ('Read/Write')
 %DefaultOtherAccess DEFAULT  ('Deny None')
 %DefaultLazyOpen LONG  (1)
+%GeneratePropDataPath LONG  (0)
+%PropDataPathLocation DEFAULT  ('Use same CSIDL value as set for INI file')
+%DataPathCSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
+%DataPathCSIDLCompanyDir DEFAULT  ('')
+%DataPathCSIDLProductDir DEFAULT  ('')
+%DataPathCSIDLCreate LONG  (0)
+%DataPathOtherDirectory DEFAULT  ('')
+%DataPathOtherDirectoryCreate LONG  (0)
 %OverrideGenerate DEPEND %File LONG TIMES 0
 
-%OverrideRILogout DEPEND %File DEFAULT TIMES 0
+%OverrideRILogout DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
 %GlobalObject DEPEND %ClassItem DEFAULT TIMES 5
 WHEN  ('ErrorManager') ('YES')
@@ -159,11 +290,16 @@ WHEN  ('INIManager')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%OverrideThreaded DEPEND %File DEFAULT TIMES 0
+%OverrideThreaded DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
-%OverrideCreate DEPEND %File DEFAULT TIMES 0
+%OverrideCreate DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
-%OverrideExternal DEPEND %File DEFAULT TIMES 0
+%OverrideExternal DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideLocalExternal DEPEND %File LONG TIMES 0
 
 %OverrideExternalSource DEPEND %File DEFAULT TIMES 0
 
@@ -171,28 +307,39 @@ WHEN  ('INIManager')TIMES 0
 
 %OverrideExport DEPEND %File LONG TIMES 0
 
-%FileDeclarationMode DEPEND %File DEFAULT TIMES 0
+%FileDeclarationMode DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use User Options')
 
-%FileDeclarationThread DEPEND %File LONG TIMES 0
+%FileDeclarationType DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
 
-%FileDeclarationBindable DEPEND %File LONG TIMES 0
+%FileDeclarationThread DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
+
+%FileDeclarationBindable DEPEND %File LONG TIMES 1
+WHEN  ('') (1)
 
 %FileDeclarationName DEPEND %File DEFAULT TIMES 0
 
 %FileDeclarationOver DEPEND %File DEFAULT TIMES 0
 
-%FileDeclarationType DEPEND %File LONG TIMES 0
+%OverrideOpenMode DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
-%OverrideOpenMode DEPEND %File DEFAULT TIMES 0
+%OverrideUserAccess DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
-%OverrideUserAccess DEPEND %File DEFAULT TIMES 0
+%OverrideOtherAccess DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
-%OverrideOtherAccess DEPEND %File DEFAULT TIMES 0
+%OverrideLazyOpen DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
 
-%OverrideLazyOpen DEPEND %File DEFAULT TIMES 0
+%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
 
 %StandardExternalModule DEPEND %Module LONG TIMES 12
-WHEN  ('sctool100010.clw') (1)
+WHEN  ('') (1)
 WHEN  ('sctools.clw') (1)
 WHEN  ('sctools001.clw') (1)
 WHEN  ('sctools002.clw') (1)
@@ -211,8 +358,10 @@ WHEN  ('sctools010.clw') (1)
 %AutoToolbar LONG  (1)
 %AutoRefresh LONG  (1)
 %ImageClass DEFAULT  ('ImageManager')
+%ErrorStatusManagerType DEFAULT  ('ErrorStatusClass')
 %ErrorManagerType DEFAULT  ('ErrorClass')
 %DefaultErrorCategory DEFAULT  ('ABC')
+%AllowSelectCopy LONG  (0)
 %StoreErrorHistory LONG  (0)
 %LimitStoredHistory LONG  (0)
 %ErrorHistoryThreshold DEFAULT  ('300')
@@ -231,7 +380,14 @@ WHEN  ('sctools010.clw') (1)
 
 %TranslationGroup DEPEND %TranslationGroups DEFAULT TIMES 0
 
-%FuzzyMatcherClass DEFAULT  ('FuzzyClass')
+%CalendarManagerType DEFAULT  ('CalendarClass')
+%GlobalChangeColor LONG  (0)
+%GlobalColorSunday LONG  (255)
+%GlobalColorSaturday LONG  (255)
+%GlobalColorHoliday LONG  (32768)
+%GlobalColorOther LONG  (0)
+%GlobalSelectOnClose DEFAULT  ('Select')
+%GlobalUseABCClasess LONG  (1)
 %FileManagerType DEFAULT  ('FileManager')
 %ViewManagerType DEFAULT  ('ViewManager')
 %RelationManagerType DEFAULT  ('RelationManager')
@@ -239,119 +395,12 @@ WHEN  ('sctools010.clw') (1)
 %ActiveInvisible LONG  (0)
 %AllowUnfilled LONG  (0)
 %RetainRow LONG  (1)
-%BrowseEIPManagerType DEFAULT  ('BrowseEIPManager')
-%EditInPlaceType DEFAULT  ('EditEntryClass')
-%GridClass DEFAULT  ('GridClass')
-%SidebarClass DEFAULT  ('SidebarClass')
-%StepManagerType DEFAULT  ('StepClass')
-%StepManagerLongType DEFAULT  ('StepLongClass')
-%StepManagerRealType DEFAULT  ('StepRealClass')
-%StepManagerStringType DEFAULT  ('StepStringClass')
-%StepManagerCustomType DEFAULT  ('StepCustomClass')
-%StepLocatorType DEFAULT  ('StepLocatorClass')
-%EntryLocatorType DEFAULT  ('EntryLocatorClass')
-%IncrementalLocatorType DEFAULT  ('IncrementalLocatorClass')
-%FilteredLocatorType DEFAULT  ('FilterLocatorClass')
 %FileDropManagerType DEFAULT  ('FileDropClass')
 %FileDropComboManagerType DEFAULT  ('FileDropComboClass')
-%QBEFormType DEFAULT  ('QueryFormClass')
-%QBEFormVisualType DEFAULT  ('QueryFormVisual')
-%QBEListType DEFAULT  ('QueryListClass')
-%QBEListVisualType DEFAULT  ('QueryListVisual')
-%ProcessType DEFAULT  ('ProcessClass')
-%PrintPreviewType DEFAULT  ('PrintPreviewClass')
-%ReportManagerType DEFAULT  ('ReportManager')
-%AsciiViewerClass DEFAULT  ('AsciiViewerClass')
-%AsciiSearchClass DEFAULT  ('AsciiSearchClass')
-%AsciiPrintClass DEFAULT  ('AsciiPrintClass')
-%AsciiFileManagerType DEFAULT  ('AsciiFileClass')
-%ToolbarClass DEFAULT  ('ToolbarClass')
-%ToolbarListBoxType DEFAULT  ('ToolbarListboxClass')
-%ToolbarRelTreeType DEFAULT  ('ToolbarReltreeClass')
-%ToolbarUpdateClassType DEFAULT  ('ToolbarUpdateClass')
-%OverrideAbcSettings LONG  (0)
-%AbcSourceLocation DEFAULT  ('LINK')
-%AbcLibraryName DEFAULT  ('')
-%GlobalUseDefaultFileManager LONG  (1)
-%GlobalFileManagerClass DEFAULT  ('')
-%GlobalUseDefaultRelationManager LONG  (1)
-%GlobalRelationManagerClass DEFAULT  ('')
-%OverrideUseDefaultFileManager DEPEND %File LONG TIMES 0
-
-%OverrideFileManagerClass DEPEND %File DEFAULT TIMES 0
-
-%OverrideUseDefaultRelationManager DEPEND %File LONG TIMES 0
-
-%OverrideRelationManagerClass DEPEND %File DEFAULT TIMES 0
-
-%INIType DEFAULT  ('NVD_INI')
-%REGRoot DEFAULT  ('REG_CLASSES_ROOT')
-%WindowEnableEnhanceFocus LONG  (0)
-%SelectedText LONG  (1)
-%SelectedRadio LONG  (1)
-%SelectedSpin LONG  (1)
-%SelectedCheck LONG  (1)
-%SelectedDropList LONG  (1)
-%SelectedDisplayChangeColor LONG  (1)
-%SelectedColor LONG  (65535)
-%SelectedStyle LONG  (1)
-%ExcludeSelectedDropList LONG  (1)
-%SelectedRequired LONG  (0)
-%SelectedRequiredColor LONG  (65535)
-%SelectedDisplayBox LONG  (1)
-%SelectedDisplayBoxFillColor LONG  (65535)
-%SelectedDisplayBoxBorderColor LONG  (0)
-%SelectedDisplayBoxBorderSize DEFAULT  ('2')
-%SelectedRequiredBox LONG  (0)
-%SelectedRequiredDisplayBoxFillColor LONG  (255)
-%SelectedRequiredDisplayBoxBorderColor LONG  (0)
-%SelectedCaret LONG  (1)
-%SelectedCaretColor LONG  (8421504)
-%SelectedCaretCharacter DEFAULT  ('»')
-%SelectedCaretCharacterSeparation DEFAULT  ('8')
-%GlobalUseEnterInsteadTab LONG  (0)
-%GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
-%GlobalEnableAutoSizeColumn LONG  (0)
-%GlobalEnableListFormatManager LONG  (0)
-%GlobalUserFieldListFormatManager DEFAULT  ('1')
-%TableOrigin DEFAULT  ('Application')
-%FileEquate DEFAULT  ('LFM_CFile')
-%ConfigFilePRE DEFAULT  ('CFG')
-%ConfigFileOEM LONG  (0)
-%ConfigFileTHREAD LONG  (1)
-%ConfigFileENCRYPT LONG  (0)
-%ConfigFilePASSWORD DEFAULT  ('')
-%FormatNameSize DEFAULT  ('30')
-%FormatBufferSize DEFAULT  ('5120')
-%VariableBufferSize DEFAULT  ('2048')
-%ConfigFilePath DEFAULT  ('')
-%UseConfigFileName DEFAULT  ('Default')
-%ConfigFileNAME DEFAULT  ('Formats.FDB')
-%ColonCounter DEFAULT  ('')
-%WrongSymbol DEFAULT  ('')
-%DictionaryTableOrigin FILE  ()
-%CalendarManagerType DEFAULT  ('CalendarClass')
-%GlobalUseABCClasess LONG  (1)
-%AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v10.0')
-%ABCVersion DEFAULT  ('10000')
-%GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
-%GlobalUseEnterInsteadTabEnableValue DEFAULT  ('True')
-%GlobalChangeColor LONG  (0)
-%GlobalColorSunday LONG  (255)
-%GlobalColorSaturday LONG  (255)
-%GlobalColorHoliday LONG  (32768)
-%GlobalColorOther LONG  (0)
-%GlobalSelectOnClose DEFAULT  ('Select')
-%UseDefaultXPManifest LONG  (1)
 %FormVCRManagerType DEFAULT  ('FormVCRClass')
-%ToolbarFormVCRType DEFAULT  ('ToolbarFormVCRClass')
-%ProgramIcon DEFAULT  ('')
-%DisableINISaveWindow LONG  (0)
-%GlobalEnableRebase LONG  (0)
-%RBDMethod DEFAULT  ('Specify manually')
-%RBDImageBase DEFAULT  ('10000000')
+%BrowseEIPManagerType DEFAULT  ('BrowseEIPManager')
 %EditInPlaceInterface DEFAULT  ('Original')
+%EditInPlaceType DEFAULT  ('EditEntryClass')
 %EditInPlaceEntryType DEFAULT  ('EditEntryClass')
 %EditInPlaceTextType DEFAULT  ('EditTextClass')
 %EditInPlaceCheckType DEFAULT  ('EditCheckClass')
@@ -365,93 +414,57 @@ WHEN  ('sctools010.clw') (1)
 %EditInPlaceCalendarType DEFAULT  ('EditCalendarClass')
 %EditInPlaceLookupType DEFAULT  ('EditLookupClass')
 %EditInPlaceOtherType DEFAULT  ('EditEntryClass')
+%QBEFormType DEFAULT  ('QueryFormClass')
+%QBEFormVisualType DEFAULT  ('QueryFormVisual')
+%QBEListType DEFAULT  ('QueryListClass')
+%QBEListVisualType DEFAULT  ('QueryListVisual')
+%StepManagerType DEFAULT  ('StepClass')
+%StepManagerLongType DEFAULT  ('StepLongClass')
+%StepManagerRealType DEFAULT  ('StepRealClass')
+%StepManagerStringType DEFAULT  ('StepStringClass')
+%StepManagerCustomType DEFAULT  ('StepCustomClass')
+%StepLocatorType DEFAULT  ('StepLocatorClass')
+%EntryLocatorType DEFAULT  ('EntryLocatorClass')
+%IncrementalLocatorType DEFAULT  ('IncrementalLocatorClass')
+%FilteredLocatorType DEFAULT  ('FilterLocatorClass')
+%FuzzyMatcherClass DEFAULT  ('FuzzyClass')
+%GridClass DEFAULT  ('GridClass')
+%SidebarClass DEFAULT  ('SidebarClass')
+%ProcessType DEFAULT  ('ProcessClass')
+%PrintPreviewType DEFAULT  ('PrintPreviewClass')
+%ReportManagerType DEFAULT  ('ReportManager')
 %ReportTargetSelectorManagerType DEFAULT  ('ReportTargetSelectorClass')
 %BreakManagerType DEFAULT  ('BreakManagerClass')
-%INIInAppDirectory LONG  (1)
-%GlobalLFMSortOrderMenuText DEFAULT  ('SortOrder')
-%DefaultLocalExternal LONG  (0)
-%OverrideLocalExternal DEPEND %File LONG TIMES 0
+%AsciiViewerClass DEFAULT  ('AsciiViewerClass')
+%AsciiSearchClass DEFAULT  ('AsciiSearchClass')
+%AsciiPrintClass DEFAULT  ('AsciiPrintClass')
+%AsciiFileManagerType DEFAULT  ('AsciiFileClass')
+%ToolbarClass DEFAULT  ('ToolbarClass')
+%ToolbarListBoxType DEFAULT  ('ToolbarListboxClass')
+%ToolbarRelTreeType DEFAULT  ('ToolbarReltreeClass')
+%ToolbarUpdateClassType DEFAULT  ('ToolbarUpdateClass')
+%ToolbarFormVCRType DEFAULT  ('ToolbarFormVCRClass')
+%OverrideAbcSettings LONG  (0)
+%AbcSourceLocation DEFAULT  ('LINK')
+%AbcLibraryName DEFAULT  ('')
+%AppTemplateFamily DEFAULT  ('ABC')
+%CWTemplateVersion DEFAULT  ('v10.0')
+%ABCVersion DEFAULT  ('10000')
+%INIActive LONG  (0)
+%WindowFrameDragging LONG  (1)
+%GlobalUseDefaultFileManager LONG  (1)
+%GlobalFileManagerClass DEFAULT  ('')
+%GlobalUseDefaultRelationManager LONG  (1)
+%GlobalRelationManagerClass DEFAULT  ('')
+%OverrideUseDefaultFileManager DEPEND %File LONG TIMES 0
 
-%ErrorStatusManagerType DEFAULT  ('ErrorStatusClass')
-%AllowSelectCopy LONG  (0)
-%SelectedList LONG  (1)
-%INIProgramIniLocation DEFAULT  ('APPDIR')
-%INICSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
-%CSIDLCompanyDir DEFAULT  ('')
-%CSIDLProductDir DEFAULT  ('')
-%CSIDLCreate LONG  (0)
-%GenerateXPManifest LONG  (0)
-%LinkGenerateXPManifest LONG  (0)
-%AddVistaXPManifest LONG  (0)
-%VistaManifestExecutionLevel DEFAULT  ('asInvoker')
-%VistaManifestUIAccess LONG  (0)
-%W7ManifestVista LONG  (0)
-%W7ManifestW7 LONG  (0)
-%ForceMakeTransparentXPManifest LONG  (0)
-%ExtUIXPMenuEnableGlobal LONG  (0)
-%ExtUIXPMenuColorTypeGlobal DEFAULT  ('AUTONOBAR')
-%ExtUIXPMenuDisableImageBar LONG  (1)
-%ExtUIXPMenuEnableRuntime LONG  (0)
-%ExtUIXPMenuRuntimeVar DEFAULT  ('SCT_wclass')
-%ExtUIXPMenuColorLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorRightGlobal LONG  (12560039)
-%ExtUIXPMenuColorSelectionBarLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorSelectionBarRightGlobal LONG  (15920364)
-%ExtUIXPMenuSelVertical LONG  (1)
-%ExtUIXPMenuColorSelectionBorderGlobal LONG  (15920364)
-%ExtUIXPMenuColorHotLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorHotRightGlobal LONG  (15920364)
-%ExtUIXPMenuColorSelectedLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorSelectedRightGlobal LONG  (15920364)
-%ExtUIXPMenuColorNormalBarLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorNormalBarRightGlobal LONG  (15920364)
-%ExtUIXPMenuColorNormalText LONG  (0)
-%ExtUIXPMenuColorSelectedText LONG  (0)
-%ExtUIXPMenuColorHotText LONG  (0)
-%ExtUIXPMenuFlat LONG  (1)
-%ExtUIMDITabGlobal DEFAULT  ('DISABLE')
-%ExtUIMDITabStyleGlobal DEFAULT  ('Default')
-%ExtUITabStyleGlobal DEFAULT  ('Default')
-%GeneratePropDataPath LONG  (0)
-%PropDataPathLocation DEFAULT  ('Use same CSIDL value as set for INI file')
-%DataPathCSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
-%DataPathCSIDLCompanyDir DEFAULT  ('')
-%DataPathCSIDLProductDir DEFAULT  ('')
-%DataPathCSIDLCreate LONG  (0)
-%DataPathOtherDirectory DEFAULT  ('')
-%DataPathOtherDirectoryCreate LONG  (0)
-%ExtUIXPMenuColorItemBackgroundGlobal LONG  (-2147483644)
-%ExtUIXPMenuShowImageBar LONG  (0)
-%ExtUIXPMenuSeparator3D LONG  (1)
-%ExtUIXPMenuSeparatorFull LONG  (0)
-%ExtUIXPMenuVerticalLine LONG  (1)
+%OverrideFileManagerClass DEPEND %File DEFAULT TIMES 0
+
+%OverrideUseDefaultRelationManager DEPEND %File LONG TIMES 0
+
+%OverrideRelationManagerClass DEPEND %File DEFAULT TIMES 0
+
 %EnableExceptionMessage LONG  (0)
-%GlobalInterLine DEFAULT  ('0')
-%NoThemedControlsDependency LONG  (0)
-%ForceMakeColorXPManifest LONG  (0)
-%ForceSHEETNoTheme LONG  (0)
-%ButtonMarginsCompatibility LONG  (0)
-%W7ManifestW8 LONG  (1)
-%VistaManifestDependentAssembly MULTI LONG  ()
-%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
-
-%EnableOSK DEFAULT  ('OFF')
-%W7ManifestW81 LONG  (1)
-%VistaManifestdpiAware LONG  (1)
-%W7ManifestW10 LONG  (1)
-%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 0
-
-%Repository DEFAULT  ('')
 [ADDITION]
 NAME KCR KCR_Win32
 [INSTANCE]
@@ -496,8 +509,7 @@ INSTANCE 2
 %ExcludeExportedGlobalData LONG  (0)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
-%GenerationCompleted DEPEND %Module DEFAULT TIMES 12
-WHEN  ('sctool100010.clw') ('1')
+%GenerationCompleted DEPEND %Module DEFAULT TIMES 11
 WHEN  ('sctools.clw') ('1')
 WHEN  ('sctools001.clw') ('1')
 WHEN  ('sctools002.clw') ('1')
@@ -515,11 +527,11 @@ WHEN  ('sctools010.clw') ('1')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
-#noedit
--- NAMESPACE ClarionDefaultNamespace
 #system win32 dll
 #model clarion dll
 #set RELEASE = on
+#pragma define(_ABCDllMode_=>0) -- GENERATED
+#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "sctools.clw" -- GENERATED
 #compile "sctools001.clw" -- GENERATED
 #compile "sctools002.clw" -- GENERATED
@@ -531,7 +543,9 @@ WHEN  ('sctools010.clw') ('1')
 #compile "sctools008.clw" -- GENERATED
 #compile "sctools009.clw" -- GENERATED
 #compile "sctools010.clw" -- GENERATED
-#link "sctools.dll"
+#compile "sctools_BC0.CLW" -- GENERATED
+#pragma link("C%V%asc%X%%L%.lib") -- GENERATED
+#link "sctools.DLL"
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
@@ -585,22 +599,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -724,22 +737,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -798,22 +810,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -881,22 +892,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1233,22 +1243,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1307,22 +1316,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1373,22 +1381,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1428,22 +1435,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1482,22 +1488,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1778,22 +1783,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -2149,22 +2153,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -2375,22 +2378,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [SOURCE]
@@ -2479,22 +2481,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -2577,22 +2578,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [SOURCE]
@@ -2684,22 +2684,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [SOURCE]
@@ -2727,7 +2726,6 @@ hdcBits HDC
 hbm     HBITMAP
 rcClip  LIKE(RECT)
 lpSize  LIKE(SIZE)
-[END]
 [END]
 [END]
 [END]

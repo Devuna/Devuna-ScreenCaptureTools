@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{7152C805-4BD3-483F-B803-1BA17ED29909}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -62,7 +62,7 @@
     <Compile Include="sctools010.clw">
       <Generated>true</Generated>
     </Compile>
-    <Compile Include="sctools_BC.CLW">
+    <Compile Include="SCTOOLS_BC.CLW">
       <Generated>true</Generated>
     </Compile>
     <Compile Include="sctools_BC0.CLW">

@@ -6,136 +6,6 @@ PROCEDURE Main
 FROM ABC
 MODIFIED '2014/05/25' '15:29:56'
 [PROMPTS]
-%ProgramAuthor DEFAULT  ('Randy Rogers')
-%MessageDescription LONG  (1)
-%GlobalExternal LONG  (0)
-%ExternalSource DEFAULT  ('Dynamic Link Library (DLL)')
-%GenerateEmbedComments LONG  (0)
-%INIActive LONG  (0)
-%INIFile DEFAULT  ('Program Name.INI')
-%ININame DEFAULT  ('')
-%PreserveVars MULTI LONG  ()
-%PreserveVar DEPEND %PreserveVars DEFAULT TIMES 0
-
-%EnableRunTimeTranslator LONG  (0)
-%DefaultGenerate LONG  (0)
-%DefaultRILogout LONG  (1)
-%GlobalUseDefaultFileManager LONG  (1)
-%GlobalFileManagerClass DEFAULT  ('')
-%GlobalUseDefaultRelationManager LONG  (1)
-%GlobalRelationManagerClass DEFAULT  ('')
-%LockRecoverTime DEFAULT  ('10')
-%DefaultThreaded DEFAULT  ('Use File Setting')
-%DefaultCreate DEFAULT  ('Use File Setting')
-%DefaultExternal DEFAULT  ('None External')
-%DefaultExternalSource DEFAULT  ('')
-%DefaultExternalAPP LONG  (0)
-%DefaultExport LONG  (0)
-%DefaultOpenMode DEFAULT  ('Share')
-%DefaultUserAccess DEFAULT  ('Read/Write')
-%DefaultOtherAccess DEFAULT  ('Deny None')
-%DefaultLazyOpen LONG  (1)
-%OverrideGenerate DEPEND %File LONG TIMES 0
-
-%OverrideRILogout DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideUseDefaultFileManager DEPEND %File LONG TIMES 0
-
-%OverrideFileManagerClass DEPEND %File DEFAULT TIMES 0
-
-%OverrideUseDefaultRelationManager DEPEND %File LONG TIMES 0
-
-%OverrideRelationManagerClass DEPEND %File DEFAULT TIMES 0
-
-%OverrideThreaded DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideCreate DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideExternal DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideExternalSource DEPEND %File DEFAULT TIMES 0
-
-%OverrideExternalAPP DEPEND %File LONG TIMES 0
-
-%OverrideExport DEPEND %File LONG TIMES 0
-
-%OverrideOpenMode DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideUserAccess DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideOtherAccess DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%OverrideLazyOpen DEPEND %File DEFAULT TIMES 1
-WHEN  ('') ('Use Default')
-
-%StandardExternalModule DEPEND %Module LONG TIMES 5
-WHEN  ('') (1)
-WHEN  ('sct_demo.clw') (1)
-WHEN  ('sct_demo001.clw') (1)
-WHEN  ('sct_demo002.clw') (1)
-WHEN  ('sct_demo003.clw') (1)
-
-%WindowManagerType DEFAULT  ('WindowManager')
-%ResetOnGainFocus LONG  (0)
-%AutoToolbar LONG  (1)
-%AutoRefresh LONG  (1)
-%ErrorManagerType DEFAULT  ('ErrorClass')
-%PopupClass DEFAULT  ('PopupClass')
-%SelectFileClass DEFAULT  ('SelectFileClass')
-%ResizerType DEFAULT  ('WindowResizeClass')
-%ResizerDeFaultFindParents LONG  (1)
-%ResizerDefaultOptimizeMoves LONG  (1)
-%ResizerDefaultOptimizeRedraws LONG  (1)
-%INIClass DEFAULT  ('INIClass')
-%RunTimeTranslatorType DEFAULT  ('TranslatorClass')
-%ExtractionFilename DEFAULT  ('')
-%TranslationGroups MULTI LONG  ()
-%TranslationFile DEPEND %TranslationGroups DEFAULT TIMES 0
-
-%TranslationGroup DEPEND %TranslationGroups DEFAULT TIMES 0
-
-%FileManagerType DEFAULT  ('FileManager')
-%ViewManagerType DEFAULT  ('ViewManager')
-%RelationManagerType DEFAULT  ('RelationManager')
-%BrowserType DEFAULT  ('BrowseClass')
-%ActiveInvisible LONG  (0)
-%AllowUnfilled LONG  (0)
-%RetainRow LONG  (1)
-%BrowseEIPManagerType DEFAULT  ('BrowseEIPManager')
-%EditInPlaceType DEFAULT  ('EditEntryClass')
-%StepManagerType DEFAULT  ('StepClass')
-%StepManagerLongType DEFAULT  ('StepLongClass')
-%StepManagerRealType DEFAULT  ('StepRealClass')
-%StepManagerStringType DEFAULT  ('StepStringClass')
-%StepManagerCustomType DEFAULT  ('StepCustomClass')
-%StepLocatorType DEFAULT  ('StepLocatorClass')
-%EntryLocatorType DEFAULT  ('EntryLocatorClass')
-%IncrementalLocatorType DEFAULT  ('IncrementalLocatorClass')
-%FilteredLocatorType DEFAULT  ('FilterLocatorClass')
-%FileDropManagerType DEFAULT  ('FileDropClass')
-%FileDropComboManagerType DEFAULT  ('FileDropComboClass')
-%QBEFormType DEFAULT  ('QueryFormClass')
-%QBEFormVisualType DEFAULT  ('QueryFormVisual')
-%QBEListType DEFAULT  ('QueryListClass')
-%QBEListVisualType DEFAULT  ('QueryListVisual')
-%ProcessType DEFAULT  ('ProcessClass')
-%PrintPreviewType DEFAULT  ('PrintPreviewClass')
-%ReportManagerType DEFAULT  ('ReportManager')
-%AsciiViewerClass DEFAULT  ('AsciiViewerClass')
-%AsciiSearchClass DEFAULT  ('AsciiSearchClass')
-%AsciiPrintClass DEFAULT  ('AsciiPrintClass')
-%AsciiFileManagerType DEFAULT  ('AsciiFileClass')
-%ToolbarClass DEFAULT  ('ToolbarClass')
-%ToolbarListBoxType DEFAULT  ('ToolbarListboxClass')
-%ToolbarRelTreeType DEFAULT  ('ToolbarReltreeClass')
-%ToolbarUpdateClassType DEFAULT  ('ToolbarUpdateClass')
 %ClassItem UNIQUE DEFAULT  ('ErrorManager', 'ErrorStatusManager', 'FileManager:', |
   'FuzzyMatcher', 'INIManager', 'RelationManager:', 'Translator')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 5
@@ -154,10 +24,170 @@ WHEN  ('Translator') ('')
 
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
 
+%ProgramAuthor DEFAULT  ('Randy Rogers')
+%Repository DEFAULT  ('')
+%ProgramIcon DEFAULT  ('sctools.ico')
+%MessageDescription LONG  (1)
+%GlobalExternal LONG  (0)
+%ExternalSource DEFAULT  ('Dynamic Link Library (DLL)')
+%GenerateEmbedComments LONG  (0)
+%INIType DEFAULT  ('NVD_INI')
+%INIFile DEFAULT  ('Program Name.INI')
+%ININame DEFAULT  ('')
+%INIProgramIniLocation DEFAULT  ('APPDIR')
+%INICSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
+%CSIDLCompanyDir DEFAULT  ('')
+%CSIDLProductDir DEFAULT  ('')
+%CSIDLCreate LONG  (0)
+%INIInAppDirectory LONG  (1)
+%REGRoot DEFAULT  ('REG_CLASSES_ROOT')
+%DisableINISaveWindow LONG  (0)
+%PreserveVars MULTI LONG  ()
+%PreserveVar DEPEND %PreserveVars DEFAULT TIMES 0
+
+%EnableRunTimeTranslator LONG  (0)
 %FuzzyMatchingEnabled LONG  (1)
 %IgnoreCase LONG  (1)
 %WordOnly LONG  (0)
-%WindowFrameDragging LONG  (1)
+%ButtonMarginsCompatibility LONG  (0)
+%UseDefaultXPManifest LONG  (0)
+%GenerateXPManifest LONG  (1)
+%LinkGenerateXPManifest LONG  (1)
+%AddVistaXPManifest LONG  (0)
+%VistaManifestExecutionLevel DEFAULT  ('asInvoker')
+%VistaManifestUIAccess LONG  (0)
+%NoThemedControlsDependency LONG  (0)
+%VistaManifestdpiAware LONG  (1)
+%VistaManifestDependentAssembly MULTI LONG  ()
+%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
+
+%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
+
+%W7ManifestVista LONG  (1)
+%W7ManifestW7 LONG  (1)
+%W7ManifestW8 LONG  (1)
+%W7ManifestW81 LONG  (1)
+%W7ManifestW10 LONG  (1)
+%ForceMakeTransparentXPManifest LONG  (0)
+%ForceMakeColorXPManifest LONG  (0)
+%ForceSHEETNoTheme LONG  (0)
+%ExtUIXPMenuEnableGlobal LONG  (0)
+%ExtUIXPMenuColorTypeGlobal DEFAULT  ('AUTONOBAR')
+%ExtUIXPMenuDisableImageBar LONG  (1)
+%ExtUIXPMenuEnableRuntime LONG  (0)
+%ExtUIXPMenuRuntimeVar DEFAULT  ('')
+%ExtUIXPMenuColorLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorRightGlobal LONG  (12560039)
+%ExtUIXPMenuColorSelectionBarLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectionBarRightGlobal LONG  (15920364)
+%ExtUIXPMenuSelVertical LONG  (1)
+%ExtUIXPMenuColorSelectionBorderGlobal LONG  (15920364)
+%ExtUIXPMenuColorHotLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorHotRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectedLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorSelectedRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalBarLeftGlobal LONG  (15920364)
+%ExtUIXPMenuColorNormalBarRightGlobal LONG  (15920364)
+%ExtUIXPMenuColorItemBackgroundGlobal LONG  (-2147483644)
+%ExtUIXPMenuColorNormalText LONG  (0)
+%ExtUIXPMenuColorSelectedText LONG  (0)
+%ExtUIXPMenuColorHotText LONG  (0)
+%ExtUIXPMenuFlat LONG  (1)
+%ExtUIXPMenuShowImageBar LONG  (0)
+%ExtUIXPMenuSeparator3D LONG  (1)
+%ExtUIXPMenuSeparatorFull LONG  (0)
+%ExtUIXPMenuVerticalLine LONG  (1)
+%ExtUIMDITabGlobal DEFAULT  ('DISABLE')
+%ExtUIMDITabStyleGlobal DEFAULT  ('Default')
+%ExtUITabStyleGlobal DEFAULT  ('Default')
+%WindowEnableEnhanceFocus LONG  (0)
+%SelectedText LONG  (1)
+%SelectedRadio LONG  (1)
+%SelectedSpin LONG  (1)
+%SelectedCheck LONG  (1)
+%SelectedDropList LONG  (1)
+%SelectedList LONG  (1)
+%SelectedDisplayChangeColor LONG  (1)
+%SelectedColor LONG  (65535)
+%SelectedStyle LONG  (1)
+%SelectedRequired LONG  (0)
+%SelectedRequiredColor LONG  (65535)
+%SelectedDisplayBox LONG  (1)
+%SelectedDisplayBoxFillColor LONG  (65535)
+%SelectedDisplayBoxBorderColor LONG  (0)
+%SelectedDisplayBoxBorderSize DEFAULT  ('2')
+%SelectedRequiredBox LONG  (0)
+%SelectedRequiredDisplayBoxFillColor LONG  (255)
+%SelectedRequiredDisplayBoxBorderColor LONG  (0)
+%SelectedCaret LONG  (1)
+%SelectedCaretColor LONG  (8421504)
+%SelectedCaretCharacter DEFAULT  ('»')
+%SelectedCaretCharacterSeparation DEFAULT  ('8')
+%ExcludeSelectedDropList LONG  (1)
+%EnableOSK DEFAULT  ('OFF')
+%GlobalUseEnterInsteadTab LONG  (0)
+%GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
+%GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
+%GlobalUseEnterInsteadTabEnableValue DEFAULT  ('True')
+%GlobalInterLine DEFAULT  ('0')
+%GlobalEnableAutoSizeColumn LONG  (0)
+%GlobalEnableListFormatManager LONG  (0)
+%GlobalUserFieldListFormatManager DEFAULT  ('1')
+%TableOrigin DEFAULT  ('Application')
+%FileEquate DEFAULT  ('LFM_CFile')
+%ConfigFilePRE DEFAULT  ('CFG')
+%ConfigFileOEM LONG  (0)
+%ConfigFileTHREAD LONG  (1)
+%ConfigFileENCRYPT LONG  (0)
+%ConfigFilePASSWORD DEFAULT  ('')
+%FormatNameSize DEFAULT  ('30')
+%FormatBufferSize DEFAULT  ('5120')
+%VariableBufferSize DEFAULT  ('2048')
+%ConfigFilePath DEFAULT  ('')
+%UseConfigFileName DEFAULT  ('Default')
+%ConfigFileNAME DEFAULT  ('Formats.FDB')
+%ColonCounter DEFAULT  ('')
+%WrongSymbol DEFAULT  ('')
+%DictionaryTableOrigin FILE  ()
+%GlobalLFMSortOrderMenuText DEFAULT  ('SortOrder')
+%GlobalEnableRebase LONG  (0)
+%RBDMethod DEFAULT  ('Specify manually')
+%RBDImageBase DEFAULT  ('10000000')
+%DefaultGenerate LONG  (0)
+%DefaultRILogout LONG  (1)
+%LockRecoverTime DEFAULT  ('10')
+%DefaultThreaded DEFAULT  ('Use File Setting')
+%DefaultCreate DEFAULT  ('Use File Setting')
+%DefaultExternal DEFAULT  ('None External')
+%DefaultLocalExternal LONG  (0)
+%DefaultExternalSource DEFAULT  ('')
+%DefaultExternalAPP LONG  (0)
+%DefaultExport LONG  (0)
+%DefaultOpenMode DEFAULT  ('Share')
+%DefaultUserAccess DEFAULT  ('Read/Write')
+%DefaultOtherAccess DEFAULT  ('Deny None')
+%DefaultLazyOpen LONG  (1)
+%GeneratePropDataPath LONG  (0)
+%PropDataPathLocation DEFAULT  ('Use same CSIDL value as set for INI file')
+%DataPathCSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
+%DataPathCSIDLCompanyDir DEFAULT  ('')
+%DataPathCSIDLProductDir DEFAULT  ('')
+%DataPathCSIDLCreate LONG  (0)
+%DataPathOtherDirectory DEFAULT  ('')
+%DataPathOtherDirectoryCreate LONG  (0)
+%OverrideGenerate DEPEND %File LONG TIMES 0
+
+%OverrideRILogout DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
 %GlobalObject DEPEND %ClassItem DEFAULT TIMES 5
 WHEN  ('ErrorManager') ('YES')
 WHEN  ('ErrorStatusManager') ('YES')
@@ -260,8 +290,28 @@ WHEN  ('INIManager')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
+%OverrideThreaded DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideCreate DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideExternal DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideLocalExternal DEPEND %File LONG TIMES 0
+
+%OverrideExternalSource DEPEND %File DEFAULT TIMES 0
+
+%OverrideExternalAPP DEPEND %File LONG TIMES 0
+
+%OverrideExport DEPEND %File LONG TIMES 0
+
 %FileDeclarationMode DEPEND %File DEFAULT TIMES 1
 WHEN  ('') ('Use User Options')
+
+%FileDeclarationType DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
 
 %FileDeclarationThread DEPEND %File LONG TIMES 1
 WHEN  ('') (0)
@@ -273,91 +323,77 @@ WHEN  ('') (1)
 
 %FileDeclarationOver DEPEND %File DEFAULT TIMES 0
 
-%FileDeclarationType DEPEND %File LONG TIMES 1
+%OverrideOpenMode DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideUserAccess DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideOtherAccess DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideLazyOpen DEPEND %File DEFAULT TIMES 1
+WHEN  ('') ('Use Default')
+
+%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 1
 WHEN  ('') (0)
 
+%StandardExternalModule DEPEND %Module LONG TIMES 5
+WHEN  ('') (1)
+WHEN  ('sct_demo.clw') (1)
+WHEN  ('sct_demo001.clw') (1)
+WHEN  ('sct_demo002.clw') (1)
+WHEN  ('sct_demo003.clw') (1)
+
 %NoGenerateGlobals LONG  (0)
+%WindowManagerType DEFAULT  ('WindowManager')
+%ResetOnGainFocus LONG  (0)
+%AutoToolbar LONG  (1)
+%AutoRefresh LONG  (1)
 %ImageClass DEFAULT  ('ImageManager')
+%ErrorStatusManagerType DEFAULT  ('ErrorStatusClass')
+%ErrorManagerType DEFAULT  ('ErrorClass')
 %DefaultErrorCategory DEFAULT  ('ABC')
+%AllowSelectCopy LONG  (0)
 %StoreErrorHistory LONG  (0)
 %LimitStoredHistory LONG  (0)
 %ErrorHistoryThreshold DEFAULT  ('300')
 %HistoryViewTrigger DEFAULT  ('Level:Fatal')
-%FuzzyMatcherClass DEFAULT  ('FuzzyClass')
-%GridClass DEFAULT  ('GridClass')
-%SidebarClass DEFAULT  ('SidebarClass')
-%OverrideAbcSettings LONG  (0)
-%AbcSourceLocation DEFAULT  ('LINK')
-%AbcLibraryName DEFAULT  ('')
-%INIType DEFAULT  ('NVD_INI')
-%REGRoot DEFAULT  ('REG_CLASSES_ROOT')
-%WindowEnableEnhanceFocus LONG  (0)
-%SelectedText LONG  (1)
-%SelectedRadio LONG  (1)
-%SelectedSpin LONG  (1)
-%SelectedCheck LONG  (1)
-%SelectedDropList LONG  (1)
-%SelectedDisplayChangeColor LONG  (1)
-%SelectedColor LONG  (65535)
-%SelectedStyle LONG  (1)
-%ExcludeSelectedDropList LONG  (1)
-%SelectedRequired LONG  (0)
-%SelectedRequiredColor LONG  (65535)
-%SelectedDisplayBox LONG  (1)
-%SelectedDisplayBoxFillColor LONG  (65535)
-%SelectedDisplayBoxBorderColor LONG  (0)
-%SelectedDisplayBoxBorderSize DEFAULT  ('2')
-%SelectedRequiredBox LONG  (0)
-%SelectedRequiredDisplayBoxFillColor LONG  (255)
-%SelectedRequiredDisplayBoxBorderColor LONG  (0)
-%SelectedCaret LONG  (1)
-%SelectedCaretColor LONG  (8421504)
-%SelectedCaretCharacter DEFAULT  ('»')
-%SelectedCaretCharacterSeparation DEFAULT  ('8')
-%GlobalUseEnterInsteadTab LONG  (0)
-%GlobalUseEnterInsteadTabExclude MULTI DEFAULT  ()
-%GlobalEnableAutoSizeColumn LONG  (0)
-%GlobalEnableListFormatManager LONG  (0)
-%GlobalUserFieldListFormatManager DEFAULT  ('1')
-%TableOrigin DEFAULT  ('Application')
-%FileEquate DEFAULT  ('LFM_CFile')
-%ConfigFilePRE DEFAULT  ('CFG')
-%ConfigFileOEM LONG  (0)
-%ConfigFileTHREAD LONG  (1)
-%ConfigFileENCRYPT LONG  (0)
-%ConfigFilePASSWORD DEFAULT  ('')
-%FormatNameSize DEFAULT  ('30')
-%FormatBufferSize DEFAULT  ('5120')
-%VariableBufferSize DEFAULT  ('2048')
-%ConfigFilePath DEFAULT  ('')
-%UseConfigFileName DEFAULT  ('Default')
-%ConfigFileNAME DEFAULT  ('Formats.FDB')
-%ColonCounter DEFAULT  ('')
-%WrongSymbol DEFAULT  ('')
-%DictionaryTableOrigin FILE  ()
+%PopupClass DEFAULT  ('PopupClass')
+%SelectFileClass DEFAULT  ('SelectFileClass')
+%ResizerType DEFAULT  ('WindowResizeClass')
+%ResizerDeFaultFindParents LONG  (1)
+%ResizerDefaultOptimizeMoves LONG  (1)
+%ResizerDefaultOptimizeRedraws LONG  (1)
+%INIClass DEFAULT  ('INIClass')
+%RunTimeTranslatorType DEFAULT  ('TranslatorClass')
+%ExtractionFilename DEFAULT  ('')
+%TranslationGroups MULTI LONG  ()
+%TranslationFile DEPEND %TranslationGroups DEFAULT TIMES 0
+
+%TranslationGroup DEPEND %TranslationGroups DEFAULT TIMES 0
+
 %CalendarManagerType DEFAULT  ('CalendarClass')
-%GlobalUseABCClasess LONG  (1)
-%AppTemplateFamily DEFAULT  ('ABC')
-%CWTemplateVersion DEFAULT  ('v10.0')
-%ABCVersion DEFAULT  ('10000')
-%GlobalUseEnterInsteadTabEnable DEFAULT  ('Enable')
-%GlobalUseEnterInsteadTabEnableValue DEFAULT  ('True')
 %GlobalChangeColor LONG  (0)
 %GlobalColorSunday LONG  (255)
 %GlobalColorSaturday LONG  (255)
 %GlobalColorHoliday LONG  (32768)
 %GlobalColorOther LONG  (0)
 %GlobalSelectOnClose DEFAULT  ('Select')
-%UseDefaultXPManifest LONG  (0)
+%GlobalUseABCClasess LONG  (1)
+%FileManagerType DEFAULT  ('FileManager')
+%ViewManagerType DEFAULT  ('ViewManager')
+%RelationManagerType DEFAULT  ('RelationManager')
+%BrowserType DEFAULT  ('BrowseClass')
+%ActiveInvisible LONG  (0)
+%AllowUnfilled LONG  (0)
+%RetainRow LONG  (1)
+%FileDropManagerType DEFAULT  ('FileDropClass')
+%FileDropComboManagerType DEFAULT  ('FileDropComboClass')
 %FormVCRManagerType DEFAULT  ('FormVCRClass')
-%ToolbarFormVCRType DEFAULT  ('ToolbarFormVCRClass')
-%ProgramIcon DEFAULT  ('sctools.ico')
-%INIInAppDirectory LONG  (1)
-%DisableINISaveWindow LONG  (0)
-%GlobalEnableRebase LONG  (0)
-%RBDMethod DEFAULT  ('Specify manually')
-%RBDImageBase DEFAULT  ('10000000')
+%BrowseEIPManagerType DEFAULT  ('BrowseEIPManager')
 %EditInPlaceInterface DEFAULT  ('Original')
+%EditInPlaceType DEFAULT  ('EditEntryClass')
 %EditInPlaceEntryType DEFAULT  ('EditEntryClass')
 %EditInPlaceTextType DEFAULT  ('EditTextClass')
 %EditInPlaceCheckType DEFAULT  ('EditCheckClass')
@@ -371,93 +407,57 @@ WHEN  ('') (0)
 %EditInPlaceCalendarType DEFAULT  ('EditCalendarClass')
 %EditInPlaceLookupType DEFAULT  ('EditLookupClass')
 %EditInPlaceOtherType DEFAULT  ('EditEntryClass')
+%QBEFormType DEFAULT  ('QueryFormClass')
+%QBEFormVisualType DEFAULT  ('QueryFormVisual')
+%QBEListType DEFAULT  ('QueryListClass')
+%QBEListVisualType DEFAULT  ('QueryListVisual')
+%StepManagerType DEFAULT  ('StepClass')
+%StepManagerLongType DEFAULT  ('StepLongClass')
+%StepManagerRealType DEFAULT  ('StepRealClass')
+%StepManagerStringType DEFAULT  ('StepStringClass')
+%StepManagerCustomType DEFAULT  ('StepCustomClass')
+%StepLocatorType DEFAULT  ('StepLocatorClass')
+%EntryLocatorType DEFAULT  ('EntryLocatorClass')
+%IncrementalLocatorType DEFAULT  ('IncrementalLocatorClass')
+%FilteredLocatorType DEFAULT  ('FilterLocatorClass')
+%FuzzyMatcherClass DEFAULT  ('FuzzyClass')
+%GridClass DEFAULT  ('GridClass')
+%SidebarClass DEFAULT  ('SidebarClass')
+%ProcessType DEFAULT  ('ProcessClass')
+%PrintPreviewType DEFAULT  ('PrintPreviewClass')
+%ReportManagerType DEFAULT  ('ReportManager')
 %ReportTargetSelectorManagerType DEFAULT  ('ReportTargetSelectorClass')
 %BreakManagerType DEFAULT  ('BreakManagerClass')
-%GlobalLFMSortOrderMenuText DEFAULT  ('SortOrder')
-%DefaultLocalExternal LONG  (0)
-%OverrideLocalExternal DEPEND %File LONG TIMES 0
+%AsciiViewerClass DEFAULT  ('AsciiViewerClass')
+%AsciiSearchClass DEFAULT  ('AsciiSearchClass')
+%AsciiPrintClass DEFAULT  ('AsciiPrintClass')
+%AsciiFileManagerType DEFAULT  ('AsciiFileClass')
+%ToolbarClass DEFAULT  ('ToolbarClass')
+%ToolbarListBoxType DEFAULT  ('ToolbarListboxClass')
+%ToolbarRelTreeType DEFAULT  ('ToolbarReltreeClass')
+%ToolbarUpdateClassType DEFAULT  ('ToolbarUpdateClass')
+%ToolbarFormVCRType DEFAULT  ('ToolbarFormVCRClass')
+%OverrideAbcSettings LONG  (0)
+%AbcSourceLocation DEFAULT  ('LINK')
+%AbcLibraryName DEFAULT  ('')
+%AppTemplateFamily DEFAULT  ('ABC')
+%CWTemplateVersion DEFAULT  ('v10.0')
+%ABCVersion DEFAULT  ('10000')
+%INIActive LONG  (0)
+%GlobalUseDefaultFileManager LONG  (1)
+%GlobalFileManagerClass DEFAULT  ('')
+%GlobalUseDefaultRelationManager LONG  (1)
+%GlobalRelationManagerClass DEFAULT  ('')
+%OverrideUseDefaultFileManager DEPEND %File LONG TIMES 0
 
-%ErrorStatusManagerType DEFAULT  ('ErrorStatusClass')
-%AllowSelectCopy LONG  (0)
-%SelectedList LONG  (1)
-%INIProgramIniLocation DEFAULT  ('APPDIR')
-%INICSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
-%CSIDLCompanyDir DEFAULT  ('')
-%CSIDLProductDir DEFAULT  ('')
-%CSIDLCreate LONG  (0)
-%GenerateXPManifest LONG  (1)
-%LinkGenerateXPManifest LONG  (1)
-%AddVistaXPManifest LONG  (0)
-%VistaManifestExecutionLevel DEFAULT  ('asInvoker')
-%VistaManifestUIAccess LONG  (0)
-%W7ManifestVista LONG  (1)
-%W7ManifestW7 LONG  (1)
-%ForceMakeTransparentXPManifest LONG  (0)
-%ExtUIXPMenuEnableGlobal LONG  (0)
-%ExtUIXPMenuColorTypeGlobal DEFAULT  ('AUTONOBAR')
-%ExtUIXPMenuDisableImageBar LONG  (1)
-%ExtUIXPMenuEnableRuntime LONG  (0)
-%ExtUIXPMenuRuntimeVar DEFAULT  ('')
-%ExtUIXPMenuColorLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorRightGlobal LONG  (12560039)
-%ExtUIXPMenuColorSelectionBarLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorSelectionBarRightGlobal LONG  (15920364)
-%ExtUIXPMenuSelVertical LONG  (1)
-%ExtUIXPMenuColorSelectionBorderGlobal LONG  (15920364)
-%ExtUIXPMenuColorHotLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorHotRightGlobal LONG  (15920364)
-%ExtUIXPMenuColorSelectedLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorSelectedRightGlobal LONG  (15920364)
-%ExtUIXPMenuColorNormalBarLeftGlobal LONG  (15920364)
-%ExtUIXPMenuColorNormalBarRightGlobal LONG  (15920364)
-%ExtUIXPMenuColorNormalText LONG  (0)
-%ExtUIXPMenuColorSelectedText LONG  (0)
-%ExtUIXPMenuColorHotText LONG  (0)
-%ExtUIXPMenuFlat LONG  (1)
-%ExtUIMDITabGlobal DEFAULT  ('DISABLE')
-%ExtUIMDITabStyleGlobal DEFAULT  ('Default')
-%ExtUITabStyleGlobal DEFAULT  ('Default')
-%GeneratePropDataPath LONG  (0)
-%PropDataPathLocation DEFAULT  ('Use same CSIDL value as set for INI file')
-%DataPathCSIDLDirectory DEFAULT  ('SV:CSIDL_PERSONAL')
-%DataPathCSIDLCompanyDir DEFAULT  ('')
-%DataPathCSIDLProductDir DEFAULT  ('')
-%DataPathCSIDLCreate LONG  (0)
-%DataPathOtherDirectory DEFAULT  ('')
-%DataPathOtherDirectoryCreate LONG  (0)
-%ExtUIXPMenuColorItemBackgroundGlobal LONG  (-2147483644)
-%ExtUIXPMenuShowImageBar LONG  (0)
-%ExtUIXPMenuSeparator3D LONG  (1)
-%ExtUIXPMenuSeparatorFull LONG  (0)
-%ExtUIXPMenuVerticalLine LONG  (1)
+%OverrideFileManagerClass DEPEND %File DEFAULT TIMES 0
+
+%OverrideUseDefaultRelationManager DEPEND %File LONG TIMES 0
+
+%OverrideRelationManagerClass DEPEND %File DEFAULT TIMES 0
+
+%WindowFrameDragging LONG  (1)
 %EnableExceptionMessage LONG  (0)
-%GlobalInterLine DEFAULT  ('0')
-%NoThemedControlsDependency LONG  (0)
-%ForceMakeColorXPManifest LONG  (0)
-%ForceSHEETNoTheme LONG  (0)
-%ButtonMarginsCompatibility LONG  (0)
-%W7ManifestW8 LONG  (1)
-%VistaManifestDependentAssembly MULTI LONG  ()
-%VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyVersion DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyType DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyPublicKeyToken DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyLanguage DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
-
-%VistaManifestDependentAssemblyProcessorArchitecture DEPEND %VistaManifestDependentAssembly LONG TIMES 0
-
-%W7ManifestW81 LONG  (1)
-%EnableOSK DEFAULT  ('OFF')
-%VistaManifestdpiAware LONG  (1)
-%W7ManifestW10 LONG  (1)
-%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 1
-WHEN  ('') (0)
-
-%Repository DEFAULT  ('')
 [ADDITION]
 NAME ABCSCTool SCT_Initialization
 [INSTANCE]
@@ -483,37 +483,32 @@ PARENT 3
 %SCTHotKey DEFAULT  ('CtrlMouseRight')
 %SCTUsePopupMenu LONG  (1)
 %SCTCompress LONG  (0)
-[ADDITION]
-NAME GenTXA GenerateTXA
-[INSTANCE]
-INSTANCE 4
-[PROMPTS]
-%GenAPP LONG  (0)
-%GenDCTX LONG  (0)
-%GenAPPSLG LONG  (1)
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
 %GenerationCompleted DEPEND %Module DEFAULT TIMES 4
 WHEN  ('sct_demo.clw') ('1')
-WHEN  ('sct_demo001.clw') ('1')
-WHEN  ('sct_demo002.clw') ('1')
-WHEN  ('sct_demo003.clw') ('1')
+WHEN  ('sct_demo001.clw') ('')
+WHEN  ('sct_demo002.clw') ('')
+WHEN  ('sct_demo003.clw') ('')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('EXE')
 %LastApplicationDebug DEFAULT  ('')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
-#noedit
--- NAMESPACE ClarionDefaultNamespace
 #system win32 exe
 #model clarion dll
 #set RELEASE = on
-#pragma link_option(icon=>sctools.ico)
+#pragma define(_ABCDllMode_=>0) -- GENERATED
+#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "sct_demo.clw" -- GENERATED
 #compile "sct_demo001.clw" -- GENERATED
 #compile "sct_demo002.clw" -- GENERATED
 #compile "sct_demo003.clw" -- GENERATED
+#compile "sct_demo_BC0.CLW" -- GENERATED
+#compile "SCT_DEMO_BC.CLW" -- GENERATED
+#pragma link("SCTOOLS.LIB") -- GENERATED
+#pragma link("sct_demo.EXE.manifest") -- GENERATED
 #link "sct_demo.EXE"
 [PROGRAM]
 [COMMON]
@@ -528,22 +523,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -578,22 +572,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -1690,22 +1683,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -2337,22 +2329,21 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-ScreenCaptureTools (https://github.com/Devuna/Devuna-ScreenCaptureTools)
 !
 !    Devuna-ScreenCaptureTools is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-ScreenCaptureTools is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-ScreenCaptureTools.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-ScreenCaptureTools.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -2466,7 +2457,8 @@ WHEN  ('WindowToolbar')TIMES 0
 
 %ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%ButtonAction DEPEND %Control DEFAULT TIMES 10
+%ButtonAction DEPEND %Control DEFAULT TIMES 11
+WHEN  ('') ('No Special Action')
 WHEN  ('?Close') ('No Special Action')
 WHEN  ('?Image1') ('No Special Action')
 WHEN  ('?Prompt1') ('No Special Action')
@@ -2486,7 +2478,8 @@ WHEN  ('?Prompt8') ('No Special Action')
 
 %ButtonThread DEPEND %Control LONG TIMES 0
 
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 10
+%ButtonThreadStack DEPEND %Control DEFAULT TIMES 11
+WHEN  ('') ('25000')
 WHEN  ('?Close') ('25000')
 WHEN  ('?Image1') ('25000')
 WHEN  ('?Prompt1') ('25000')
@@ -2504,7 +2497,8 @@ WHEN  ('?Prompt8') ('25000')
 
 %ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
 
-%ButtonRequest DEPEND %Control DEFAULT TIMES 10
+%ButtonRequest DEPEND %Control DEFAULT TIMES 11
+WHEN  ('') ('None')
 WHEN  ('?Close') ('None')
 WHEN  ('?Image1') ('None')
 WHEN  ('?Prompt1') ('None')
@@ -2532,7 +2526,8 @@ WHEN  ('?Prompt8') ('None')
 
 %PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
 
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 10
+%PostLookupDuringValidate DEPEND %Control LONG TIMES 11
+WHEN  ('') (1)
 WHEN  ('?Close') (1)
 WHEN  ('?Image1') (1)
 WHEN  ('?Prompt1') (1)
@@ -2562,7 +2557,8 @@ WHEN  ('?Prompt8') (1)
 
 %CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
 
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 10
+%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 11
+WHEN  ('')TIMES 0
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Image1')TIMES 0
 WHEN  ('?Prompt1')TIMES 0
@@ -2578,7 +2574,8 @@ WHEN  ('?Prompt8')TIMES 0
 
 %CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
 
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 10
+%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 11
+WHEN  ('')TIMES 0
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Image1')TIMES 0
 WHEN  ('?Prompt1')TIMES 0
@@ -2600,7 +2597,8 @@ WHEN  ('?Prompt8')TIMES 0
 
 %UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
 
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 10
+%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 11
+WHEN  ('')TIMES 0
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Image1')TIMES 0
 WHEN  ('?Prompt1')TIMES 0
@@ -2616,7 +2614,8 @@ WHEN  ('?Prompt8')TIMES 0
 
 %UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
 
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 10
+%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 11
+WHEN  ('')TIMES 0
 WHEN  ('?Close')TIMES 0
 WHEN  ('?Image1')TIMES 0
 WHEN  ('?Prompt1')TIMES 0
@@ -2734,51 +2733,64 @@ WHEN  ('WindowToolbar') ('NO')
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
 
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
+%ExtUITabStyle DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Default')
 
 %CheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
 
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
+%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
 
 %UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
+%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 1
+WHEN  ('')TIMES 0
 
 %ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorType DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('Off')
 
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
+%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 1
+WHEN  ('') ('')
 
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
+%FieldGradientColorFrom DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
+%FieldGradientColorTo DEPEND %Control LONG TIMES 1
+WHEN  ('') (-1)
 
 %FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
 
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
+%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 1
+WHEN  ('') (0)
 
 %PreserveVarsLoc MULTI LONG  ()
 %PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
 
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
-%AIObjectName DEPEND %Control DEFAULT TIMES 1
+%AIObjectName DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('AIBtn0')
 WHEN  ('?Image1') ('AIBtn3')
 
-%AIEnableMimicControl DEPEND %Control LONG TIMES 1
+%AIEnableMimicControl DEPEND %Control LONG TIMES 2
+WHEN  ('') (1)
 WHEN  ('?Image1') (1)
 
-%AIMimicControl DEPEND %Control DEFAULT TIMES 1
+%AIMimicControl DEPEND %Control DEFAULT TIMES 2
+WHEN  ('') ('?Prompt1')
 WHEN  ('?Image1') ('?Prompt1')
 
 %AIImgRound DEPEND %Control LONG TIMES 0
@@ -2787,533 +2799,32 @@ WHEN  ('?Image1') ('?Prompt1')
 
 %AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
+%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
 WHEN  ('?Image1') (0)
 
 %AIDisableImg DEPEND %Control DEFAULT TIMES 0
 
 %AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
+%AIDisableImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
 WHEN  ('?Image1') (0)
 
 %AIHotImg DEPEND %Control DEFAULT TIMES 0
 
 %AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
+%AIHotImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
 WHEN  ('?Image1') (0)
 
 %AIPressedImg DEPEND %Control DEFAULT TIMES 0
 
 %AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
 
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('?Image1') (0)
-
-[EMBED]
-EMBED %WindowEventHandling
-[INSTANCES]
-WHEN 'CloseWindow'
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 5000
-PROPERTY:END
-POST(EVENT:StartClipboardDemo,,1)
-[END]
-[END]
-[END]
-[ADDITION]
-NAME ABC CloseButton
-[INSTANCE]
-INSTANCE 1
-[WINDOW]
-Window  WINDOW('About Devuna Screen Capture Tools...'),AT(,,296,236),FONT('Segoe UI Semilight', |
-          11),DOUBLE,CENTER,ICON('sctools.ico'),GRAY,MDI,MSG('Press PrintScreen Key to ' & |
-          'Print the Topmost Window'),SYSTEM
-          PROMPT('Have you ever wished you had a simple way to enable your users to cap' & |
-            'ture screen images and save them to a file or print them?'),AT(9,8,279,20),USE(?Prompt1), |
-            #ORIG(?Prompt1),#ORDINAL(1)
-          PROMPT('Have you ever wanted an easy way to paste images from the Windows cli' & |
-            'pboard into an image control?'),AT(9,29,279,20),USE(?Prompt2),#ORIG(?Prompt2), |
-            #ORDINAL(2)
-          IMAGE('sctools.ico'),AT(9,56),USE(?Image1),CENTERED,#ORIG(?Image1),#ORDINAL(3)
-          PROMPT('Devuna Screen Capture Tools make these tasks a breeze...'),AT(36,60,256, |
-            12),USE(?Prompt3),#ORIG(?Prompt3),#ORDINAL(4)
-          PROMPT('Our Screen Capture Tools include a library that handles all the low l' & |
-            'evel Windows API calls, a Clarion wrapper DLL, and a set of templates that' & |
-            ' make using the wrapper library routines a snap.'),AT(9,84,279,26),USE(?Prompt4), |
-            #ORIG(?Prompt4),#ORDINAL(5)
-          PROMPT('With Devuna''s Screen Capture Tools you can easily paste DIB, BMP, EM' & |
-            'F, and WMF data from the Windows clipboard into an image control.'),AT(9,112, |
-            279,20),USE(?Prompt5),TRN,#ORIG(?Prompt5),#ORDINAL(6)
-          PROMPT('The PrintScreen functionality is ideal for a quick ''report'' of what' & |
-            ' is on the screen, for documentation, or for help desk support.  No more c' & |
-            'opying to the clipboard and switching to another application to print or s' & |
-            'ave the clipboard image.'),AT(9,132,279,26),USE(?Prompt6),TRN,#ORIG(?Prompt6), |
-            #ORDINAL(7)
-          PROMPT('Compatible with Clarion 10 ABC and Legacy Templates.  Price:  $99.00  US'), |
-            AT(9,183,279,10),USE(?Prompt7),#ORIG(?Prompt7),#ORDINAL(8)
-          PROMPT('Need more information?  phone:  (519) 935-3201 or email:  rrogers@devuna.com'), |
-            AT(9,199,279,10),USE(?Prompt8),#ORIG(?Prompt8),#ORDINAL(9)
-          BUTTON('Close'),AT(125,216,45,14),USE(?Close),#ORIG(?Close),#SEQ(1),#ORDINAL(10)
-        END
-
-[END]
-FROM ABC GENERATED
-[PROCEDURE]
-NAME About
-GLOBAL
-[COMMON]
-FROM ABC Window
-MODIFIED '2017/06/24' '10:31:27'
-[DATA]
-[SCREENCONTROLS]
-! PROMPT('Files Opened:'),USE(?FilesOpened:Prompt)
-! ENTRY(@n3),USE(FilesOpened)
-[REPORTCONTROLS]
-! STRING(@n3),USE(FilesOpened)
-FilesOpened              BYTE
-!!> GUID('a18ede9f-39ea-4d01-b187-2d1814544c86'),PROMPT('Files Opened:'),HEADER('Files Opened'),PICTURE(@n3)
-[PROMPTS]
-%ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
-%DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('WindowManager')
-WHEN  ('WindowToolbar') ('ToolbarClass')
-
-%ActualDefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('')
-WHEN  ('WindowToolbar') ('')
-
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 1
-WHEN  ('Default') ('Init {19}PROCEDURE(),BYTE,PROC,DERIVED', 'Kill {19}PROCEDURE(),BYTE,PROC,DERIVED', |
-  'SetAlerts {14}PROCEDURE(),DERIVED', 'TakeWindowEvent        PROCEDURE(),BYTE,PROC,DERIVED')
-
-%ReturnValue FIELD  ()
-%WindowOperationMode DEFAULT  ('Use WINDOW setting')
-%INISaveWindow LONG  (1)
-%ThisObjectName DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('ThisWindow')
-WHEN  ('WindowToolbar') ('Toolbar')
-
-%UseDefaultABCBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (1)
-WHEN  ('WindowToolbar') (1)
-
-%UseABCBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (1)
-WHEN  ('WindowToolbar') (1)
-
-%ABCBaseClass DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('AsciiFileClass')
-WHEN  ('WindowToolbar') ('AsciiFileClass')
-
-%ExtBaseClass DEPEND %ClassItem DEFAULT TIMES 0
-
-%BaseClassIncludeFile DEPEND %ClassItem DEFAULT TIMES 0
-
-%DeriveFromBaseClass DEPEND %ClassItem LONG TIMES 2
-WHEN  ('Default') (0)
-WHEN  ('WindowToolbar') (0)
-
-%NewMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewMethodName DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewMethodPrototype DEPEND %NewMethods DEFAULT TIMES 0
-
-%NewClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
-WHEN  ('WindowToolbar')TIMES 0
-
-%NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataIsRef DEPEND %NewClassPropertyItems LONG TIMES 0
-
-%NewClassDataSize DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim1 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim2 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim3 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%NewClassDataDim4 DEPEND %NewClassPropertyItems DEFAULT TIMES 0
-
-%ClassMethods DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassMethodName DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassMethodPrototype DEPEND %ClassMethods DEFAULT TIMES 0
-
-%ClassPropertyItems DEPEND %ClassItem MULTI LONG TIMES 0
-
-%ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
-WHEN  ('WindowToolbar')TIMES 0
-
-%ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataIsRef DEPEND %ClassPropertyItems LONG TIMES 0
-
-%ClassDataSize DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim1 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim2 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim3 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ClassDataDim4 DEPEND %ClassPropertyItems DEFAULT TIMES 0
-
-%ButtonAction DEPEND %Control DEFAULT TIMES 10
-WHEN  ('?Close') ('No Special Action')
-WHEN  ('?Image1') ('No Special Action')
-WHEN  ('?Prompt1') ('No Special Action')
-WHEN  ('?Prompt2') ('No Special Action')
-WHEN  ('?Prompt3') ('No Special Action')
-WHEN  ('?Prompt4') ('No Special Action')
-WHEN  ('?Prompt5') ('No Special Action')
-WHEN  ('?Prompt6') ('No Special Action')
-WHEN  ('?Prompt7') ('No Special Action')
-WHEN  ('?Prompt8') ('No Special Action')
-
-%ButtonRunName DEPEND %Control DEFAULT TIMES 0
-
-%ButtonRunParameters DEPEND %Control DEFAULT TIMES 0
-
-%ButtonProcedure DEPEND %Control PROCEDURE TIMES 0
-
-%ButtonThread DEPEND %Control LONG TIMES 0
-
-%ButtonThreadStack DEPEND %Control DEFAULT TIMES 10
-WHEN  ('?Close') ('25000')
-WHEN  ('?Image1') ('25000')
-WHEN  ('?Prompt1') ('25000')
-WHEN  ('?Prompt2') ('25000')
-WHEN  ('?Prompt3') ('25000')
-WHEN  ('?Prompt4') ('25000')
-WHEN  ('?Prompt5') ('25000')
-WHEN  ('?Prompt6') ('25000')
-WHEN  ('?Prompt7') ('25000')
-WHEN  ('?Prompt8') ('25000')
-
-%ButtonParameters DEPEND %Control DEFAULT TIMES 0
-
-%ButtonReturnValueAssignment DEPEND %Control FIELD TIMES 0
-
-%ButtonReturnValueReferenceAssign DEPEND %Control LONG TIMES 0
-
-%ButtonRequest DEPEND %Control DEFAULT TIMES 10
-WHEN  ('?Close') ('None')
-WHEN  ('?Image1') ('None')
-WHEN  ('?Prompt1') ('None')
-WHEN  ('?Prompt2') ('None')
-WHEN  ('?Prompt3') ('None')
-WHEN  ('?Prompt4') ('None')
-WHEN  ('?Prompt5') ('None')
-WHEN  ('?Prompt6') ('None')
-WHEN  ('?Prompt7') ('None')
-WHEN  ('?Prompt8') ('None')
-
-%ButtonThreadParameters DEPEND %Control DEFAULT TIMES 0
-
-%ButtonThreadReturnValueAssignment DEPEND %Control FIELD TIMES 0
-
-%PreLookupKey DEPEND %Control KEY TIMES 0
-
-%PreLookupField DEPEND %Control COMPONENT TIMES 0
-
-%PreLookupProcedure DEPEND %Control PROCEDURE TIMES 0
-
-%PostLookupKey DEPEND %Control KEY TIMES 0
-
-%PostLookupField DEPEND %Control COMPONENT TIMES 0
-
-%PostLookupProcedure DEPEND %Control PROCEDURE TIMES 0
-
-%PostLookupDuringValidate DEPEND %Control LONG TIMES 10
-WHEN  ('?Close') (1)
-WHEN  ('?Image1') (1)
-WHEN  ('?Prompt1') (1)
-WHEN  ('?Prompt2') (1)
-WHEN  ('?Prompt3') (1)
-WHEN  ('?Prompt4') (1)
-WHEN  ('?Prompt5') (1)
-WHEN  ('?Prompt6') (1)
-WHEN  ('?Prompt7') (1)
-WHEN  ('?Prompt8') (1)
-
-%ForceWindowRefresh DEPEND %Control LONG TIMES 0
-
-%LookupAssign DEPEND %Control MULTI LONG TIMES 0
-
-%MoreField DEPEND %LookupAssign DEFAULT TIMES 0
-
-%MoreTarget DEPEND %LookupAssign FIELD TIMES 0
-
-%CheckedAssigns DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedAssignVariable DEPEND %CheckedAssigns FIELD TIMES 0
-
-%CheckedAssignValue DEPEND %CheckedAssigns DEFAULT TIMES 0
-
-%CheckedHides DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedControl DEPEND %CheckedHides DEFAULT TIMES 0
-
-%CheckedControlAction DEPEND %CheckedHides DEFAULT TIMES 10
-WHEN  ('?Close')TIMES 0
-WHEN  ('?Image1')TIMES 0
-WHEN  ('?Prompt1')TIMES 0
-WHEN  ('?Prompt2')TIMES 0
-WHEN  ('?Prompt3')TIMES 0
-WHEN  ('?Prompt4')TIMES 0
-WHEN  ('?Prompt5')TIMES 0
-WHEN  ('?Prompt6')TIMES 0
-WHEN  ('?Prompt7')TIMES 0
-WHEN  ('?Prompt8')TIMES 0
-
-%CheckedEnables DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedControl1 DEPEND %CheckedEnables DEFAULT TIMES 0
-
-%CheckedControl1Action DEPEND %CheckedEnables DEFAULT TIMES 10
-WHEN  ('?Close')TIMES 0
-WHEN  ('?Image1')TIMES 0
-WHEN  ('?Prompt1')TIMES 0
-WHEN  ('?Prompt2')TIMES 0
-WHEN  ('?Prompt3')TIMES 0
-WHEN  ('?Prompt4')TIMES 0
-WHEN  ('?Prompt5')TIMES 0
-WHEN  ('?Prompt6')TIMES 0
-WHEN  ('?Prompt7')TIMES 0
-WHEN  ('?Prompt8')TIMES 0
-
-%UncheckedAssigns DEPEND %Control MULTI LONG TIMES 0
-
-%UncheckedAssignVariable DEPEND %UncheckedAssigns FIELD TIMES 0
-
-%UncheckedAssignValue DEPEND %UncheckedAssigns DEFAULT TIMES 0
-
-%UnCheckedHides DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedControl DEPEND %UnCheckedHides DEFAULT TIMES 0
-
-%UnCheckedControlAction DEPEND %UnCheckedHides DEFAULT TIMES 10
-WHEN  ('?Close')TIMES 0
-WHEN  ('?Image1')TIMES 0
-WHEN  ('?Prompt1')TIMES 0
-WHEN  ('?Prompt2')TIMES 0
-WHEN  ('?Prompt3')TIMES 0
-WHEN  ('?Prompt4')TIMES 0
-WHEN  ('?Prompt5')TIMES 0
-WHEN  ('?Prompt6')TIMES 0
-WHEN  ('?Prompt7')TIMES 0
-WHEN  ('?Prompt8')TIMES 0
-
-%UnCheckedEnables DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedControl1 DEPEND %UnCheckedEnables DEFAULT TIMES 0
-
-%UnCheckedControl1Action DEPEND %UnCheckedEnables DEFAULT TIMES 10
-WHEN  ('?Close')TIMES 0
-WHEN  ('?Image1')TIMES 0
-WHEN  ('?Prompt1')TIMES 0
-WHEN  ('?Prompt2')TIMES 0
-WHEN  ('?Prompt3')TIMES 0
-WHEN  ('?Prompt4')TIMES 0
-WHEN  ('?Prompt5')TIMES 0
-WHEN  ('?Prompt6')TIMES 0
-WHEN  ('?Prompt7')TIMES 0
-WHEN  ('?Prompt8')TIMES 0
-
-%GlobalObject DEPEND %ClassItem DEFAULT TIMES 2
-WHEN  ('Default') ('NO')
-WHEN  ('WindowToolbar') ('NO')
-
-%ProcedureDisableEnhanceFocus LONG  (0)
-%ProcedureUseEnterInsteadTabOverride LONG  (0)
-%WindowUseEnterInsteadTab LONG  (1)
-%ProcedureUseEnterInsteadTabExcludeG LONG  (1)
-%WindowUseEnterInsteadTabExclude MULTI DEFAULT  ()
-%WindowStyles MULTI LONG  ()
-%WindowStyleFontName DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontSize DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontStyle DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontColor DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontCharSet DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundNormal DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundNormal DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundSelected DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundSelected DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStylePicture DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleOtherListboxes MULTI DEFAULT  ()
-%ProcedureAutoBindFields MULTI LONG  ()
-%ProcedureAutoBindField DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
-
-%ProcedureAutoBindFieldTPL DEPEND %ProcedureAutoBindFields DEFAULT TIMES 0
-
-%ProcedureAutoBindProcedures MULTI LONG  ()
-%ProcedureAutoBindProcedure DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
-
-%ProcedureAutoBindProcedureTPL DEPEND %ProcedureAutoBindProcedures DEFAULT TIMES 0
-
-%ProcedureUserBindFields MULTI LONG  ()
-%ProcedureUserBindField DEPEND %ProcedureUserBindFields FIELD TIMES 0
-
-%ProcedureAutoBindFieldIgnore DEPEND %ProcedureAutoBindFields LONG TIMES 0
-
-%ProcedureUserBindProcedures MULTI LONG  ()
-%ProcedureUserBindProcedure DEPEND %ProcedureUserBindProcedures PROCEDURE TIMES 0
-
-%ProcedureAutoBindProcedureIgnore DEPEND %ProcedureAutoBindProcedures LONG TIMES 0
-
-%ProcedureUserBindExpressions MULTI LONG  ()
-%ProcedureUserBindExpressionName DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
-
-%ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
-
-%PreLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
-
-%PostLookupProcedureParameters DEPEND %Control DEFAULT TIMES 0
-
-%WindowStyleFontNameVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontNameIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontSizeVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontSizeIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleFontStyleVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleFontStyleIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundNormalVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleBackgroundNormalIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleForegroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleForegroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStyleBackgroundSelectedVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStyleBackgroundSelectedIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%WindowStylePictureVariable DEPEND %WindowStyles DEFAULT TIMES 0
-
-%WindowStylePictureIsVariable DEPEND %WindowStyles LONG TIMES 0
-
-%ProcedureAutoBindFieldsIgnored MULTI LONG  ()
-%ProcedureAutoBindFieldIgnored DEPEND %ProcedureAutoBindFieldsIgnored DEFAULT TIMES 0
-
-%ProcedureAutoBindProceduresIgnored MULTI LONG  ()
-%ProcedureAutoBindProcedureIgnored DEPEND %ProcedureAutoBindProceduresIgnored DEFAULT TIMES 0
-
-%ProcedureAutoBindValidToAddField LONG  (0)
-%ProcedureUseEnterInsteadTabExcludeListCombo LONG  (0)
-%ProcedureUseEnterInsteadTabDisableNextTabStop LONG  (0)
-%ProcedureUseEnterInsteadTabEnableNextTabStop LONG  (0)
-%ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
-
-%ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
-
-%ExtUITabStyle DEPEND %Control DEFAULT TIMES 0
-
-%CheckedDisables DEPEND %Control MULTI LONG TIMES 0
-
-%CheckedDisableControl DEPEND %CheckedDisables DEFAULT TIMES 0
-
-%CheckedDisableControlAction DEPEND %CheckedDisables DEFAULT TIMES 0
-
-%UnCheckedDisables DEPEND %Control MULTI LONG TIMES 0
-
-%UnCheckedDisableControl DEPEND %UnCheckedDisables DEFAULT TIMES 0
-
-%UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
-
-%ProcedureOneInstance LONG  (0)
-%FieldGradientColorType DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorTypeVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorTypeIsVariable DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorFrom DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorFromVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorFromIsVariable DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorTo DEPEND %Control LONG TIMES 0
-
-%FieldGradientColorToVariable DEPEND %Control DEFAULT TIMES 0
-
-%FieldGradientColorToIsVariable DEPEND %Control LONG TIMES 0
-
-%PreserveVarsLoc MULTI LONG  ()
-%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
-
-%ActiveImageEnable DEPEND %Control LONG TIMES 0
-
-%AIObjectName DEPEND %Control DEFAULT TIMES 1
-WHEN  ('?Image1') ('AIBtn3')
-
-%AIEnableMimicControl DEPEND %Control LONG TIMES 1
-WHEN  ('?Image1') (1)
-
-%AIMimicControl DEPEND %Control DEFAULT TIMES 1
-WHEN  ('?Image1') ('?Prompt1')
-
-%AIImgRound DEPEND %Control LONG TIMES 0
-
-%AIOverrideImg DEPEND %Control DEFAULT TIMES 0
-
-%AIOverrideImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIOverrideImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('?Image1') (0)
-
-%AIDisableImg DEPEND %Control DEFAULT TIMES 0
-
-%AIDisableImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIDisableImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('?Image1') (0)
-
-%AIHotImg DEPEND %Control DEFAULT TIMES 0
-
-%AIHotImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIHotImgIsVariable DEPEND %Control LONG TIMES 1
-WHEN  ('?Image1') (0)
-
-%AIPressedImg DEPEND %Control DEFAULT TIMES 0
-
-%AIPressedImgVariable DEPEND %Control DEFAULT TIMES 0
-
-%AIPressedImgIsVariable DEPEND %Control LONG TIMES 1
+%AIPressedImgIsVariable DEPEND %Control LONG TIMES 2
+WHEN  ('') (0)
 WHEN  ('?Image1') (0)
 
 [EMBED]
